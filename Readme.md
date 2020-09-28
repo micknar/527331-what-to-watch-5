@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Marina Chibirova](https://up.htmlacademy.ru/react/5/user/527331).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Турецкий](https://htmlacademy.ru/profile/id439019).
 
 ---
 
