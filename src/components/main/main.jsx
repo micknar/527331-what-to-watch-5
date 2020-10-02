@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Main = (props) => {
-  const {posterName, posterGenre, posterReleaseDate} = props.poster;
+  const {title, genre, releaseDate} = props;
 
   return (
     <React.Fragment>
@@ -36,10 +36,10 @@ const Main = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{posterName}</h2>
+              <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{posterGenre}</span>
-                <span className="movie-card__year">{posterReleaseDate}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{releaseDate}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -309,7 +309,9 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  poster: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  releaseDate: PropTypes.number.isRequired,
 };
 
 export default Main;

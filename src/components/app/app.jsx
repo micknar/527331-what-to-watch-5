@@ -3,11 +3,21 @@ import Main from "../main/main";
 import PropTypes from "prop-types";
 
 const App = (props) => {
-  return <Main poster={props.poster}/>;
+  const {title, genre, releaseDate} = props;
+
+  return (
+    <Main
+      title={title}
+      genre={genre}
+      releaseDate={releaseDate}
+    />
+  );
 };
 
 App.propTypes = {
-  poster: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  releaseDate: PropTypes.number.isRequired,
 };
 
 export default App;

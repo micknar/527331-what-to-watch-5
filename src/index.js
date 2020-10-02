@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './components/app/app';
 
 const poster = {
-  posterName: `The Grand Budapest Hotel`,
-  posterGenre: `Drama`,
-  posterReleaseDate: `2014`,
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  releaseDate: 2014,
 };
 
 ReactDOM.render(
-    <App poster={poster} />,
+    <App
+      title={poster.title}
+      genre={poster.genre}
+      releaseDate={poster.releaseDate}
+    />,
     document.querySelector(`#root`)
 );
