@@ -27,17 +27,21 @@ const ratingMarkMap = {
 };
 
 export const getRatingMark = (rating) => {
+  let mark = ``;
+
   if (rating < ratingMarkMap.Bad.max) {
-    return ratingMarkMap.Bad.mark;
+    mark = ratingMarkMap.Bad.mark;
   } else if (rating >= ratingMarkMap.Normal.min && rating < ratingMarkMap.Normal.max) {
-    return ratingMarkMap.Normal.mark;
+    mark = ratingMarkMap.Normal.mark;
   } else if (rating >= ratingMarkMap.Good.min && rating < ratingMarkMap.Good.max) {
-    return ratingMarkMap.Good.mark;
+    mark = ratingMarkMap.Good.mark;
   } else if (rating >= ratingMarkMap.VeryGood.min && rating < ratingMarkMap.VeryGood.max) {
-    return ratingMarkMap.mark;
+    mark = ratingMarkMap.mark;
   } else if (rating >= ratingMarkMap.Awesome.max) {
-    return ratingMarkMap.Awesome.mark;
+    mark = ratingMarkMap.Awesome.mark;
   }
+
+  return mark;
 };
 
 export const getRandomInteger = (max, min = 0) => Math.floor(Math.random() * (max + 1 - min)) + min;

@@ -46,7 +46,7 @@ FilmPageReviews.propTypes = {
       monthNumber: PropTypes.number.isRequired,
       year: PropTypes.number.isRequired,
     }).isRequired,
-  }))
+  })).isRequired,
 };
 
 export default FilmPageReviews;

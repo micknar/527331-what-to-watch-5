@@ -189,8 +189,10 @@ FilmPage.propTypes = {
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
       }).isRequired,
+
       rating: PropTypes.string.isRequired,
       comment: PropTypes.string.isRequired,
+      
       date: PropTypes.shape({
         day: PropTypes.number.isRequired,
         month: PropTypes.string.isRequired,
@@ -198,7 +200,7 @@ FilmPage.propTypes = {
         year: PropTypes.number.isRequired,
       }),
     })).isRequired,
-  })),
+  })).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
 };
 

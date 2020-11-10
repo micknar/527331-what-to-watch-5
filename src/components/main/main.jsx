@@ -8,7 +8,7 @@ import PageFooter from "../page-footer/page-footer";
 
 const Main = (props) => {
   const {films, promoFilm, onFilmCardClick} = props;
-  const {id, posterImage, name, genre, backgroundImage, released} = promoFilm;
+  const {posterImage, name, genre, backgroundImage, released} = promoFilm;
 
   return (
     <>
@@ -38,7 +38,7 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <Link to={`/player/${id}/`} className="btn btn--play movie-card__button">
+                <Link to={`/player/${films.id}/`} className="btn btn--play movie-card__button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
