@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {getRatingMark} from "../../utils/utils.js";
 
 const FilmPageOverview = (props) => {
   const {description, rating, director, starring} = props;
@@ -9,7 +10,7 @@ const FilmPageOverview = (props) => {
       <div className="movie-rating">
         <div className="movie-rating__score">{rating}</div>
         <p className="movie-rating__meta">
-          <span className="movie-rating__level">Very good</span>
+          <span className="movie-rating__level">{getRatingMark(+rating)}</span>
           <span className="movie-rating__count">240 ratings</span>
         </p>
       </div>

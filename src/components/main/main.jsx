@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 import FilmsList from "../films-list/films-list";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
@@ -7,7 +8,7 @@ import PageFooter from "../page-footer/page-footer";
 
 const Main = (props) => {
   const {films, promoFilm, onFilmCardClick} = props;
-  const {posterImage, name, genre, backgroundImage, released} = promoFilm;
+  const {id, posterImage, name, genre, backgroundImage, released} = promoFilm;
 
   return (
     <>
@@ -37,18 +38,18 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <Link to={`/player/${id}/`} className="btn btn--play movie-card__button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
-                </button>
-                <button className="btn btn--list movie-card__button" type="button">
+                </Link>
+                <Link to="/mylist" className="btn btn--list movie-card__button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -118,7 +119,7 @@ Main.propTypes = {
     genre: PropTypes.string.isRequired,
     backgroundImage: PropTypes.string.isRequired,
     released: PropTypes.number.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default Main;

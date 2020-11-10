@@ -37,7 +37,7 @@ FilmPageReviews.propTypes = {
     user: PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-    }),
+    }).isRequired,
     rating: PropTypes.string.isRequired,
     comment: PropTypes.string.isRequired,
     date: PropTypes.shape({
@@ -45,7 +45,7 @@ FilmPageReviews.propTypes = {
       month: PropTypes.string.isRequired,
       monthNumber: PropTypes.number.isRequired,
       year: PropTypes.number.isRequired,
-    }),
+    }).isRequired,
   }))
 };
 

@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Redirect} from 'react-router-dom';
+import {Link} from "react-router-dom";
 import FilmsList from "../films-list/films-list";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
@@ -84,19 +85,21 @@ class FilmPage extends PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <Link to={`/player/${id}/`} className="btn btn--play movie-card__button">
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
                     <span>Play</span>
-                  </button>
-                  <button className="btn btn--list movie-card__button" type="button">
+                  </Link>
+
+                  <Link to="/mylist" className="btn btn--list movie-card__button">
                     <svg viewBox="0 0 19 20" width="19" height="20">
                       <use xlinkHref="#add"></use>
                     </svg>
                     <span>My list</span>
-                  </button>
-                  <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  </Link>
+
+                  <Link to={`/films/${id}/review`} href="add-review.html" className="btn movie-card__button">Add review</Link>
                 </div>
               </div>
             </div>
@@ -179,13 +182,13 @@ FilmPage.propTypes = {
     runTime: PropTypes.shape({
       hours: PropTypes.number.isRequired,
       minutes: PropTypes.number.isRequired,
-    }),
+    }).isRequired,
 
     reviews: PropTypes.arrayOf(PropTypes.shape({
       user: PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-      }),
+      }).isRequired,
       rating: PropTypes.string.isRequired,
       comment: PropTypes.string.isRequired,
       date: PropTypes.shape({
@@ -194,7 +197,7 @@ FilmPage.propTypes = {
         monthNumber: PropTypes.number.isRequired,
         year: PropTypes.number.isRequired,
       }),
-    }))
+    })).isRequired,
   })),
   onFilmCardClick: PropTypes.func.isRequired,
 };

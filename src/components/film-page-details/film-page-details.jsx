@@ -42,7 +42,7 @@ FilmPageDetails.propTypes = {
   runTime: PropTypes.shape({
     hours: PropTypes.number.isRequired,
     minutes: PropTypes.number.isRequired,
-  }),
+  }).isRequired,
   genre: PropTypes.string.isRequired,
   released: PropTypes.number.isRequired,
   director: PropTypes.string.isRequired,

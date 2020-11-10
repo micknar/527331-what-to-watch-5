@@ -1,5 +1,45 @@
 const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
 
+const ratingMarkMap = {
+  'Bad': {
+    mark: `Bad`,
+    max: 3,
+  },
+  'Normal': {
+    mark: `Normal`,
+    min: 3,
+    max: 5,
+  },
+  'Good': {
+    mark: `Good`,
+    min: 5,
+    max: 8,
+  },
+  'VeryGood': {
+    mark: `Very good`,
+    min: 8,
+    max: 10,
+  },
+  'Awesome': {
+    mark: `Awesome`,
+    max: 10,
+  },
+};
+
+export const getRatingMark = (rating) => {
+  if (rating < ratingMarkMap.Bad.max) {
+    return ratingMarkMap.Bad.mark;
+  } else if (rating >= ratingMarkMap.Normal.min && rating < ratingMarkMap.Normal.max) {
+    return ratingMarkMap.Normal.mark;
+  } else if (rating >= ratingMarkMap.Good.min && rating < ratingMarkMap.Good.max) {
+    return ratingMarkMap.Good.mark;
+  } else if (rating >= ratingMarkMap.VeryGood.min && rating < ratingMarkMap.VeryGood.max) {
+    return ratingMarkMap.mark;
+  } else if (rating >= ratingMarkMap.Awesome.max) {
+    return ratingMarkMap.Awesome.mark;
+  }
+};
+
 export const getRandomInteger = (max, min = 0) => Math.floor(Math.random() * (max + 1 - min)) + min;
 
 export const getRandomFloat = (max, min) => {
