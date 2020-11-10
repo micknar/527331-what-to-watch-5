@@ -192,7 +192,7 @@ FilmPage.propTypes = {
 
       rating: PropTypes.string.isRequired,
       comment: PropTypes.string.isRequired,
-      
+
       date: PropTypes.shape({
         day: PropTypes.number.isRequired,
         month: PropTypes.string.isRequired,
