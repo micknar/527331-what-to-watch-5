@@ -1,18 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-
-const poster = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  releaseDate: 2014,
-};
+import {films, promoFilm} from './mocks/films.js';
 
 ReactDOM.render(
     <App
-      title={poster.title}
-      genre={poster.genre}
-      releaseDate={poster.releaseDate}
+      films={films}
+      promoFilm={promoFilm}
     />,
     document.querySelector(`#root`)
 );

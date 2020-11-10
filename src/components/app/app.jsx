@@ -4,35 +4,58 @@ import PropTypes from "prop-types";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
-import Film from "../film/film";
+import FilmPage from "../film-page/film-page";
 import AddReview from "../add-review/add-review";
 import Player from "../player/player";
 
 const App = (props) => {
-  const {title, genre, releaseDate} = props;
+  const {films, promoFilm} = props;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <Main
-            title={title}
-            genre={genre}
-            releaseDate={releaseDate}
-          />
-        </Route>
+        <Route
+          exact
+          path="/"
+          render={({history}) => (
+            <Main
+              promoFilm={promoFilm}
+              films={films}
+              onFilmCardClick={(id) => history.push(`/films/${id}`)}
+            />
+          )}
+        />
+
         <Route exact path="/login">
           <SignIn />
         </Route>
-        <Route exact path="/mylist">
-          <MyList />
-        </Route>
-        <Route exact path="/films/:id">
-          <Film />
-        </Route>
+
+        <Route
+          exact
+          path="/mylist"
+          render={({history}) => (
+            <MyList
+              films={films}
+              onFilmCardClick={(id) => history.push(`/films/${id}`)}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/films/:id"
+          render={({history}) => (
+            <FilmPage
+              films={films}
+              onFilmCardClick={(id) => history.push(`/films/${id}`)}
+            />
+          )}
+        />
+
         <Route exact path="/films/:id/review">
-          <AddReview />
+          <AddReview films={films} />
         </Route>
+
         <Route exact path="/player/:id">
           <Player />
         </Route>
@@ -42,9 +65,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
+  films: PropTypes.array.isRequired,
+  promoFilm: PropTypes.object.isRequired,
 };
 
 export default App;

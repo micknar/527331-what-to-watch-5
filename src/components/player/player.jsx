@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Player = () => {
   return (
@@ -17,12 +18,13 @@ const Player = () => {
         </div>
 
         <div className="player__controls-row">
-          <button type="button" className="player__play">
+          <Link to="/" className="player__play">
             <svg viewBox="0 0 19 19" width="19" height="19">
               <use xlinkHref="#play-s"></use>
             </svg>
             <span>Play</span>
-          </button>
+          </Link>
+
           <div className="player__name">Transpotting</div>
 
           <button type="button" className="player__full-screen">
