@@ -1,20 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 const FilmCard = (props) => {
-  const {id, posterImage, name, onFilmCardClick, onFilmCardHover} = props;
+  const {id, name, onFilmCardClick, onFilmCardHover, onFilmCardLeave, children} = props;
   return (
     <article
       data-id={id}
       className="small-movie-card catalog__movies-card"
       onMouseOver={() => onFilmCardHover(id)}
+      onMouseOut={() => onFilmCardLeave()}
       onClick={() => onFilmCardClick(id)}
     >
-      <div className="small-movie-card__image">
-        <img src={posterImage} alt={name} width="280" height="175" />
-      </div>
+      {children}
+
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{name}</a>
+        <Link to={`/films/${id}`} className="small-movie-card__link">{name}</Link>
       </h3>
     </article>
   );
@@ -22,10 +23,11 @@ const FilmCard = (props) => {
 
 FilmCard.propTypes = {
   id: PropTypes.number.isRequired,
-  posterImage: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
-  onFilmCardHover: PropTypes.func.isRequired
+  onFilmCardHover: PropTypes.func.isRequired,
+  onFilmCardLeave: PropTypes.func.isRequired,
+  children: PropTypes.object.isRequired,
 };
 
 export default FilmCard;
