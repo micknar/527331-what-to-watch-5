@@ -12,6 +12,7 @@ const FilmPage = (props) => {
   const {films, onFilmCardClick, currentFilmId} = props;
   const currentFilm = films.find((film) => film.id === currentFilmId);
   const {id, name, posterImage, backgroundImage, genre, released} = currentFilm;
+  const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, 4);
 
   return (
     <>
@@ -73,7 +74,7 @@ const FilmPage = (props) => {
           <h2 className="catalog__title">More like this</h2>
 
           <FilmsList
-            films={films.slice(0, 4)}
+            films={similarFilms}
             onFilmCardClick={onFilmCardClick}
           />
         </section>
