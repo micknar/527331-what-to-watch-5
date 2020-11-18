@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 import FilmsList from "../films-list/films-list";
 import Genres from "../genres/genres";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
@@ -8,8 +9,8 @@ import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 
 const Main = (props) => {
-  const {films, promoFilm, onFilmCardClick} = props;
-  const {posterImage, name, genre, backgroundImage, released} = promoFilm;
+  const {promoFilm, filteredFilms, onFilmCardClick} = props;
+  const {posterImage, name, genre, backgroundImage, released, id} = promoFilm;
 
   return (
     <>
@@ -39,7 +40,7 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <Link to={`/player/${films.id}/`} className="btn btn--play movie-card__button">
+                <Link to={`/player/${id}/`} className="btn btn--play movie-card__button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -61,12 +62,10 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <Genres
-            films={films}
-          />
+          <Genres />
 
           <FilmsList
-            films={films}
+            films={filteredFilms}
             onFilmCardClick={onFilmCardClick}
           />
 
@@ -81,8 +80,11 @@ const Main = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  filteredFilms: state.filteredFilms,
+});
+
 Main.propTypes = {
-  films: PropTypes.array.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   promoFilm: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -92,6 +94,8 @@ Main.propTypes = {
     backgroundImage: PropTypes.string.isRequired,
     released: PropTypes.number.isRequired,
   }).isRequired,
+  filteredFilms: PropTypes.array.isRequired,
 };
 
-export default Main;
+export {Main};
+export default connect(mapStateToProps)(Main);

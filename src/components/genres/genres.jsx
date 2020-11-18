@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
 
 const Genres = (props) => {
-  const {films} = props;
+  const {films, activeGenre, onGenreClick} = props;
   const genres = [`All genres`, ...new Set(films.map((film) => film.genre))];
 
   const getFilterItem = (genre) => {
@@ -18,17 +20,25 @@ const Genres = (props) => {
     }
   };
 
+  const getFilterItemClass = (genre) => {
+    return activeGenre === genre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`;
+  };
+
   return (
     <ul className="catalog__genres-list">
       {genres.map((genre, i) => {
         return (
           <li
             key={genre + i}
-            className="catalog__genres-item catalog__genres-item--active"
+            className={getFilterItemClass(genre)}
           >
             <a
               href="#"
               className="catalog__genres-link"
+              onClick={(evt) => {
+                evt.preventDefault();
+                onGenreClick(genre);
+              }}
             >{getFilterItem(genre)}</a>
           </li>
         );
@@ -37,8 +47,24 @@ const Genres = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  films: state.films,
+  filteredFilms: state.filteredFilms,
+  activeGenre: state.activeGenre,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenreClick(activeGenre) {
+    dispatch(ActionCreator.changeGenre(activeGenre));
+    dispatch(ActionCreator.getFilmsByGenre(activeGenre));
+  }
+});
+
 Genres.propTypes = {
   films: PropTypes.array.isRequired,
+  activeGenre: PropTypes.string.isRequired,
+  onGenreClick: PropTypes.func.isRequired,
 };
 
-export default Genres;
+export {Genres};
+export default connect(mapStateToProps, mapDispatchToProps)(Genres);

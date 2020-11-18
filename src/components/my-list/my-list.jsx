@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import FilmsList from "../films-list/films-list";
@@ -29,9 +30,14 @@ const MyList = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  films: state.films,
+});
+
 MyList.propTypes = {
   films: PropTypes.array.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
 };
 
-export default MyList;
+export {MyList};
+export default connect(mapStateToProps)(MyList);
