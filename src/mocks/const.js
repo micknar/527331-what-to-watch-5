@@ -1,10 +1,21 @@
 export const FILMS_COUNT = 8;
 export const RATING_MIN = 0;
 export const RATING_MAX = 10;
-export const GENRES = [`Drama`, `Film-Noir`, `Mystery`, `Musical`, `Kids & Family`, `Romance`, `Thriller`];
 export const DIRECTORS = [`Anthony Mann`, `Martin Scorsese`, `Clint Eastwood`, `Ilya Naishuller`, `Guy Ritchie`];
 export const ACTORS = [`Erich von Stroheim`, `Mary Beth Hughes`, `Dan Duryea`, `Robert Duvall`, `Liam Neeson`, `Russell Crowe`, `Woody Harrelson`, `Bill Murray`, `Edward Norton`, `Willem Dafoe`, `Tilda Swinton`];
 export const USERS = [`John Doe`, `Tim Macoveev`, `Bill Murray`, `Jude Law`, `Tony Revoloru`, `Owen Wilkinson`, `Jeff Goldblum`];
+
+export const GENRES = [
+  `Comedy`,
+  `Crime`,
+  `Documentary`,
+  `Drama`,
+  `Horror`,
+  `Kids & Family`,
+  `Romance`,
+  `Sci-Fi`,
+  `Thriller`,
+];
 
 export const TITLES = [
   `Aviator`,
