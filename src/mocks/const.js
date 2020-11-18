@@ -1,4 +1,5 @@
-export const FILMS_COUNT = 8;
+export const FILMS_COUNT = 17;
+export const FILMS_COUNT_PER_STEP = 8;
 export const RATING_MIN = 0;
 export const RATING_MAX = 10;
 export const DIRECTORS = [`Anthony Mann`, `Martin Scorsese`, `Clint Eastwood`, `Ilya Naishuller`, `Guy Ritchie`];

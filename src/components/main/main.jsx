@@ -4,12 +4,13 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import FilmsList from "../films-list/films-list";
 import Genres from "../genres/genres";
+import ShowMoreBtn from "../show-more-btn/show-more-btn";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 
 const Main = (props) => {
-  const {promoFilm, filteredFilms, onFilmCardClick} = props;
+  const {promoFilm, filteredFilms, renderedFilmsCount, onFilmCardClick} = props;
   const {posterImage, name, genre, backgroundImage, released, id} = promoFilm;
 
   return (
@@ -65,13 +66,11 @@ const Main = (props) => {
           <Genres />
 
           <FilmsList
-            films={filteredFilms}
+            films={filteredFilms.slice(0, renderedFilmsCount)}
             onFilmCardClick={onFilmCardClick}
           />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {renderedFilmsCount < filteredFilms.length && <ShowMoreBtn />}
         </section>
 
         <PageFooter />
@@ -82,6 +81,7 @@ const Main = (props) => {
 
 const mapStateToProps = (state) => ({
   filteredFilms: state.filteredFilms,
+  renderedFilmsCount: state.renderedFilmsCount,
 });
 
 Main.propTypes = {
@@ -95,6 +95,7 @@ Main.propTypes = {
     released: PropTypes.number.isRequired,
   }).isRequired,
   filteredFilms: PropTypes.array.isRequired,
+  renderedFilmsCount: PropTypes.number.isRequired,
 };
 
 export {Main};
