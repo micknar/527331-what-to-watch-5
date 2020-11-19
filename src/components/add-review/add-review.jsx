@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import UserBlock from "../user-block/user-block";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
@@ -37,6 +38,10 @@ const AddReview = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  films: state.films,
+});
+
 AddReview.propTypes = {
   currentFilmId: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
@@ -47,4 +52,5 @@ AddReview.propTypes = {
   })).isRequired,
 };
 
-export default AddReview;
+export {AddReview};
+export default connect(mapStateToProps)(AddReview);

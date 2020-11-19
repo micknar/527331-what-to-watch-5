@@ -60,32 +60,24 @@ class FilmPageTabs extends PureComponent {
       <div className="movie-card__desc">
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
-            <li className="movie-nav__item movie-nav__item--active">
-              <a href="#" className="movie-nav__link"
-                onClick={() => {
-                  this.setState({
-                    filmTab: FilmPageNav.OVERVIEW,
-                  });
-                }}>Overview</a>
-            </li>
-
-            <li className="movie-nav__item">
-              <a href="#" className="movie-nav__link"
-                onClick={() => {
-                  this.setState({
-                    filmTab: FilmPageNav.DETAILS,
-                  });
-                }}>Details</a>
-            </li>
-
-            <li className="movie-nav__item">
-              <a href="#" className="movie-nav__link"
-                onClick={() => {
-                  this.setState({
-                    filmTab: FilmPageNav.REVIEWS,
-                  });
-                }}>Reviews</a>
-            </li>
+            {Object.values(FilmPageNav).map((value, i) => {
+              return (
+                <li
+                  key={i}
+                  className={value === this.state.filmTab ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}
+                >
+                  <a
+                    href="#"
+                    className="movie-nav__link"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      this.setState({
+                        filmTab: value,
+                      });
+                    }}>{value}</a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 

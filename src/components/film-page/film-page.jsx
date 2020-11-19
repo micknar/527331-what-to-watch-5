@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 import FilmsList from "../films-list/films-list";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import FilmPageTabs from '../film-page-tabs/film-page-tabs';
-
 
 const FilmPage = (props) => {
   const {films, onFilmCardClick, currentFilmId} = props;
@@ -85,6 +85,10 @@ const FilmPage = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  films: state.films,
+});
+
 FilmPage.propTypes = {
   currentFilmId: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
@@ -98,4 +102,5 @@ FilmPage.propTypes = {
   onFilmCardClick: PropTypes.func.isRequired,
 };
 
-export default FilmPage;
+export {FilmPage};
+export default connect(mapStateToProps)(FilmPage);

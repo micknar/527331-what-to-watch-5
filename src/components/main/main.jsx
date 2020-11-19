@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 import FilmsList from "../films-list/films-list";
+import Genres from "../genres/genres";
+import ShowMoreBtn from "../show-more-btn/show-more-btn";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 
 const Main = (props) => {
-  const {films, promoFilm, onFilmCardClick} = props;
-  const {posterImage, name, genre, backgroundImage, released} = promoFilm;
+  const {promoFilm, filteredFilms, renderedFilmsCount, onFilmCardClick} = props;
+  const {posterImage, name, genre, backgroundImage, released, id} = promoFilm;
 
   return (
     <>
@@ -38,7 +41,7 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <Link to={`/player/${films.id}/`} className="btn btn--play movie-card__button">
+                <Link to={`/player/${id}/`} className="btn btn--play movie-card__button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -60,47 +63,14 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Kids &#38; Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Thrillers</a>
-            </li>
-          </ul>
+          <Genres />
 
           <FilmsList
-            films={films}
+            films={filteredFilms.slice(0, renderedFilmsCount)}
             onFilmCardClick={onFilmCardClick}
           />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {renderedFilmsCount < filteredFilms.length && <ShowMoreBtn />}
         </section>
 
         <PageFooter />
@@ -109,8 +79,12 @@ const Main = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  filteredFilms: state.filteredFilms,
+  renderedFilmsCount: state.renderedFilmsCount,
+});
+
 Main.propTypes = {
-  films: PropTypes.array.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   promoFilm: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -120,6 +94,9 @@ Main.propTypes = {
     backgroundImage: PropTypes.string.isRequired,
     released: PropTypes.number.isRequired,
   }).isRequired,
+  filteredFilms: PropTypes.array.isRequired,
+  renderedFilmsCount: PropTypes.number.isRequired,
 };
 
-export default Main;
+export {Main};
+export default connect(mapStateToProps)(Main);

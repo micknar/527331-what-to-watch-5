@@ -89,3 +89,7 @@ export const generateDate = () => {
     year: date.getFullYear(),
   };
 };
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
