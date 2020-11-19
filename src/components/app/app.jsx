@@ -67,7 +67,14 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  promoFilm: PropTypes.object.isRequired,
+  promoFilm: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default App;

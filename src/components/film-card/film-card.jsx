@@ -27,7 +27,10 @@ FilmCard.propTypes = {
   onFilmCardClick: PropTypes.func.isRequired,
   onFilmCardHover: PropTypes.func.isRequired,
   onFilmCardLeave: PropTypes.func.isRequired,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default FilmCard;

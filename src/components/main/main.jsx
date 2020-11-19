@@ -85,7 +85,6 @@ const mapStateToProps = (state) => ({
 });
 
 Main.propTypes = {
-  onFilmCardClick: PropTypes.func.isRequired,
   promoFilm: PropTypes.shape({
     id: PropTypes.number.isRequired,
     posterImage: PropTypes.string.isRequired,
@@ -94,8 +93,17 @@ Main.propTypes = {
     backgroundImage: PropTypes.string.isRequired,
     released: PropTypes.number.isRequired,
   }).isRequired,
-  filteredFilms: PropTypes.array.isRequired,
+
+  filteredFilms: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+  })).isRequired,
+
   renderedFilmsCount: PropTypes.number.isRequired,
+  onFilmCardClick: PropTypes.func.isRequired,
 };
 
 export {Main};
