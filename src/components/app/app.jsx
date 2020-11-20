@@ -1,6 +1,5 @@
 import React from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-import PropTypes from "prop-types";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
@@ -11,9 +10,7 @@ import withFullscreenPlayer from "../../hocs/with-fullscreen-player/with-fullscr
 
 const FullscreenPlayerWrapped = withFullscreenPlayer(FullscreenPlayer);
 
-const App = (props) => {
-  const {promoFilm} = props;
-
+const App = () => {
   return (
     <BrowserRouter>
       <Switch>
@@ -22,7 +19,6 @@ const App = (props) => {
           path="/"
           render={({history}) => (
             <Main
-              promoFilm={promoFilm}
               onFilmCardClick={(id) => history.push(`/films/${id}`)}
             />
           )}
@@ -73,17 +69,6 @@ const App = (props) => {
       </Switch>
     </BrowserRouter>
   );
-};
-
-App.propTypes = {
-  promoFilm: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-  }).isRequired,
 };
 
 export default App;

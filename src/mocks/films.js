@@ -62,6 +62,7 @@ export const promoFilm = {
   name: `The Grand Budapest Hotel poster`,
   posterImage: `/img/the-grand-budapest-hotel-poster.jpg`,
   backgroundImage: `/img/bg-the-grand-budapest-hotel.jpg`,
+  videoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   genre: `Drama`,
   released: 2014,
 };

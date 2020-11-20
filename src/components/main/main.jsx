@@ -85,6 +85,7 @@ const Main = (props) => {
 const mapStateToProps = (state) => ({
   filteredFilms: state.filteredFilms,
   renderedFilmsCount: state.renderedFilmsCount,
+  promoFilm: state.promoFilm,
 });
 
 Main.propTypes = {

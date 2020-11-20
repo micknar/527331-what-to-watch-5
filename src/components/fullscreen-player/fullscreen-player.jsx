@@ -13,8 +13,17 @@ const getElapsedTime = (duration, progress) => {
 };
 
 const FullscreenPlayer = (props) => {
-  const {films, currentFilmId, isPlaying, duration, progress, onPlayBtnClick, onFullscreenClick, renderPlayer} = props;
-  const currentFilm = films.find((film) => film.id === currentFilmId);
+  const {films, promoFilm, currentFilmId, isPlaying, duration, progress, onPlayBtnClick, onFullscreenClick, renderPlayer} = props;
+
+  const getCurrentFilm = () => {
+    if (currentFilmId === promoFilm.id) {
+      return promoFilm;
+    }
+
+    return films.find((film) => film.id === currentFilmId);
+  };
+
+  const currentFilm = getCurrentFilm();
   const {name} = currentFilm;
   const togglerState = progress / duration * 100;
 
@@ -69,13 +78,20 @@ const FullscreenPlayer = (props) => {
 
 const mapStateToProps = (state) => ({
   films: state.films,
+  promoFilm: state.promoFilm,
 });
 
 FullscreenPlayer.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
+    videoLink: PropTypes.string.isRequired,
   })).isRequired,
+  promoFilm: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    videoLink: PropTypes.string.isRequired,
+  }).isRequired,
   currentFilmId: PropTypes.number.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   duration: PropTypes.number.isRequired,
