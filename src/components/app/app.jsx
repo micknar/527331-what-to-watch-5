@@ -6,7 +6,10 @@ import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
 import FilmPage from "../film-page/film-page";
 import AddReview from "../add-review/add-review";
-import Player from "../player/player";
+import FullscreenPlayer from "../fullscreen-player/fullscreen-player";
+import withFullscreenPlayer from "../../hocs/with-fullscreen-player/with-fullscreen-player";
+
+const FullscreenPlayerWrapped = withFullscreenPlayer(FullscreenPlayer);
 
 const App = (props) => {
   const {promoFilm} = props;
@@ -58,9 +61,15 @@ const App = (props) => {
           )}
         />
 
-        <Route exact path="/player/:id">
-          <Player />
-        </Route>
+        <Route
+          exact
+          path="/player/:id"
+          render={({match}) => (
+            <FullscreenPlayerWrapped
+              currentFilmId={+match.params.id}
+            />
+          )}
+        />
       </Switch>
     </BrowserRouter>
   );
