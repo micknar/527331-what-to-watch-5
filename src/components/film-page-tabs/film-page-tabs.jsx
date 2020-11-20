@@ -4,12 +4,7 @@ import {Redirect} from 'react-router-dom';
 import FilmPageOverview from '../film-page-overview/film-page-overview';
 import FilmPageDetails from '../film-page-details/film-page-details';
 import FilmPageReviews from '../film-page-reviews/film-page-reviews';
-
-const FilmPageNav = {
-  OVERVIEW: `Overview`,
-  DETAILS: `Details`,
-  REVIEWS: `Reviews`,
-};
+import {FilmPageNav} from "../../mocks/const.js";
 
 const FilmPageTabs = (props) => {
   const {film, activeTab, handleActiveTab} = props;

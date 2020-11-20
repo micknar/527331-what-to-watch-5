@@ -1,10 +1,5 @@
 import React, {PureComponent} from "react";
-
-const FilmPageNav = {
-  OVERVIEW: `Overview`,
-  DETAILS: `Details`,
-  REVIEWS: `Reviews`,
-};
+import {FilmPageNav} from "../../mocks/const.js";
 
 const withActiveTab = (Component) => {
   class WithActiveTab extends PureComponent {
