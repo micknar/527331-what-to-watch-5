@@ -8,6 +8,9 @@ import ShowMoreBtn from "../show-more-btn/show-more-btn";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
+import withActiveCard from "../../hocs/with-active-card/with-active-card";
+
+const FilmsListWrapped = withActiveCard(FilmsList);
 
 const Main = (props) => {
   const {promoFilm, filteredFilms, renderedFilmsCount, onFilmCardClick} = props;
@@ -65,7 +68,7 @@ const Main = (props) => {
 
           <Genres />
 
-          <FilmsList
+          <FilmsListWrapped
             films={filteredFilms.slice(0, renderedFilmsCount)}
             onFilmCardClick={onFilmCardClick}
           />
@@ -82,10 +85,10 @@ const Main = (props) => {
 const mapStateToProps = (state) => ({
   filteredFilms: state.filteredFilms,
   renderedFilmsCount: state.renderedFilmsCount,
+  promoFilm: state.promoFilm,
 });
 
 Main.propTypes = {
-  onFilmCardClick: PropTypes.func.isRequired,
   promoFilm: PropTypes.shape({
     id: PropTypes.number.isRequired,
     posterImage: PropTypes.string.isRequired,
@@ -94,8 +97,17 @@ Main.propTypes = {
     backgroundImage: PropTypes.string.isRequired,
     released: PropTypes.number.isRequired,
   }).isRequired,
-  filteredFilms: PropTypes.array.isRequired,
+
+  filteredFilms: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+  })).isRequired,
+
   renderedFilmsCount: PropTypes.number.isRequired,
+  onFilmCardClick: PropTypes.func.isRequired,
 };
 
 export {Main};

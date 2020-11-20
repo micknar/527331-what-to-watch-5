@@ -5,6 +5,9 @@ import UserBlock from "../user-block/user-block";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 import AddReviewForm from "../add-review-form/add-review-form";
+import withUserReview from "../../hocs/with-user-review/with-user-review";
+
+const AddReviewFormWrapped = withUserReview(AddReviewForm);
 
 const AddReview = (props) => {
   const {films, currentFilmId} = props;
@@ -32,7 +35,7 @@ const AddReview = (props) => {
       </div>
 
       <div className="add-review">
-        <AddReviewForm />
+        <AddReviewFormWrapped />
       </div>
     </section>
   );

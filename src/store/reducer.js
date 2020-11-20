@@ -1,10 +1,11 @@
 import {ActionType} from "./action";
-import {films} from "../mocks/films";
+import {films, promoFilm} from "../mocks/films";
 import {extend} from "../utils/utils.js";
 import {FILMS_COUNT_PER_STEP} from "../mocks/const.js";
 
 const initialState = {
   films,
+  promoFilm,
   activeGenre: `All genres`,
   filteredFilms: films,
   renderedFilmsCount: FILMS_COUNT_PER_STEP,

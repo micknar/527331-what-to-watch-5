@@ -93,3 +93,5 @@ export const generateDate = () => {
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
+
+export const isDouble = (n) => n > 10 ? n : `0${n}`;
