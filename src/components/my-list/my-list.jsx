@@ -5,6 +5,9 @@ import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import FilmsList from "../films-list/films-list";
 import PageFooter from "../page-footer/page-footer";
+import withActiveCard from "../../hocs/with-active-card/with-active-card";
+
+const FilmsListWrapped = withActiveCard(FilmsList);
 
 const MyList = (props) => {
   const {films, onFilmCardClick} = props;
@@ -19,7 +22,7 @@ const MyList = (props) => {
       </header>
 
       <section className="catalog">
-        <FilmsList
+        <FilmsListWrapped
           films={films}
           onFilmCardClick={onFilmCardClick}
         />

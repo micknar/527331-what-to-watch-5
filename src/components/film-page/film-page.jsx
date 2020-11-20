@@ -7,6 +7,11 @@ import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import FilmPageTabs from '../film-page-tabs/film-page-tabs';
+import withActiveCard from "../../hocs/with-active-card/with-active-card";
+import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
+
+const FilmsListWrapped = withActiveCard(FilmsList);
+const FilmPageTabsWrapped = withActiveTab(FilmPageTabs);
 
 const FilmPage = (props) => {
   const {films, onFilmCardClick, currentFilmId} = props;
@@ -64,7 +69,7 @@ const FilmPage = (props) => {
               <img src={posterImage} alt={name} width="218" height="327" />
             </div>
 
-            <FilmPageTabs film={currentFilm}/>
+            <FilmPageTabsWrapped film={currentFilm}/>
           </div>
         </div>
       </section>
@@ -73,7 +78,7 @@ const FilmPage = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmsList
+          <FilmsListWrapped
             films={similarFilms}
             onFilmCardClick={onFilmCardClick}
           />

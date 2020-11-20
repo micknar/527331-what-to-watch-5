@@ -8,6 +8,9 @@ import ShowMoreBtn from "../show-more-btn/show-more-btn";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
+import withActiveCard from "../../hocs/with-active-card/with-active-card";
+
+const FilmsListWrapped = withActiveCard(FilmsList);
 
 const Main = (props) => {
   const {promoFilm, filteredFilms, renderedFilmsCount, onFilmCardClick} = props;
@@ -65,7 +68,7 @@ const Main = (props) => {
 
           <Genres />
 
-          <FilmsList
+          <FilmsListWrapped
             films={filteredFilms.slice(0, renderedFilmsCount)}
             onFilmCardClick={onFilmCardClick}
           />

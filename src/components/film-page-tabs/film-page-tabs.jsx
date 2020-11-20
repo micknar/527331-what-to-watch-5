@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {Redirect} from 'react-router-dom';
 import FilmPageOverview from '../film-page-overview/film-page-overview';
@@ -11,81 +11,69 @@ const FilmPageNav = {
   REVIEWS: `Reviews`,
 };
 
-class FilmPageTabs extends PureComponent {
-  constructor(props) {
-    super(props);
+const FilmPageTabs = (props) => {
+  const {film, activeTab, handleActiveTab} = props;
+  const {description, rating, runTime, director, starring, genre, released, reviews} = film;
 
-    this.state = {
-      filmTab: FilmPageNav.OVERVIEW,
-    };
-  }
+  const getFilmInfo = () => {
+    switch (activeTab) {
+      case FilmPageNav.OVERVIEW:
+        return (
+          <FilmPageOverview
+            description={description}
+            rating={rating}
+            director={director}
+            starring={starring}
+          />
+        );
+      case FilmPageNav.DETAILS:
+        return (
+          <FilmPageDetails
+            runTime={runTime}
+            genre={genre}
+            director={director}
+            starring={starring}
+            released={released}
+          />
+        );
+      case FilmPageNav.REVIEWS:
+        return (
+          <FilmPageReviews
+            reviews={reviews}
+          />
+        );
+    }
 
-  render() {
-    const {film} = this.props;
-    const {description, rating, runTime, director, starring, genre, released, reviews} = film;
+    return <Redirect to="/" />;
+  };
 
-    const getFilmInfo = () => {
-      switch (this.state.filmTab) {
-        case FilmPageNav.OVERVIEW:
-          return (
-            <FilmPageOverview
-              description={description}
-              rating={rating}
-              director={director}
-              starring={starring}
-            />
-          );
-        case FilmPageNav.DETAILS:
-          return (
-            <FilmPageDetails
-              runTime={runTime}
-              genre={genre}
-              director={director}
-              starring={starring}
-              released={released}
-            />
-          );
-        case FilmPageNav.REVIEWS:
-          return (
-            <FilmPageReviews
-              reviews={reviews}
-            />
-          );
-      }
+  return (
+    <div className="movie-card__desc">
+      <nav className="movie-nav movie-card__nav">
+        <ul className="movie-nav__list">
+          {Object.values(FilmPageNav).map((value, i) => {
+            return (
+              <li
+                key={i}
+                className={value === activeTab ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}
+              >
+                <a
+                  href="#"
+                  className="movie-nav__link"
+                  onClick={(evt) => {
+                    evt.preventDefault();
+                    handleActiveTab(value);
+                  }}>{value}</a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
-      return <Redirect to="/" />;
-    };
-
-    return (
-      <div className="movie-card__desc">
-        <nav className="movie-nav movie-card__nav">
-          <ul className="movie-nav__list">
-            {Object.values(FilmPageNav).map((value, i) => {
-              return (
-                <li
-                  key={i}
-                  className={value === this.state.filmTab ? `movie-nav__item movie-nav__item--active` : `movie-nav__item`}
-                >
-                  <a
-                    href="#"
-                    className="movie-nav__link"
-                    onClick={(evt) => {
-                      evt.preventDefault();
-                      this.setState({
-                        filmTab: value,
-                      });
-                    }}>{value}</a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
-        {getFilmInfo()}
-      </div>
-    );
-  }
-}
+      {getFilmInfo()}
+    </div>
+  );
+};
 
 FilmPageTabs.propTypes = {
   film: PropTypes.shape({
@@ -118,6 +106,8 @@ FilmPageTabs.propTypes = {
       }),
     })).isRequired,
   }).isRequired,
+  activeTab: PropTypes.string.isRequired,
+  handleActiveTab: PropTypes.func.isRequired,
 };
 
 export default FilmPageTabs;
