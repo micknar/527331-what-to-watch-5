@@ -90,8 +90,8 @@ const FilmPage = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  films: state.films,
+const mapStateToProps = ({APP_STATE}) => ({
+  films: APP_STATE.films,
 });
 
 FilmPage.propTypes = {

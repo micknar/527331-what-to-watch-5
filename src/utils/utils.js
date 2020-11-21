@@ -1,3 +1,5 @@
+import {FILMS_COUNT_PER_STEP} from "../mocks/const";
+
 const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
 
 const ratingMarkMap = {
@@ -95,3 +97,13 @@ export const extend = (a, b) => {
 };
 
 export const isDouble = (n) => n > 10 ? n : `0${n}`;
+
+export const getRenderedFilmsCount = (state) => {
+  const count = state.renderedFilmsCount + FILMS_COUNT_PER_STEP;
+
+  if (count > state.filteredFilms.length) {
+    return state.renderedFilmsCount + (state.filteredFilms.length % FILMS_COUNT_PER_STEP);
+  }
+
+  return count;
+};

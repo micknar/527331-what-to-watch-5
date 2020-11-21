@@ -1,7 +1,7 @@
-import {ActionType} from "./action";
-import {films, promoFilm} from "../mocks/films";
-import {extend} from "../utils/utils.js";
-import {FILMS_COUNT_PER_STEP} from "../mocks/const.js";
+import {ActionType} from "../../action";
+import {films, promoFilm} from "../../../mocks/films";
+import {extend, getRenderedFilmsCount} from "../../../utils/utils";
+import {FILMS_COUNT_PER_STEP} from "../../../mocks/const";
 
 const initialState = {
   films,
@@ -19,17 +19,7 @@ const getFilteredFilms = (activeGenre) => {
   return films.filter((film) => film.genre === activeGenre);
 };
 
-const getRenderedFilmsCount = (state) => {
-  const count = state.renderedFilmsCount + FILMS_COUNT_PER_STEP;
-
-  if (count > state.filteredFilms.length) {
-    return state.renderedFilmsCount + (state.filteredFilms.length % FILMS_COUNT_PER_STEP);
-  }
-
-  return count;
-};
-
-const reducer = (state = initialState, action) => {
+const appState = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_GENRE:
       return extend(state, {
@@ -47,7 +37,7 @@ const reducer = (state = initialState, action) => {
       });
 
     case ActionType.CLEAR_RENDERED_FILMS:
-      return Object.assign({}, state, {
+      return extend(state, {
         renderedFilmsCount: FILMS_COUNT_PER_STEP,
       });
   }
@@ -55,4 +45,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer};
+export {appState};

@@ -76,9 +76,9 @@ const FullscreenPlayer = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  films: state.films,
-  promoFilm: state.promoFilm,
+const mapStateToProps = ({APP_STATE}) => ({
+  films: APP_STATE.films,
+  promoFilm: APP_STATE.promoFilm,
 });
 
 FullscreenPlayer.propTypes = {

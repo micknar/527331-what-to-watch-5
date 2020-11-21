@@ -82,10 +82,10 @@ const Main = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  filteredFilms: state.filteredFilms,
-  renderedFilmsCount: state.renderedFilmsCount,
-  promoFilm: state.promoFilm,
+const mapStateToProps = ({APP_STATE}) => ({
+  filteredFilms: APP_STATE.filteredFilms,
+  renderedFilmsCount: APP_STATE.renderedFilmsCount,
+  promoFilm: APP_STATE.promoFilm,
 });
 
 Main.propTypes = {

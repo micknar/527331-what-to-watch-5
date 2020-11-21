@@ -41,8 +41,8 @@ const AddReview = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  films: state.films,
+const mapStateToProps = ({APP_STATE}) => ({
+  films: APP_STATE.films,
 });
 
 AddReview.propTypes = {
