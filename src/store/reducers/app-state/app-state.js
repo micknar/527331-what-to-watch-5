@@ -11,24 +11,11 @@ const initialState = {
   renderedFilmsCount: FILMS_COUNT_PER_STEP,
 };
 
-const getFilteredFilms = (activeGenre) => {
-  if (activeGenre === `All genres`) {
-    return films;
-  }
-
-  return films.filter((film) => film.genre === activeGenre);
-};
-
 const appState = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_GENRE:
       return extend(state, {
         activeGenre: action.payload,
-      });
-
-    case ActionType.GET_FILMS_BY_GENRE:
-      return extend(state, {
-        filteredFilms: getFilteredFilms(action.payload),
       });
 
     case ActionType.SHOW_MORE_FILMS:
