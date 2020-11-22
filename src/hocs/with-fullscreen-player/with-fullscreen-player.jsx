@@ -79,6 +79,7 @@ const withFullscreenPlayer = (Component) => {
       );
     }
   }
+
   return WithFullscreenPlayer;
 };
 
