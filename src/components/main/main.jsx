@@ -10,6 +10,7 @@ import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import {getFilteredFilms} from "../../store/reducers/app-state/selectors";
+import {AppRoute} from "../../const";
 
 const FilmsListWrapped = withActiveCard(FilmsList);
 
@@ -45,13 +46,14 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <Link to={`/player/${id}/`} className="btn btn--play movie-card__button">
+                <Link to={AppRoute.PLAYER + id} className="btn btn--play movie-card__button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
                 </Link>
-                <Link to="/mylist" className="btn btn--list movie-card__button">
+
+                <Link to={AppRoute.MY_LIST} className="btn btn--list movie-card__button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
                   </svg>

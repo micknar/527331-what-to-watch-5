@@ -9,13 +9,13 @@ import PageFooter from "../page-footer/page-footer";
 import FilmPageTabs from '../film-page-tabs/film-page-tabs';
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
-import {filmsCount} from "../../const";
+import {filmsCount, AppRoute, AuthorizationStatus} from "../../const";
 
 const FilmsListWrapped = withActiveCard(FilmsList);
 const FilmPageTabsWrapped = withActiveTab(FilmPageTabs);
 
 const FilmPage = (props) => {
-  const {films, onFilmCardClick, currentFilmId} = props;
+  const {films, onFilmCardClick, currentFilmId, authorizationStatus} = props;
   const currentFilm = films.find((film) => film.id === currentFilmId);
   const {id, name, posterImage, backgroundImage, genre, released} = currentFilm;
   const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, filmsCount.SIMILAR);
@@ -44,21 +44,28 @@ const FilmPage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <Link to={`/player/${id}/`} className="btn btn--play movie-card__button">
+                <Link to={AppRoute.PLAYER + id} className="btn btn--play movie-card__button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
                 </Link>
 
-                <Link to="/mylist" className="btn btn--list movie-card__button">
+                <Link to={AppRoute.MY_LIST} className="btn btn--list movie-card__button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
                   </svg>
                   <span>My list</span>
                 </Link>
 
-                <Link to={`/films/${id}/review`} href="add-review.html" className="btn movie-card__button">Add review</Link>
+                {
+                  authorizationStatus === AuthorizationStatus.AUTH
+                    ?
+                    <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
+                    :
+                    ``
+                }
+
               </div>
             </div>
           </div>
@@ -70,7 +77,7 @@ const FilmPage = (props) => {
               <img src={posterImage} alt={name} width="218" height="327" />
             </div>
 
-            <FilmPageTabsWrapped film={currentFilm}/>
+            <FilmPageTabsWrapped film={currentFilm} />
           </div>
         </div>
       </section>
@@ -91,8 +98,9 @@ const FilmPage = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE}) => ({
+const mapStateToProps = ({APP_STATE, USER}) => ({
   films: APP_STATE.films,
+  authorizationStatus: USER.authorizationStatus
 });
 
 FilmPage.propTypes = {
@@ -106,6 +114,7 @@ FilmPage.propTypes = {
     released: PropTypes.number.isRequired,
   })).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
 export {FilmPage};

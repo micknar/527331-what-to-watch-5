@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom';
 import FilmPageOverview from '../film-page-overview/film-page-overview';
 import FilmPageDetails from '../film-page-details/film-page-details';
 import FilmPageReviews from '../film-page-reviews/film-page-reviews';
-import {FilmPageNav} from "../../const";
+import {FilmPageNav, AppRoute} from "../../const";
 
 const FilmPageTabs = (props) => {
   const {film, activeTab, handleActiveTab} = props;
@@ -40,7 +40,7 @@ const FilmPageTabs = (props) => {
         );
     }
 
-    return <Redirect to="/" />;
+    return <Redirect to={AppRoute.ROOT} />;
   };
 
   return (

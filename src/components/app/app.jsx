@@ -1,5 +1,6 @@
 import React from "react";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
+import browserHistory from "../../browser-history";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
@@ -9,41 +10,42 @@ import FullscreenPlayer from "../fullscreen-player/fullscreen-player";
 import PrivateRoute from "../private-route/private-route";
 import withFullscreenPlayer from "../../hocs/with-fullscreen-player/with-fullscreen-player";
 import withAuthData from "../../hocs/with-auth-data/with-auth-data";
+import {AppRoute} from "../../const";
 
 const FullscreenPlayerWrapped = withFullscreenPlayer(FullscreenPlayer);
 const SignInWrapped = withAuthData(SignIn);
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route
           exact
-          path="/"
+          path={AppRoute.ROOT}
           render={({history}) => (
             <Main
-              onFilmCardClick={(id) => history.push(`/films/${id}`)}
+              onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
             />
           )}
         />
 
         <Route
           exact
-          path="/login"
+          path={AppRoute.LOGIN}
           render={({history}) => (
             <SignInWrapped
-              onFilmCardClick={(id) => history.push(`/films/${id}`)}
+              onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
             />
           )}
         />
 
         <PrivateRoute
           exact
-          path={`/mylist`}
+          path={AppRoute.MY_LIST}
           render={({history}) => {
             return (
               <MyList
-                onFilmCardClick={(id) => history.push(`/films/${id}`)}
+                onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
               />
             );
           }}
@@ -51,16 +53,18 @@ const App = () => {
 
         <Route
           exact
-          path="/films/:id"
+          path={AppRoute.FILMS_ID}
           render={({history, match}) => (
             <FilmPage
               currentFilmId={+match.params.id}
-              onFilmCardClick={(id) => history.push(`/films/${id}`)}
+              onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
             />
           )}
         />
 
-        <Route exact path="/films/:id/review"
+        <Route
+          exact
+          path={AppRoute.REVIEW}
           render={({match}) => (
             <AddReview
               currentFilmId={+match.params.id}
@@ -70,7 +74,7 @@ const App = () => {
 
         <Route
           exact
-          path="/player/:id"
+          path={AppRoute.PLAYER_ID}
           render={({match}) => (
             <FullscreenPlayerWrapped
               currentFilmId={+match.params.id}

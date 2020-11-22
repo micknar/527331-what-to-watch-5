@@ -6,6 +6,7 @@ export const ActionType = {
   LOAD_PROMO: `LOAD_PROMO`,
   LOAD_COMMENTS: `LOAD_COMMENTS`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
 export const changeGenre = (genre) => ({
@@ -39,4 +40,9 @@ export const loadComments = (comments) => ({
 export const requireAuthorization = (status) => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
   payload: status,
+});
+
+export const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url,
 });
