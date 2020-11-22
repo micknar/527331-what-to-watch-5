@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {isDouble} from "../../utils/utils.js";
+import {isDouble} from "../../utils";
 
 const getElapsedTime = (duration, progress) => {
   const minutesElapsed = Math.floor((duration - progress) / 60);
@@ -76,9 +76,9 @@ const FullscreenPlayer = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  films: state.films,
-  promoFilm: state.promoFilm,
+const mapStateToProps = ({APP_STATE}) => ({
+  films: APP_STATE.films,
+  promoFilm: APP_STATE.promoFilm,
 });
 
 FullscreenPlayer.propTypes = {

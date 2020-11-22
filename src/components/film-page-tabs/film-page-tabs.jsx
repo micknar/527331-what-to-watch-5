@@ -4,11 +4,11 @@ import {Redirect} from 'react-router-dom';
 import FilmPageOverview from '../film-page-overview/film-page-overview';
 import FilmPageDetails from '../film-page-details/film-page-details';
 import FilmPageReviews from '../film-page-reviews/film-page-reviews';
-import {FilmPageNav} from "../../mocks/const.js";
+import {FilmPageNav} from "../../const";
 
 const FilmPageTabs = (props) => {
   const {film, activeTab, handleActiveTab} = props;
-  const {description, rating, runTime, director, starring, genre, released, reviews} = film;
+  const {id, description, rating, runTime, director, starring, genre, released, ratingMark} = film;
 
   const getFilmInfo = () => {
     switch (activeTab) {
@@ -19,6 +19,7 @@ const FilmPageTabs = (props) => {
             rating={rating}
             director={director}
             starring={starring}
+            ratingMark={ratingMark}
           />
         );
       case FilmPageNav.DETAILS:
@@ -34,7 +35,7 @@ const FilmPageTabs = (props) => {
       case FilmPageNav.REVIEWS:
         return (
           <FilmPageReviews
-            reviews={reviews}
+            filmId={id}
           />
         );
     }
@@ -72,10 +73,12 @@ const FilmPageTabs = (props) => {
 
 FilmPageTabs.propTypes = {
   film: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    ratingMark: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    starring: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     genre: PropTypes.string.isRequired,
     released: PropTypes.number.isRequired,
 
@@ -83,23 +86,6 @@ FilmPageTabs.propTypes = {
       hours: PropTypes.number.isRequired,
       minutes: PropTypes.number.isRequired,
     }).isRequired,
-
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      user: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-      }).isRequired,
-
-      rating: PropTypes.string.isRequired,
-      comment: PropTypes.string.isRequired,
-
-      date: PropTypes.shape({
-        day: PropTypes.number.isRequired,
-        month: PropTypes.string.isRequired,
-        monthNumber: PropTypes.number.isRequired,
-        year: PropTypes.number.isRequired,
-      }),
-    })).isRequired,
   }).isRequired,
   activeTab: PropTypes.string.isRequired,
   handleActiveTab: PropTypes.func.isRequired,

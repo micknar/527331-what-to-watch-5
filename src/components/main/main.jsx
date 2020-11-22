@@ -9,6 +9,7 @@ import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
+import {getFilteredFilms} from "../../store/reducers/app-state/selectors";
 
 const FilmsListWrapped = withActiveCard(FilmsList);
 
@@ -82,10 +83,10 @@ const Main = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  filteredFilms: state.filteredFilms,
-  renderedFilmsCount: state.renderedFilmsCount,
-  promoFilm: state.promoFilm,
+const mapStateToProps = ({APP_STATE}) => ({
+  filteredFilms: getFilteredFilms({APP_STATE}),
+  renderedFilmsCount: APP_STATE.renderedFilmsCount,
+  promoFilm: APP_STATE.promoFilm,
 });
 
 Main.propTypes = {
