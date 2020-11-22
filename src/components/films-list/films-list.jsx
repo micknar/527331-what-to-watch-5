@@ -11,25 +11,28 @@ const FilmsList = (props) => {
 
   return (
     <div className="catalog__movies-list">
+
       {films.map((film) => {
         return (
           <FilmCard
             key={film.id}
             id={film.id}
             name={film.name}
-            posterImage={film.posterImage}
+            posterImage={film.previewImage}
             onFilmCardHover={handleActiveCard}
             onFilmCardLeave={handleMouseLeave}
             onFilmCardClick={onFilmCardClick}
           >
-            <VideoPlayerWrapped
-              muted={true}
-              videoLink={film.videoLink}
-              posterImage={film.posterImage}
-              width="280"
-              heigth="175"
-              isPlaying={activeCard === film.id}
-            />
+            <div className="small-movie-card__image">
+              <VideoPlayerWrapped
+                muted={true}
+                videoLink={film.videoLink}
+                previewImage={film.previewImage}
+                width="280"
+                height="175"
+                isPlaying={activeCard === film.id}
+              />
+            </div>
           </FilmCard>
         );
       })}

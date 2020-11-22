@@ -3,6 +3,8 @@ export const ActionType = {
   SHOW_MORE_FILMS: `SHOW_MORE_FILMS`,
   CLEAR_RENDERED_FILMS: `CLEAR_RENDERED_FILMS`,
   LOAD_FILMS: `LOAD_FILMS`,
+  LOAD_PROMO: `LOAD_PROMO`,
+  LOAD_COMMENTS: `LOAD_COMMENTS`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
 };
 
@@ -22,6 +24,16 @@ export const clearRenderedFilms = () => ({
 export const loadFilms = (films) => ({
   type: ActionType.LOAD_FILMS,
   payload: films,
+});
+
+export const loadPromo = (promoFilm) => ({
+  type: ActionType.LOAD_PROMO,
+  payload: promoFilm,
+});
+
+export const loadComments = (comments) => ({
+  type: ActionType.LOAD_COMMENTS,
+  payload: comments,
 });
 
 export const requireAuthorization = (status) => ({

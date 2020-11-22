@@ -9,6 +9,7 @@ import PageFooter from "../page-footer/page-footer";
 import FilmPageTabs from '../film-page-tabs/film-page-tabs';
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
+import {filmsCount} from "../../const";
 
 const FilmsListWrapped = withActiveCard(FilmsList);
 const FilmPageTabsWrapped = withActiveTab(FilmPageTabs);
@@ -17,7 +18,7 @@ const FilmPage = (props) => {
   const {films, onFilmCardClick, currentFilmId} = props;
   const currentFilm = films.find((film) => film.id === currentFilmId);
   const {id, name, posterImage, backgroundImage, genre, released} = currentFilm;
-  const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, 4);
+  const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, filmsCount.SIMILAR);
 
   return (
     <>

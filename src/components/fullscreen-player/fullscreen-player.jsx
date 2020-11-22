@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {isDouble} from "../../utils/utils.js";
+import {isDouble} from "../../utils";
 
 const getElapsedTime = (duration, progress) => {
   const minutesElapsed = Math.floor((duration - progress) / 60);

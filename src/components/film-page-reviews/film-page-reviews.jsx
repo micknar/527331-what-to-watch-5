@@ -1,15 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
-
-const date = (review) => `${review.date.year}-${review.date.monthNumber}-${review.date.day}`;
+import {connect} from "react-redux";
+import {fetchComments} from "../../store/api-actions";
 
 const FilmPageReviews = (props) => {
-  const {reviews} = props;
+  const {comments, filmId, loadComments} = props;
+
+  useEffect(() => {
+    loadComments(filmId);
+  }, [filmId]);
 
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
-        {reviews.map((review, i) => {
+        {comments.map((review, i) => {
           return (
             <div className="review" key={`${i}-${review.user.id}`}>
               <blockquote className="review__quote">
@@ -17,8 +21,8 @@ const FilmPageReviews = (props) => {
 
                 <footer className="review__details">
                   <cite className="review__author">{review.user.name}</cite>
-                  <time className="review__date" dateTime={date(review)}>
-                    {review.date.month} {review.date.day}, {review.date.year}
+                  <time className="review__date" dateTime={review.date.dateTime}>
+                    {review.date.humanizeDate}
                   </time>
                 </footer>
               </blockquote>
@@ -32,21 +36,32 @@ const FilmPageReviews = (props) => {
   );
 };
 
+const mapStateToProps = ({APP_STATE}) => ({
+  comments: APP_STATE.comments,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadComments(id) {
+    dispatch(fetchComments(id));
+  }
+});
+
 FilmPageReviews.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape({
+  comments: PropTypes.arrayOf(PropTypes.shape({
     user: PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
     }).isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
     comment: PropTypes.string.isRequired,
     date: PropTypes.shape({
-      day: PropTypes.number.isRequired,
-      month: PropTypes.string.isRequired,
-      monthNumber: PropTypes.number.isRequired,
-      year: PropTypes.number.isRequired,
+      humanizeDate: PropTypes.string.isRequired,
+      dateTime: PropTypes.string.isRequired,
     }).isRequired,
   })).isRequired,
+  filmId: PropTypes.number.isRequired,
+  loadComments: PropTypes.func.isRequired,
 };
 
-export default FilmPageReviews;
+export {FilmPageReviews};
+export default connect(mapStateToProps, mapDispatchToProps)(FilmPageReviews);

@@ -1,6 +1,6 @@
 import {ActionType} from "../../action";
-import {extend} from "../../../utils/utils";
-import {AuthorizationStatus} from "../../../mocks/const";
+import {extend} from "../../../utils";
+import {AuthorizationStatus} from "../../../const";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,

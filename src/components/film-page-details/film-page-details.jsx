@@ -46,7 +46,7 @@ FilmPageDetails.propTypes = {
   genre: PropTypes.string.isRequired,
   released: PropTypes.number.isRequired,
   director: PropTypes.string.isRequired,
-  starring: PropTypes.string.isRequired,
+  starring: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default FilmPageDetails;
