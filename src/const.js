@@ -3,7 +3,7 @@ export const filmsCount = {
   PER_STEP: 8,
 };
 
-export const ratingMarksType = {
+export const RatingMarkType = {
   BAD: `Bad`,
   NORMAL: `Normal`,
   GOOD: `Good`,

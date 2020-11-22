@@ -1,18 +1,18 @@
-import {filmsCount, ratingMarksType} from "./const";
+import {filmsCount, RatingMarkType} from "./const";
 
 export const getRatingMark = (rating) => {
   let mark = ``;
 
   if (rating < 3) {
-    mark = ratingMarksType.BAD;
+    mark = RatingMarkType.BAD;
   } else if (rating < 5) {
-    mark = ratingMarksType.NORMAL;
+    mark = RatingMarkType.NORMAL;
   } else if (rating < 8) {
-    mark = ratingMarksType.GOOD;
+    mark = RatingMarkType.GOOD;
   } else if (rating < 10) {
-    mark = ratingMarksType.VERY_GOOD;
+    mark = RatingMarkType.VERY_GOOD;
   } else if (rating === 10) {
-    mark = ratingMarksType.AWESOME;
+    mark = RatingMarkType.AWESOME;
   }
 
   return mark;
