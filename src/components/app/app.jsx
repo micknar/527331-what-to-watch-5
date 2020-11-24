@@ -1,6 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 import browserHistory from "../../browser-history";
+import {connect} from "react-redux";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import MyList from "../my-list/my-list";
@@ -8,6 +10,8 @@ import FilmPage from "../film-page/film-page";
 import AddReview from "../add-review/add-review";
 import FullscreenPlayer from "../fullscreen-player/fullscreen-player";
 import PrivateRoute from "../private-route/private-route";
+import LoadingPage from "../loading-page/loading-page";
+import ErrorPage from "../error-page/error-page";
 import withFullscreenPlayer from "../../hocs/with-fullscreen-player/with-fullscreen-player";
 import withAuthData from "../../hocs/with-auth-data/with-auth-data";
 import {AppRoute} from "../../const";
@@ -15,7 +19,19 @@ import {AppRoute} from "../../const";
 const FullscreenPlayerWrapped = withFullscreenPlayer(FullscreenPlayer);
 const SignInWrapped = withAuthData(SignIn);
 
-const App = () => {
+const App = (props) => {
+  const {isFilmsLoading, isPromoLoading, isLoadingError} = props;
+
+  if (isFilmsLoading && isPromoLoading) {
+    return (
+      <LoadingPage />
+    );
+  } else if (isLoadingError) {
+    return (
+      <ErrorPage />
+    );
+  }
+
   return (
     <BrowserRouter history={browserHistory}>
       <Switch>
@@ -86,4 +102,17 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = ({APP_STATE}) => ({
+  isFilmsLoading: APP_STATE.isFilmsLoading,
+  isPromoLoading: APP_STATE.isPromoLoading,
+  isLoadingError: APP_STATE.isLoadingError,
+});
+
+App.propTypes = {
+  isFilmsLoading: PropTypes.bool.isRequired,
+  isPromoLoading: PropTypes.bool.isRequired,
+  isLoadingError: PropTypes.bool.isRequired,
+};
+
+export {App};
+export default connect(mapStateToProps)(App);

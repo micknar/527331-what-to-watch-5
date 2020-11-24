@@ -9,6 +9,9 @@ const initialState = {
   filteredFilms: [],
   comments: [],
   renderedFilmsCount: filmsCount.PER_STEP,
+  isFilmsLoading: true,
+  isPromoLoading: true,
+  isLoadingError: false,
 };
 
 const appState = (state = initialState, action) => {
@@ -42,6 +45,21 @@ const appState = (state = initialState, action) => {
     case ActionType.CLEAR_RENDERED_FILMS:
       return extend(state, {
         renderedFilmsCount: filmsCount.PER_STEP,
+      });
+
+    case ActionType.SET_IS_FILMS_LOADING:
+      return extend(state, {
+        isFilmsLoading: action.payload,
+      });
+
+    case ActionType.SET_IS_PROMO_LOADING:
+      return extend(state, {
+        isPromoLoading: action.payload,
+      });
+
+    case ActionType.SET_IS_LOADING_ERROR:
+      return extend(state, {
+        isLoadingError: action.payload,
       });
   }
 

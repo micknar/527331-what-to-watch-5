@@ -3,19 +3,36 @@ import {
   loadPromo,
   loadComments,
   requireAuthorization,
-  redirectToRoute
+  redirectToRoute,
+  setIsFilmsLoading,
+  setIsPromoLoading,
+  setIsLoadingError,
 } from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../const";
 import {adaptFilmToClient, adaptCommentToClient} from "../services/adapter";
 
 export const fetchFilmsList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
-    .then(({data}) => dispatch(loadFilms(data.map(adaptFilmToClient))))
+    .then(({data}) => {
+      dispatch(setIsFilmsLoading(false));
+      dispatch(loadFilms(data.map(adaptFilmToClient)));
+    })
+    .catch(() => {
+      dispatch(setIsFilmsLoading(false));
+      dispatch(setIsLoadingError(true));
+    })
 );
 
 export const fetchPromoFilm = () => (dispatch, _getState, api) => (
   api.get(APIRoute.PROMO_FILM)
-    .then(({data}) => dispatch(loadPromo(adaptFilmToClient(data))))
+    .then(({data}) => {
+      dispatch(setIsPromoLoading(false));
+      dispatch(loadPromo(adaptFilmToClient(data)));
+    })
+    .catch(() => {
+      dispatch(setIsPromoLoading(false));
+      dispatch(setIsLoadingError(true));
+    })
 );
 
 export const fetchComments = (id) => (dispatch, _getState, api) => (

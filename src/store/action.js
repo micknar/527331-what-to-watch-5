@@ -7,6 +7,9 @@ export const ActionType = {
   LOAD_COMMENTS: `LOAD_COMMENTS`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+  SET_IS_FILMS_LOADING: `SET_IS_FILMS_LOADING`,
+  SET_IS_PROMO_LOADING: `SET_IS_PROMO_LOADING`,
+  SET_IS_LOADING_ERROR: `SET_IS_LOADING_ERROR`,
 };
 
 export const changeGenre = (genre) => ({
@@ -45,4 +48,19 @@ export const requireAuthorization = (status) => ({
 export const redirectToRoute = (url) => ({
   type: ActionType.REDIRECT_TO_ROUTE,
   payload: url,
+});
+
+export const setIsFilmsLoading = (bool) => ({
+  type: ActionType.SET_IS_FILMS_LOADING,
+  payload: bool,
+});
+
+export const setIsPromoLoading = (bool) => ({
+  type: ActionType.SET_IS_PROMO_LOADING,
+  payload: bool,
+});
+
+export const setIsLoadingError = (bool) => ({
+  type: ActionType.SET_IS_LOADING_ERROR,
+  payload: bool,
 });
