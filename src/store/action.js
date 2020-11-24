@@ -4,8 +4,10 @@ export const ActionType = {
   CLEAR_RENDERED_FILMS: `CLEAR_RENDERED_FILMS`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO: `LOAD_PROMO`,
+  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
   LOAD_COMMENTS: `LOAD_COMMENTS`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  SET_USER_AVATAR: `SET_USER_AVATAR`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   SET_IS_FILMS_LOADING: `SET_IS_FILMS_LOADING`,
   SET_IS_PROMO_LOADING: `SET_IS_PROMO_LOADING`,
@@ -35,6 +37,11 @@ export const loadPromo = (promoFilm) => ({
   payload: promoFilm,
 });
 
+export const loadFavoriteFilms = (films) => ({
+  type: ActionType.LOAD_FAVORITE_FILMS,
+  payload: films,
+});
+
 export const loadComments = (comments) => ({
   type: ActionType.LOAD_COMMENTS,
   payload: comments,
@@ -43,6 +50,11 @@ export const loadComments = (comments) => ({
 export const requireAuthorization = (status) => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
   payload: status,
+});
+
+export const setUserAvatar = (src) => ({
+  type: ActionType.SET_USER_AVATAR,
+  payload: src,
 });
 
 export const redirectToRoute = (url) => ({

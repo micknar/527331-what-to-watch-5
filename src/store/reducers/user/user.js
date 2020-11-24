@@ -4,6 +4,8 @@ import {AuthorizationStatus} from "../../../const";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
+  userAvatar: ``,
+  favoriteFilms: [],
 };
 
 const user = (state = initialState, action) => {
@@ -11,6 +13,16 @@ const user = (state = initialState, action) => {
     case ActionType.REQUIRED_AUTHORIZATION:
       return extend(state, {
         authorizationStatus: action.payload,
+      });
+
+    case ActionType.SET_USER_AVATAR:
+      return extend(state, {
+        userAvatar: action.payload,
+      });
+
+    case ActionType.LOAD_FAVORITE_FILMS:
+      return extend(state, {
+        favoriteFilms: action.payload,
       });
   }
 
