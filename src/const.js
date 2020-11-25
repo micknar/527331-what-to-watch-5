@@ -40,3 +40,13 @@ export const APIRoute = {
   LOGIN: `/login`,
   PROMO_FILM: `/films/promo`,
 };
+
+export const FavoriteStatusCode = {
+  ADD: 1,
+  REMOVE: 0,
+};
+
+export const NameSpace = {
+  APP_STATE: `APP_STATE`,
+  USER: `USER`,
+};

@@ -1,4 +1,4 @@
-import {filmsCount, RatingMarkType} from "./const";
+import {filmsCount, RatingMarkType, FavoriteStatusCode} from "./const";
 
 export const getRatingMark = (rating) => {
   let mark = ``;
@@ -56,3 +56,5 @@ export const getRenderedFilmsCount = (state) => {
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
+
+export const setFavoriteStatus = (isFavorite) => isFavorite ? FavoriteStatusCode.REMOVE : FavoriteStatusCode.ADD;
