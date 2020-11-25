@@ -4,13 +4,16 @@ export const ActionType = {
   CLEAR_RENDERED_FILMS: `CLEAR_RENDERED_FILMS`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO: `LOAD_PROMO`,
+  LOAD_FILM_BY_ID: `LOAD_FILM_BY_ID`,
   LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
   LOAD_COMMENTS: `LOAD_COMMENTS`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   SET_USER_AVATAR: `SET_USER_AVATAR`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+  SET_IS_CHECKING_AUTH: `SET_IS_CHECKING_AUTH`,
   SET_IS_FILMS_LOADING: `SET_IS_FILMS_LOADING`,
   SET_IS_PROMO_LOADING: `SET_IS_PROMO_LOADING`,
+  SET_IS_FILM_LOADING: `SET_IS_FILM_LOADING`,
   SET_IS_LOADING_ERROR: `SET_IS_LOADING_ERROR`,
 };
 
@@ -35,6 +38,11 @@ export const loadFilms = (films) => ({
 export const loadPromo = (promoFilm) => ({
   type: ActionType.LOAD_PROMO,
   payload: promoFilm,
+});
+
+export const loadFilmById = (film) => ({
+  type: ActionType.LOAD_FILM_BY_ID,
+  payload: film,
 });
 
 export const loadFavoriteFilms = (films) => ({
@@ -62,6 +70,11 @@ export const redirectToRoute = (url) => ({
   payload: url,
 });
 
+export const setIsCheckingAuth = (bool) => ({
+  type: ActionType.SET_IS_CHECKING_AUTH,
+  payload: bool,
+});
+
 export const setIsFilmsLoading = (bool) => ({
   type: ActionType.SET_IS_FILMS_LOADING,
   payload: bool,
@@ -69,6 +82,11 @@ export const setIsFilmsLoading = (bool) => ({
 
 export const setIsPromoLoading = (bool) => ({
   type: ActionType.SET_IS_PROMO_LOADING,
+  payload: bool,
+});
+
+export const setIsFilmLoading = (bool) => ({
+  type: ActionType.SET_IS_FILM_LOADING,
   payload: bool,
 });
 

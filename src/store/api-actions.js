@@ -1,23 +1,27 @@
 import {
   loadFilms,
   loadPromo,
+  loadFilmById,
   loadFavoriteFilms,
   loadComments,
   requireAuthorization,
   redirectToRoute,
+  setIsCheckingAuth,
   setIsFilmsLoading,
   setIsPromoLoading,
+  setIsFilmLoading,
   setIsLoadingError,
   setUserAvatar,
 } from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../const";
+import {setFavoriteStatus} from "../utils";
 import {adaptFilmToClient, adaptCommentToClient} from "../services/adapter";
 
 export const fetchFilmsList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
     .then(({data}) => {
-      dispatch(setIsFilmsLoading(false));
       dispatch(loadFilms(data.map(adaptFilmToClient)));
+      dispatch(setIsFilmsLoading(false));
     })
     .catch(() => {
       dispatch(setIsFilmsLoading(false));
@@ -28,13 +32,22 @@ export const fetchFilmsList = () => (dispatch, _getState, api) => (
 export const fetchPromoFilm = () => (dispatch, _getState, api) => (
   api.get(APIRoute.PROMO_FILM)
     .then(({data}) => {
-      dispatch(setIsPromoLoading(false));
       dispatch(loadPromo(adaptFilmToClient(data)));
+      dispatch(setIsPromoLoading(false));
     })
     .catch(() => {
       dispatch(setIsPromoLoading(false));
       dispatch(setIsLoadingError(true));
     })
+);
+
+export const fetchFilmById = (id) => (dispatch, _getState, api) => (
+  api.get(APIRoute.FILMS + id)
+    .then(({data}) => {
+      dispatch(loadFilmById(adaptFilmToClient(data)));
+      dispatch(setIsFilmLoading(false));
+    })
+    .catch(() => {})
 );
 
 export const fetchFavoriteFilms = () => (dispatch, _getState, api) => (
@@ -43,6 +56,14 @@ export const fetchFavoriteFilms = () => (dispatch, _getState, api) => (
       dispatch(loadFavoriteFilms(data.map(adaptFilmToClient)));
     })
     .catch(() => {})
+);
+
+export const updateFavoriteStatus = (id, isFavorite) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.FAVORITE_FILMS}/${id}/${setFavoriteStatus(isFavorite)}`)
+    .then(() => {
+      dispatch(fetchFilmById(id));
+      dispatch(fetchPromoFilm());
+    })
 );
 
 export const fetchComments = (id) => (dispatch, _getState, api) => (
@@ -58,8 +79,11 @@ export const checkAuth = () => (dispatch, _getState, api) => (
     .then(({data}) => {
       dispatch(requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(setUserAvatar(data[`avatar_url`]));
+      dispatch(setIsCheckingAuth(false));
     })
-    .catch(() => {})
+    .catch(() => {
+      dispatch(setIsCheckingAuth(false));
+    })
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (

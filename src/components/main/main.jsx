@@ -8,6 +8,7 @@ import ShowMoreBtn from "../show-more-btn/show-more-btn";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
+import AddToFavoriteBtn from '../add-to-favorite-btn/add-to-favorite-btn';
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import {getFilteredFilms} from "../../store/reducers/app-state/selectors";
 import {AppRoute} from "../../const";
@@ -16,11 +17,11 @@ const FilmsListWrapped = withActiveCard(FilmsList);
 
 const Main = (props) => {
   const {promoFilm, filteredFilms, renderedFilmsCount, onFilmCardClick} = props;
-  const {posterImage, name, genre, backgroundImage, released, id} = promoFilm;
+  const {posterImage, name, genre, backgroundImage, backgroundColor, released, id, isFavorite} = promoFilm;
 
   return (
     <>
-      <section className="movie-card">
+      <section className="movie-card" style={{backgroundColor}}>
         <div className="movie-card__bg">
           <img src={backgroundImage} alt={name} />
         </div>
@@ -53,12 +54,10 @@ const Main = (props) => {
                   <span>Play</span>
                 </Link>
 
-                <Link to={AppRoute.MY_LIST} className="btn btn--list movie-card__button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </Link>
+                <AddToFavoriteBtn
+                  id={id}
+                  isFavorite={isFavorite}
+                />
               </div>
             </div>
           </div>
@@ -98,7 +97,9 @@ Main.propTypes = {
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
     released: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
   }).isRequired,
 
   filteredFilms: PropTypes.arrayOf(PropTypes.shape({

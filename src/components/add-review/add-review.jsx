@@ -12,10 +12,10 @@ const AddReviewFormWrapped = withUserReview(AddReviewForm);
 const AddReview = (props) => {
   const {films, currentFilmId} = props;
   const currentFilm = films.find((film) => film.id === currentFilmId);
-  const {backgroundImage, name, posterImage} = currentFilm;
+  const {backgroundImage, name, posterImage, backgroundColor} = currentFilm;
 
   return (
-    <section className="movie-card movie-card--full">
+    <section className="movie-card movie-card--full" style={{backgroundColor}}>
       <div className="movie-card__header">
         <div className="movie-card__bg">
           <img src={backgroundImage} alt={name} />
@@ -25,7 +25,7 @@ const AddReview = (props) => {
 
         <header className="page-header">
           <PageHeaderLogo />
-          <Breadcrumbs film={currentFilm}/>
+          <Breadcrumbs film={currentFilm} />
           <UserBlock />
         </header>
 
@@ -35,7 +35,7 @@ const AddReview = (props) => {
       </div>
 
       <div className="add-review">
-        <AddReviewFormWrapped />
+        <AddReviewFormWrapped backgroundColor={backgroundColor} />
       </div>
     </section>
   );
@@ -52,6 +52,7 @@ AddReview.propTypes = {
     name: PropTypes.string.isRequired,
     posterImage: PropTypes.string.isRequired,
     backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
   })).isRequired,
 };
 

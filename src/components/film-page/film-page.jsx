@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
@@ -7,22 +7,36 @@ import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
 import FilmPageTabs from '../film-page-tabs/film-page-tabs';
+import AddToFavoriteBtn from '../add-to-favorite-btn/add-to-favorite-btn';
+import LoadingPage from "../loading-page/loading-page";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
 import {filmsCount, AppRoute, AuthorizationStatus} from "../../const";
+import {fetchFilmById} from "../../store/api-actions";
+import {setIsFilmLoading} from "../../store/action";
 
 const FilmsListWrapped = withActiveCard(FilmsList);
 const FilmPageTabsWrapped = withActiveTab(FilmPageTabs);
 
 const FilmPage = (props) => {
-  const {films, onFilmCardClick, currentFilmId, authorizationStatus} = props;
-  const currentFilm = films.find((film) => film.id === currentFilmId);
-  const {id, name, posterImage, backgroundImage, genre, released} = currentFilm;
+  const {films, onFilmCardClick, currentFilmId, authorizationStatus, currentFilm, getFilm, isFilmLoading} = props;
+
+  useEffect(() => {
+    getFilm(currentFilmId);
+  }, [currentFilmId]);
+
+  const {id, name, posterImage, backgroundImage, backgroundColor, genre, released, isFavorite} = currentFilm;
   const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, filmsCount.SIMILAR);
+
+  if (isFilmLoading) {
+    return (
+      <LoadingPage />
+    );
+  }
 
   return (
     <>
-      <section className="movie-card movie-card--full" data-id={id}>
+      <section className="movie-card movie-card--full" data-id={id} style={{backgroundColor}}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
             <img src={backgroundImage} alt={name} />
@@ -51,12 +65,10 @@ const FilmPage = (props) => {
                   <span>Play</span>
                 </Link>
 
-                <Link to={AppRoute.MY_LIST} className="btn btn--list movie-card__button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </Link>
+                <AddToFavoriteBtn
+                  id={id}
+                  isFavorite={isFavorite}
+                />
 
                 {
                   authorizationStatus === AuthorizationStatus.AUTH
@@ -100,22 +112,39 @@ const FilmPage = (props) => {
 
 const mapStateToProps = ({APP_STATE, USER}) => ({
   films: APP_STATE.films,
-  authorizationStatus: USER.authorizationStatus
+  authorizationStatus: USER.authorizationStatus,
+  currentFilm: APP_STATE.film,
+  isFilmLoading: APP_STATE.isFilmLoading,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getFilm(id) {
+    dispatch(setIsFilmLoading(true));
+    dispatch(fetchFilmById(id));
+  }
 });
 
 FilmPage.propTypes = {
   currentFilmId: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
   })).isRequired,
+  currentFilm: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    posterImage: PropTypes.string,
+    backgroundImage: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    genre: PropTypes.string,
+    released: PropTypes.number,
+    isFavorite: PropTypes.bool,
+  }).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
+  getFilm: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
+  isFilmLoading: PropTypes.bool.isRequired,
 };
 
 export {FilmPage};
-export default connect(mapStateToProps)(FilmPage);
+export default connect(mapStateToProps, mapDispatchToProps)(FilmPage);

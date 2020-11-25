@@ -5,12 +5,15 @@ import {filmsCount} from "../../../const";
 const initialState = {
   films: [],
   promoFilm: {},
+  film: {},
   activeGenre: `All genres`,
   filteredFilms: [],
   comments: [],
   renderedFilmsCount: filmsCount.PER_STEP,
+  isCheckingAuth: true,
   isFilmsLoading: true,
   isPromoLoading: true,
+  isFilmLoading: true,
   isLoadingError: false,
 };
 
@@ -25,6 +28,11 @@ const appState = (state = initialState, action) => {
     case ActionType.LOAD_PROMO:
       return extend(state, {
         promoFilm: action.payload,
+      });
+
+    case ActionType.LOAD_FILM_BY_ID:
+      return extend(state, {
+        film: action.payload,
       });
 
     case ActionType.LOAD_COMMENTS:
@@ -47,6 +55,11 @@ const appState = (state = initialState, action) => {
         renderedFilmsCount: filmsCount.PER_STEP,
       });
 
+    case ActionType.SET_IS_CHECKING_AUTH:
+      return extend(state, {
+        isCheckingAuth: action.payload,
+      });
+
     case ActionType.SET_IS_FILMS_LOADING:
       return extend(state, {
         isFilmsLoading: action.payload,
@@ -55,6 +68,11 @@ const appState = (state = initialState, action) => {
     case ActionType.SET_IS_PROMO_LOADING:
       return extend(state, {
         isPromoLoading: action.payload,
+      });
+
+    case ActionType.SET_IS_FILM_LOADING:
+      return extend(state, {
+        isFilmLoading: action.payload,
       });
 
     case ActionType.SET_IS_LOADING_ERROR:

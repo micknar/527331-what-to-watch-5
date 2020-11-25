@@ -20,9 +20,9 @@ const FullscreenPlayerWrapped = withFullscreenPlayer(FullscreenPlayer);
 const SignInWrapped = withAuthData(SignIn);
 
 const App = (props) => {
-  const {isFilmsLoading, isPromoLoading, isLoadingError} = props;
+  const {isFilmsLoading, isPromoLoading, isLoadingError, isCheckingAuth} = props;
 
-  if (isFilmsLoading || isPromoLoading) {
+  if (isCheckingAuth && (isFilmsLoading || isPromoLoading)) {
     return (
       <LoadingPage />
     );
@@ -106,12 +106,14 @@ const mapStateToProps = ({APP_STATE}) => ({
   isFilmsLoading: APP_STATE.isFilmsLoading,
   isPromoLoading: APP_STATE.isPromoLoading,
   isLoadingError: APP_STATE.isLoadingError,
+  isCheckingAuth: APP_STATE.isCheckingAuth,
 });
 
 App.propTypes = {
   isFilmsLoading: PropTypes.bool.isRequired,
   isPromoLoading: PropTypes.bool.isRequired,
   isLoadingError: PropTypes.bool.isRequired,
+  isCheckingAuth: PropTypes.bool.isRequired,
 };
 
 export {App};

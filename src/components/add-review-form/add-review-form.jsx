@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {shadeColor} from "../../utils";
 
 const MARKS = [`1`, `2`, `3`, `4`, `5`];
 
 const AddReviewForm = (props) => {
-  const {currentRating, handleRatingChange, handleTextChange, handleFormSubmit} = props;
+  const {currentRating, handleRatingChange, handleTextChange, handleFormSubmit, backgroundColor} = props;
   return (
     <form
       action="#"
@@ -32,7 +33,7 @@ const AddReviewForm = (props) => {
         </div>
       </div>
 
-      <div className="add-review__text">
+      <div className="add-review__text" style={{backgroundColor: shadeColor(backgroundColor, 20)}}>
         <textarea
           className="add-review__textarea"
           name="review-text"
@@ -51,6 +52,7 @@ const AddReviewForm = (props) => {
 
 AddReviewForm.propTypes = {
   currentRating: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
   handleRatingChange: PropTypes.func.isRequired,
   handleTextChange: PropTypes.func.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
