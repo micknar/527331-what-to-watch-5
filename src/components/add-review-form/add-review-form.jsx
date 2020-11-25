@@ -33,7 +33,7 @@ const AddReviewForm = (props) => {
         </div>
       </div>
 
-      <div className="add-review__text" style={{backgroundColor: shadeColor(backgroundColor, 20)}}>
+      <div className="add-review__text" style={{backgroundColor: shadeColor(backgroundColor, 30)}}>
         <textarea
           className="add-review__textarea"
           name="review-text"

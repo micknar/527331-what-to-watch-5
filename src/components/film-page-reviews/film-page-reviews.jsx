@@ -19,7 +19,7 @@ const FilmPageReviews = (props) => {
             <div
               className="review"
               key={`${i}-${review.user.id}`}
-              style={{borderBottomColor: shadeColor(backgroundColor, -40)}}
+              style={{borderBottomColor: shadeColor(backgroundColor, -20)}}
             >
               <blockquote className="review__quote">
                 <p className="review__text">{review.comment}</p>
