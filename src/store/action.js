@@ -15,6 +15,8 @@ export const ActionType = {
   SET_IS_PROMO_LOADING: `SET_IS_PROMO_LOADING`,
   SET_IS_FILM_LOADING: `SET_IS_FILM_LOADING`,
   SET_IS_LOADING_ERROR: `SET_IS_LOADING_ERROR`,
+  SET_IS_REVIEW_SUBMITTING: `SET_IS_REVIEW_SUBMITTING`,
+  SET_IS_REVIEW_SUBMITTING_ERROR: `SET_IS_REVIEW_SUBMITTING_ERROR`,
 };
 
 export const changeGenre = (genre) => ({
@@ -92,5 +94,15 @@ export const setIsFilmLoading = (bool) => ({
 
 export const setIsLoadingError = (bool) => ({
   type: ActionType.SET_IS_LOADING_ERROR,
+  payload: bool,
+});
+
+export const setIsReviewSubmitting = (bool) => ({
+  type: ActionType.SET_IS_REVIEW_SUBMITTING,
+  payload: bool,
+});
+
+export const setIsReviewSubmittingError = (bool) => ({
+  type: ActionType.SET_IS_REVIEW_SUBMITTING_ERROR,
   payload: bool,
 });

@@ -15,6 +15,8 @@ const initialState = {
   isPromoLoading: true,
   isFilmLoading: true,
   isLoadingError: false,
+  isReviewSubmitting: false,
+  isReviewSubmittingError: false,
 };
 
 const appState = (state = initialState, action) => {
@@ -78,6 +80,16 @@ const appState = (state = initialState, action) => {
     case ActionType.SET_IS_LOADING_ERROR:
       return extend(state, {
         isLoadingError: action.payload,
+      });
+
+    case ActionType.SET_IS_REVIEW_SUBMITTING:
+      return extend(state, {
+        isReviewSubmitting: action.payload,
+      });
+
+    case ActionType.SET_IS_REVIEW_SUBMITTING_ERROR:
+      return extend(state, {
+        isReviewSubmittingError: action.payload,
       });
   }
 

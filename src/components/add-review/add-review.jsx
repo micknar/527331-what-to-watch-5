@@ -12,7 +12,7 @@ const AddReviewFormWrapped = withUserReview(AddReviewForm);
 const AddReview = (props) => {
   const {films, currentFilmId} = props;
   const currentFilm = films.find((film) => film.id === currentFilmId);
-  const {backgroundImage, name, posterImage, backgroundColor} = currentFilm;
+  const {id, backgroundImage, name, posterImage, backgroundColor} = currentFilm;
 
   return (
     <section className="movie-card movie-card--full" style={{backgroundColor}}>
@@ -35,7 +35,10 @@ const AddReview = (props) => {
       </div>
 
       <div className="add-review">
-        <AddReviewFormWrapped backgroundColor={backgroundColor} />
+        <AddReviewFormWrapped
+          filmId={id}
+          backgroundColor={backgroundColor}
+        />
       </div>
     </section>
   );

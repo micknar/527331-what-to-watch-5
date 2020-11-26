@@ -12,6 +12,8 @@ import {
   setIsFilmLoading,
   setIsLoadingError,
   setUserAvatar,
+  setIsReviewSubmitting,
+  setIsReviewSubmittingError,
 } from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../const";
 import {setFavoriteStatus} from "../utils";
@@ -72,6 +74,18 @@ export const fetchComments = (id) => (dispatch, _getState, api) => (
       dispatch(loadComments(data.map(adaptCommentToClient)));
     })
     .catch(() => {})
+);
+
+export const submitReview = (id, {rating, comment}) => (dispatch, _getState, api) => (
+  api.post(APIRoute.COMMENTS + id, {rating, comment})
+    .then(() => {
+      dispatch(redirectToRoute(AppRoute.FILMS + id));
+      dispatch(setIsReviewSubmitting(false));
+    })
+    .catch(() => {
+      dispatch(setIsReviewSubmitting(false));
+      dispatch(setIsReviewSubmittingError(true));
+    })
 );
 
 export const checkAuth = () => (dispatch, _getState, api) => (

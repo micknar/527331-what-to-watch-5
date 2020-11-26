@@ -10,20 +10,22 @@ const withUserReview = (Component) => {
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
 
       this.state = {
-        rating: ``,
-        text: ``,
+        rating: 5,
+        comment: ``,
+        isValid: false,
       };
     }
 
     handleRatingChange(evt) {
       this.setState({
-        rating: evt.target.value,
+        rating: +evt.target.value,
       });
     }
 
     handleTextChange(evt) {
       this.setState({
         comment: evt.target.value,
+        isValid: evt.target.value.length >= 50 && evt.target.value.length <= 400,
       });
     }
 
@@ -32,11 +34,12 @@ const withUserReview = (Component) => {
     }
 
     render() {
-      const currentRating = this.state.rating;
-
+      const {rating, comment, isValid} = this.state;
       return (
         <Component {...this.props}
-          currentRating={currentRating}
+          rating={rating}
+          comment={comment}
+          isValid={isValid}
           handleRatingChange={this.handleRatingChange}
           handleTextChange={this.handleTextChange}
           handleFormSubmit={this.handleFormSubmit}
