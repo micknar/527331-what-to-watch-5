@@ -40,7 +40,7 @@ const App = (props) => {
           path={AppRoute.ROOT}
           render={({history}) => (
             <Main
-              onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
+              onCardClick={(id) => history.push(AppRoute.FILMS + id)}
             />
           )}
         />
@@ -50,7 +50,7 @@ const App = (props) => {
           path={AppRoute.LOGIN}
           render={({history}) => (
             <SignInWrapped
-              onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
+              onCardClick={(id) => history.push(AppRoute.FILMS + id)}
             />
           )}
         />
@@ -61,7 +61,7 @@ const App = (props) => {
           render={({history}) => {
             return (
               <MyList
-                onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
+                onCardClick={(id) => history.push(AppRoute.FILMS + id)}
               />
             );
           }}
@@ -73,7 +73,7 @@ const App = (props) => {
           render={({history, match}) => (
             <FilmPage
               currentFilmId={+match.params.id}
-              onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
+              onCardClick={(id) => history.push(AppRoute.FILMS + id)}
             />
           )}
         />

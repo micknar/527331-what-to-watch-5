@@ -19,7 +19,7 @@ const FilmsListWrapped = withActiveCard(FilmsList);
 const FilmPageTabsWrapped = withActiveTab(FilmPageTabs);
 
 const FilmPage = (props) => {
-  const {films, onFilmCardClick, currentFilmId, currentFilm, getFilm, isFilmLoading} = props;
+  const {films, onCardClick, currentFilmId, currentFilm, getFilm, isFilmLoading} = props;
 
   useEffect(() => {
     getFilm(currentFilmId);
@@ -93,7 +93,7 @@ const FilmPage = (props) => {
 
           <FilmsListWrapped
             films={similarFilms}
-            onFilmCardClick={onFilmCardClick}
+            onCardClick={onCardClick}
           />
         </section>
 
@@ -119,7 +119,7 @@ FilmPage.propTypes = {
     released: PropTypes.number,
     isFavorite: PropTypes.bool,
   }).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
   getFilm: PropTypes.func.isRequired,
   isFilmLoading: PropTypes.bool.isRequired,
 };

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import FilmCard from "../film-card/film-card";
 
 const FilmsList = (props) => {
-  const {films, onFilmCardClick, activeCard, handleActiveCard, handleMouseLeave} = props;
+  const {films, onCardClick, activeCard, onCardMouseOver, onCardMouseOut} = props;
 
   return (
     <div className="catalog__movies-list">
@@ -15,9 +15,9 @@ const FilmsList = (props) => {
             name={film.name}
             previewImage={film.previewImage}
             previewVideoLink={film.previewVideoLink}
-            onFilmCardHover={handleActiveCard}
-            onFilmCardLeave={handleMouseLeave}
-            onFilmCardClick={onFilmCardClick}
+            onCardMouseOver={onCardMouseOver}
+            onCardMouseOut={onCardMouseOut}
+            onCardClick={onCardClick}
             isActive={activeCard === film.id}
           />
         );
@@ -33,10 +33,10 @@ FilmsList.propTypes = {
     previewImage: PropTypes.string.isRequired,
     previewVideoLink: PropTypes.string.isRequired,
   })).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
   activeCard: PropTypes.number.isRequired,
-  handleActiveCard: PropTypes.func.isRequired,
-  handleMouseLeave: PropTypes.func.isRequired,
+  onCardMouseOver: PropTypes.func.isRequired,
+  onCardMouseOut: PropTypes.func.isRequired,
 };
 
 export default FilmsList;

@@ -12,19 +12,19 @@ const SignIn = (props) => {
   const {
     email,
     password,
-    onSignInBtnClick,
-    handleTextChange,
-    handleFormSubmit,
+    sendData,
+    onInputChange,
+    onFormSubmit,
     isValidEmail,
     isValidPassword,
     isLoginDataSending,
     isLoginError
   } = props;
 
-  const handleSignInBtnClick = (evt) => {
+  const onSignInBtnClick = (evt) => {
     evt.preventDefault();
 
-    onSignInBtnClick({
+    sendData({
       login: email,
       password,
     });
@@ -75,14 +75,14 @@ const SignIn = (props) => {
       <div className="sign-in user-page__content">
         <form
           action="#"
-          onSubmit={handleFormSubmit}
+          onSubmit={onFormSubmit}
           className="sign-in__form"
         >
           {getMessage()}
           <div className="sign-in__fields">
             <div className={getLoginFormFieldClassName(isValidEmail)}>
               <input
-                onChange={handleTextChange}
+                onChange={onInputChange}
                 className="sign-in__input"
                 type="email"
                 placeholder="Email address"
@@ -93,7 +93,7 @@ const SignIn = (props) => {
             </div>
             <div className={getLoginFormFieldClassName(isValidPassword)}>
               <input
-                onChange={handleTextChange}
+                onChange={onInputChange}
                 className="sign-in__input"
                 type="password"
                 placeholder="Password"
@@ -108,7 +108,7 @@ const SignIn = (props) => {
               className="sign-in__btn"
               type="submit"
               disabled={!isValidPassword}
-              onClick={handleSignInBtnClick}
+              onClick={onSignInBtnClick}
             >
               Sign in
             </button>
@@ -124,9 +124,9 @@ const SignIn = (props) => {
 SignIn.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  onSignInBtnClick: PropTypes.func.isRequired,
-  handleTextChange: PropTypes.func.isRequired,
-  handleFormSubmit: PropTypes.func.isRequired,
+  sendData: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
   isValidEmail: PropTypes.bool.isRequired,
   isValidPassword: PropTypes.bool.isRequired,
   isLoginDataSending: PropTypes.bool.isRequired,
@@ -139,7 +139,7 @@ const mapStateToProps = ({USER}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSignInBtnClick(authData) {
+  sendData(authData) {
     dispatch(setIsLoginDataSending(true));
     dispatch(login(authData));
   }

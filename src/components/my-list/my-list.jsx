@@ -11,7 +11,7 @@ import {fetchFavoriteFilms} from "../../store/api-actions";
 const FilmsListWrapped = withActiveCard(FilmsList);
 
 const MyList = (props) => {
-  const {favoriteFilms, onFilmCardClick, getFavoriteFilms} = props;
+  const {favoriteFilms, onCardClick, getFavoriteFilms} = props;
 
   useEffect(() => {
     getFavoriteFilms();
@@ -29,7 +29,7 @@ const MyList = (props) => {
       <section className="catalog">
         <FilmsListWrapped
           films={favoriteFilms}
-          onFilmCardClick={onFilmCardClick}
+          onCardClick={onCardClick}
         />
       </section>
 
@@ -46,7 +46,7 @@ MyList.propTypes = {
     previewVideoLink: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
   })).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
   getFavoriteFilms: PropTypes.func.isRequired,
 };
 

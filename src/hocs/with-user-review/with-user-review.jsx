@@ -5,9 +5,9 @@ const withUserReview = (Component) => {
     constructor(props) {
       super(props);
 
-      this._handleRatingChange = this._handleRatingChange.bind(this);
-      this._handleTextChange = this._handleTextChange.bind(this);
-      this._handleFormSubmit = this._handleFormSubmit.bind(this);
+      this._onRatingChangeHandler = this._onRatingChangeHandler.bind(this);
+      this._onCommentChangeHandler = this._onCommentChangeHandler.bind(this);
+      this._onFormSubmitHandler = this._onFormSubmitHandler.bind(this);
 
       this.state = {
         rating: 5,
@@ -16,20 +16,20 @@ const withUserReview = (Component) => {
       };
     }
 
-    _handleRatingChange(evt) {
+    _onRatingChangeHandler(evt) {
       this.setState({
         rating: +evt.target.value,
       });
     }
 
-    _handleTextChange(evt) {
+    _onCommentChangeHandler(evt) {
       this.setState({
         comment: evt.target.value,
         isValid: evt.target.value.length >= 50 && evt.target.value.length <= 400,
       });
     }
 
-    _handleFormSubmit(evt) {
+    _onFormSubmitHandler(evt) {
       evt.preventDefault();
     }
 
@@ -40,9 +40,9 @@ const withUserReview = (Component) => {
           rating={rating}
           comment={comment}
           isValid={isValid}
-          handleRatingChange={this._handleRatingChange}
-          handleTextChange={this._handleTextChange}
-          handleFormSubmit={this._handleFormSubmit}
+          onRatingChange={this._onRatingChangeHandler}
+          onCommentChange={this._onCommentChangeHandler}
+          onFormSubmit={this._onFormSubmitHandler}
         />
       );
     }

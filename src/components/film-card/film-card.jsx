@@ -5,15 +5,15 @@ import VideoPreview from "../video-preview/video-preview";
 import {AppRoute} from "../../const";
 
 const FilmCard = (props) => {
-  const {id, name, previewImage, previewVideoLink, onFilmCardClick, onFilmCardHover, onFilmCardLeave, isActive} = props;
+  const {id, name, previewImage, previewVideoLink, onCardClick, onCardMouseOver, onCardMouseOut, isActive} = props;
 
   return (
     <article
       data-id={id}
       className="small-movie-card catalog__movies-card"
-      onMouseOver={() => onFilmCardHover(id)}
-      onMouseOut={() => onFilmCardLeave()}
-      onClick={() => onFilmCardClick(id)}
+      onMouseOver={() => onCardMouseOver(id)}
+      onMouseOut={() => onCardMouseOut()}
+      onClick={() => onCardClick(id)}
     >
       <div className="small-movie-card__image">
         {
@@ -35,9 +35,9 @@ FilmCard.propTypes = {
   name: PropTypes.string.isRequired,
   previewImage: PropTypes.string.isRequired,
   previewVideoLink: PropTypes.string.isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
-  onFilmCardHover: PropTypes.func.isRequired,
-  onFilmCardLeave: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
+  onCardMouseOver: PropTypes.func.isRequired,
+  onCardMouseOut: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
 };
 
