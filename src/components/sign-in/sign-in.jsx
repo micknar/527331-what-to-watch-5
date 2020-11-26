@@ -1,20 +1,58 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ReactLoading from 'react-loading';
 import {connect} from "react-redux";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import PageFooter from "../page-footer/page-footer";
 import {login} from "../../store/api-actions";
+import {setIsLoginDataSending} from "../../store/action";
+
+const getFieldClassName = (isValid) => isValid ? `sign-in__field` : `sign-in__field sign-in__field--error`;
 
 const SignIn = (props) => {
-  const {email, password, onSubmit, handleTextChange} = props;
+  const {email, password, onSignInBtnClick, handleTextChange, handleFormSubmit, isValidEmail, isValidPassword, isLoginDataSending, isLoginError} = props;
 
-  const handleFormSubmit = (evt) => {
+  const handleSignInBtnClick = (evt) => {
     evt.preventDefault();
 
-    onSubmit({
+    onSignInBtnClick({
       login: email,
       password,
     });
+  };
+
+  const getMessage = () => {
+    if (isLoginDataSending) {
+      return (
+        <div
+          className="sign-in__message"
+          style={{display: `flex`, justifyContent: `center`, marginBottom: `20px`}}
+        >
+          <ReactLoading type={`bars`} color={`#dfcf77`} height={`10%`} width={`10%`} />
+        </div>
+      );
+    } else if (!isValidEmail) {
+      return (
+        <div className="sign-in__message" >
+          <p>Please enter a valid email address</p>
+        </div>
+      );
+    } else if (!isValidPassword) {
+      return (
+        <div className="sign-in__message" >
+          <p>Please enter a valid password</p>
+        </div>
+      );
+    } else if (isLoginError) {
+      return (
+        <div className="sign-in__message" >
+          <p>We can’t recognize this email</p>
+          <p>and password combination. Please try again.</p>
+        </div>
+      );
+    } else {
+      return ``;
+    }
   };
 
   return (
@@ -31,8 +69,9 @@ const SignIn = (props) => {
           onSubmit={handleFormSubmit}
           className="sign-in__form"
         >
+          {getMessage()}
           <div className="sign-in__fields">
-            <div className="sign-in__field">
+            <div className={getFieldClassName(isValidEmail)}>
               <input
                 onChange={handleTextChange}
                 className="sign-in__input"
@@ -43,7 +82,7 @@ const SignIn = (props) => {
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
-            <div className="sign-in__field">
+            <div className={getFieldClassName(isValidPassword)}>
               <input
                 onChange={handleTextChange}
                 className="sign-in__input"
@@ -56,7 +95,14 @@ const SignIn = (props) => {
             </div>
           </div>
           <div className="sign-in__submit">
-            <button className="sign-in__btn" type="submit">Sign in</button>
+            <button
+              className="sign-in__btn"
+              type="submit"
+              disabled={!isValidPassword}
+              onClick={handleSignInBtnClick}
+            >
+              Sign in
+            </button>
           </div>
         </form>
       </div>
@@ -66,8 +112,14 @@ const SignIn = (props) => {
   );
 };
 
+const mapStateToProps = ({USER}) => ({
+  isLoginDataSending: USER.isLoginDataSending,
+  isLoginError: USER.isLoginError,
+});
+
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData) {
+  onSignInBtnClick(authData) {
+    dispatch(setIsLoginDataSending(true));
     dispatch(login(authData));
   }
 });
@@ -75,9 +127,14 @@ const mapDispatchToProps = (dispatch) => ({
 SignIn.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onSignInBtnClick: PropTypes.func.isRequired,
   handleTextChange: PropTypes.func.isRequired,
+  handleFormSubmit: PropTypes.func.isRequired,
+  isValidEmail: PropTypes.bool.isRequired,
+  isValidPassword: PropTypes.bool.isRequired,
+  isLoginDataSending: PropTypes.bool.isRequired,
+  isLoginError: PropTypes.bool.isRequired,
 };
 
 export {SignIn};
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

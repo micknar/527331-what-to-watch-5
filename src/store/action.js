@@ -17,6 +17,8 @@ export const ActionType = {
   SET_IS_LOADING_ERROR: `SET_IS_LOADING_ERROR`,
   SET_IS_REVIEW_SUBMITTING: `SET_IS_REVIEW_SUBMITTING`,
   SET_IS_REVIEW_SUBMITTING_ERROR: `SET_IS_REVIEW_SUBMITTING_ERROR`,
+  SET_IS_LOGIN_DATA_SENDING: `SET_IS_LOGIN_DATA_SENDING`,
+  SET_IS_LOGIN_ERROR: `SET_IS_LOGIN_ERROR`,
 };
 
 export const changeGenre = (genre) => ({
@@ -104,5 +106,15 @@ export const setIsReviewSubmitting = (bool) => ({
 
 export const setIsReviewSubmittingError = (bool) => ({
   type: ActionType.SET_IS_REVIEW_SUBMITTING_ERROR,
+  payload: bool,
+});
+
+export const setIsLoginDataSending = (bool) => ({
+  type: ActionType.SET_IS_LOGIN_DATA_SENDING,
+  payload: bool,
+});
+
+export const setIsLoginError = (bool) => ({
+  type: ActionType.SET_IS_LOGIN_ERROR,
   payload: bool,
 });

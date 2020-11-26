@@ -6,6 +6,8 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   userAvatar: ``,
   favoriteFilms: [],
+  isLoginDataSending: false,
+  isLoginError: false,
 };
 
 const user = (state = initialState, action) => {
@@ -23,6 +25,16 @@ const user = (state = initialState, action) => {
     case ActionType.LOAD_FAVORITE_FILMS:
       return extend(state, {
         favoriteFilms: action.payload,
+      });
+
+    case ActionType.SET_IS_LOGIN_DATA_SENDING:
+      return extend(state, {
+        isLoginDataSending: action.payload,
+      });
+
+    case ActionType.SET_IS_LOGIN_ERROR:
+      return extend(state, {
+        isLoginError: action.payload,
       });
   }
 

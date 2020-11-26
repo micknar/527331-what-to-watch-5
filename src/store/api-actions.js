@@ -14,6 +14,8 @@ import {
   setUserAvatar,
   setIsReviewSubmitting,
   setIsReviewSubmittingError,
+  setIsLoginDataSending,
+  setIsLoginError,
 } from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../const";
 import {setFavoriteStatus} from "../utils";
@@ -105,6 +107,11 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
     .then(({data}) => {
       dispatch(requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(setUserAvatar(data[`avatar_url`]));
+      dispatch(setIsLoginDataSending(false));
       dispatch(redirectToRoute(AppRoute.ROOT));
+    })
+    .catch(() => {
+      dispatch(setIsLoginDataSending(false));
+      dispatch(setIsLoginError(true));
     })
 );
