@@ -1,6 +1,6 @@
 import {ActionType} from "../../action";
 import {extend, getRenderedFilmsCount} from "../../../utils";
-import {filmsCount} from "../../../const";
+import {FilmsCount} from "../../../const";
 
 const initialState = {
   films: [],
@@ -9,7 +9,7 @@ const initialState = {
   activeGenre: `All genres`,
   filteredFilms: [],
   comments: [],
-  renderedFilmsCount: filmsCount.PER_STEP,
+  renderedFilmsCount: FilmsCount.PER_STEP,
   isCheckingAuth: true,
   isFilmsLoading: true,
   isPromoLoading: true,
@@ -54,7 +54,7 @@ const appState = (state = initialState, action) => {
 
     case ActionType.CLEAR_RENDERED_FILMS:
       return extend(state, {
-        renderedFilmsCount: filmsCount.PER_STEP,
+        renderedFilmsCount: FilmsCount.PER_STEP,
       });
 
     case ActionType.SET_IS_CHECKING_AUTH:

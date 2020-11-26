@@ -7,7 +7,6 @@ import {
   requireAuthorization,
   redirectToRoute,
   setIsCheckingAuth,
-  setIsFilmsLoading,
   setIsPromoLoading,
   setIsFilmLoading,
   setIsLoadingError,
@@ -25,10 +24,8 @@ export const fetchFilmsList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
     .then(({data}) => {
       dispatch(loadFilms(data.map(adaptFilmToClient)));
-      dispatch(setIsFilmsLoading(false));
     })
     .catch(() => {
-      dispatch(setIsFilmsLoading(false));
       dispatch(setIsLoadingError(true));
     })
 );

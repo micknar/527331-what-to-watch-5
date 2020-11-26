@@ -1,4 +1,4 @@
-import {filmsCount, RatingMarkType, FavoriteStatusCode} from "./const";
+import {FilmsCount, RatingMarkType, FavoriteStatusCode} from "./const";
 
 export const getRatingMark = (rating) => {
   let mark = ``;
@@ -44,10 +44,10 @@ export const getDate = (date) => {
 export const isDouble = (n) => n > 10 ? n : `0${n}`;
 
 export const getRenderedFilmsCount = (state) => {
-  const count = state.renderedFilmsCount + filmsCount.PER_STEP;
+  const count = state.renderedFilmsCount + FilmsCount.PER_STEP;
 
   if (count > state.filteredFilms.length) {
-    return state.renderedFilmsCount + (state.filteredFilms.length % filmsCount.PER_STEP);
+    return state.renderedFilmsCount + (state.filteredFilms.length % FilmsCount.PER_STEP);
   }
 
   return count;

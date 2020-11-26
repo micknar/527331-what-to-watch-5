@@ -1,4 +1,4 @@
-export const filmsCount = {
+export const FilmsCount = {
   SIMILAR: 4,
   PER_STEP: 8,
 };

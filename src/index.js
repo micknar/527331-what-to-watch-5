@@ -7,7 +7,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {createAPI} from "./services/api";
 import App from './components/app/app';
 import rootReducer from "./store/reducers/root-reducer";
-import {requireAuthorization, setIsFilmsLoading, setIsPromoLoading} from "./store/action";
+import {requireAuthorization, setIsFilmsLoading} from "./store/action";
 import {fetchFilmsList, fetchPromoFilm, checkAuth} from "./store/api-actions";
 import {AuthorizationStatus} from "./const";
 import {redirect} from "./store/middlewares/redirect";
@@ -30,7 +30,6 @@ Promise.all([
   store.dispatch(checkAuth()),
 ])
   .then(() => {
-    store.dispatch(setIsPromoLoading(false));
     store.dispatch(setIsFilmsLoading(false));
   })
   .catch(() => {});

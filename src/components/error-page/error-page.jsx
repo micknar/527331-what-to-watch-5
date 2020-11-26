@@ -1,5 +1,4 @@
 import React from "react";
-// import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import PageFooter from "../page-footer/page-footer";
 
 const ErrorPage = () => {

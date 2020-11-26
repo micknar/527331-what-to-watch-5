@@ -11,7 +11,7 @@ import AddToFavoriteBtn from '../add-to-favorite-btn/add-to-favorite-btn';
 import LoadingPage from "../loading-page/loading-page";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
-import {filmsCount, AppRoute} from "../../const";
+import {FilmsCount, AppRoute} from "../../const";
 import {fetchFilmById} from "../../store/api-actions";
 import {setIsFilmLoading} from "../../store/action";
 
@@ -26,7 +26,7 @@ const FilmPage = (props) => {
   }, [currentFilmId]);
 
   const {id, name, posterImage, backgroundImage, backgroundColor, genre, released, isFavorite} = currentFilm;
-  const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, filmsCount.SIMILAR);
+  const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, FilmsCount.SIMILAR);
 
   if (isFilmLoading) {
     return (

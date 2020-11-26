@@ -22,7 +22,7 @@ const SignInWrapped = withAuthData(SignIn);
 const App = (props) => {
   const {isFilmsLoading, isPromoLoading, isLoadingError, isCheckingAuth} = props;
 
-  if (isCheckingAuth && (isFilmsLoading || isPromoLoading)) {
+  if (isCheckingAuth || isFilmsLoading || isPromoLoading) {
     return (
       <LoadingPage />
     );
