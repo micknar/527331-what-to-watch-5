@@ -38,16 +38,6 @@ const MyList = (props) => {
   );
 };
 
-const mapStateToProps = ({USER}) => ({
-  favoriteFilms: USER.favoriteFilms,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getFavoriteFilms() {
-    dispatch(fetchFavoriteFilms());
-  }
-});
-
 MyList.propTypes = {
   favoriteFilms: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -59,6 +49,16 @@ MyList.propTypes = {
   onFilmCardClick: PropTypes.func.isRequired,
   getFavoriteFilms: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = ({USER}) => ({
+  favoriteFilms: USER.favoriteFilms,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getFavoriteFilms() {
+    dispatch(fetchFavoriteFilms());
+  }
+});
 
 export {MyList};
 export default connect(mapStateToProps, mapDispatchToProps)(MyList);

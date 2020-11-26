@@ -6,11 +6,20 @@ import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import PageFooter from "../page-footer/page-footer";
 import {login} from "../../store/api-actions";
 import {setIsLoginDataSending} from "../../store/action";
-
-const getFieldClassName = (isValid) => isValid ? `sign-in__field` : `sign-in__field sign-in__field--error`;
+import {getLoginFormFieldClassName} from "../../utils";
 
 const SignIn = (props) => {
-  const {email, password, onSignInBtnClick, handleTextChange, handleFormSubmit, isValidEmail, isValidPassword, isLoginDataSending, isLoginError} = props;
+  const {
+    email,
+    password,
+    onSignInBtnClick,
+    handleTextChange,
+    handleFormSubmit,
+    isValidEmail,
+    isValidPassword,
+    isLoginDataSending,
+    isLoginError
+  } = props;
 
   const handleSignInBtnClick = (evt) => {
     evt.preventDefault();
@@ -71,7 +80,7 @@ const SignIn = (props) => {
         >
           {getMessage()}
           <div className="sign-in__fields">
-            <div className={getFieldClassName(isValidEmail)}>
+            <div className={getLoginFormFieldClassName(isValidEmail)}>
               <input
                 onChange={handleTextChange}
                 className="sign-in__input"
@@ -82,7 +91,7 @@ const SignIn = (props) => {
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
-            <div className={getFieldClassName(isValidPassword)}>
+            <div className={getLoginFormFieldClassName(isValidPassword)}>
               <input
                 onChange={handleTextChange}
                 className="sign-in__input"
@@ -112,18 +121,6 @@ const SignIn = (props) => {
   );
 };
 
-const mapStateToProps = ({USER}) => ({
-  isLoginDataSending: USER.isLoginDataSending,
-  isLoginError: USER.isLoginError,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSignInBtnClick(authData) {
-    dispatch(setIsLoginDataSending(true));
-    dispatch(login(authData));
-  }
-});
-
 SignIn.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
@@ -135,6 +132,18 @@ SignIn.propTypes = {
   isLoginDataSending: PropTypes.bool.isRequired,
   isLoginError: PropTypes.bool.isRequired,
 };
+
+const mapStateToProps = ({USER}) => ({
+  isLoginDataSending: USER.isLoginDataSending,
+  isLoginError: USER.isLoginError,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSignInBtnClick(authData) {
+    dispatch(setIsLoginDataSending(true));
+    dispatch(login(authData));
+  }
+});
 
 export {SignIn};
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

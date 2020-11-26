@@ -103,19 +103,6 @@ const FilmPage = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE}) => ({
-  films: APP_STATE.films,
-  currentFilm: APP_STATE.film,
-  isFilmLoading: APP_STATE.isFilmLoading,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getFilm(id) {
-    dispatch(setIsFilmLoading(true));
-    dispatch(fetchFilmById(id));
-  }
-});
-
 FilmPage.propTypes = {
   currentFilmId: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
@@ -136,6 +123,19 @@ FilmPage.propTypes = {
   getFilm: PropTypes.func.isRequired,
   isFilmLoading: PropTypes.bool.isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  films: APP_STATE.films,
+  currentFilm: APP_STATE.film,
+  isFilmLoading: APP_STATE.isFilmLoading,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getFilm(id) {
+    dispatch(setIsFilmLoading(true));
+    dispatch(fetchFilmById(id));
+  }
+});
 
 export {FilmPage};
 export default connect(mapStateToProps, mapDispatchToProps)(FilmPage);

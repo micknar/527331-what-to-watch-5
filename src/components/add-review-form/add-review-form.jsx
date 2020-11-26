@@ -5,8 +5,7 @@ import {connect} from "react-redux";
 import {submitReview} from "../../store/api-actions";
 import {setIsReviewSubmitting} from "../../store/action";
 import {shadeColor} from "../../utils";
-
-const MARKS = [1, 2, 3, 4, 5];
+import {RATING_MARKS} from "../../const";
 
 const AddReviewForm = (props) => {
   const {
@@ -52,7 +51,7 @@ const AddReviewForm = (props) => {
     >
       <div className="rating">
         <div className="rating__stars">
-          {MARKS.map((mark) => {
+          {RATING_MARKS.map((mark) => {
             return (
               <React.Fragment key={mark}>
                 <input
@@ -98,18 +97,6 @@ const AddReviewForm = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE}) => ({
-  isReviewSubmitting: APP_STATE.isReviewSubmitting,
-  isReviewSubmittingError: APP_STATE.isReviewSubmittingError,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onPostBtnClick(filmId, {rating, comment}) {
-    dispatch(setIsReviewSubmitting(true));
-    dispatch(submitReview(filmId, {rating, comment}));
-  }
-});
-
 AddReviewForm.propTypes = {
   filmId: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
@@ -123,6 +110,18 @@ AddReviewForm.propTypes = {
   isReviewSubmitting: PropTypes.bool.isRequired,
   isReviewSubmittingError: PropTypes.bool.isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  isReviewSubmitting: APP_STATE.isReviewSubmitting,
+  isReviewSubmittingError: APP_STATE.isReviewSubmittingError,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onPostBtnClick(filmId, {rating, comment}) {
+    dispatch(setIsReviewSubmitting(true));
+    dispatch(submitReview(filmId, {rating, comment}));
+  }
+});
 
 export {AddReviewForm};
 export default connect(mapStateToProps, mapDispatchToProps)(AddReviewForm);

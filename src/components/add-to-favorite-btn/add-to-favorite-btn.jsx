@@ -38,6 +38,13 @@ const AddToFavoriteBtn = (props) => {
   );
 };
 
+AddToFavoriteBtn.propTypes = {
+  id: PropTypes.number.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  onAddToFavoriteBtnClick: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = ({USER}) => ({
   authorizationStatus: USER.authorizationStatus,
 });
@@ -48,13 +55,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateFavoriteStatus(id, isFavorite));
   }
 });
-
-AddToFavoriteBtn.propTypes = {
-  id: PropTypes.number.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  onAddToFavoriteBtnClick: PropTypes.func.isRequired,
-};
 
 export {AddToFavoriteBtn};
 export default connect(mapStateToProps, mapDispatchToProps)(AddToFavoriteBtn);

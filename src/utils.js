@@ -78,3 +78,30 @@ export const shadeColor = (color, percent) => {
 
   return `#` + RR + GG + BB;
 };
+
+export const getElapsedTime = (duration, progress) => {
+  const minutesElapsed = Math.floor((duration - progress) / 60);
+  const secondsElapsed = Math.floor((duration - progress) % 60);
+  const timeElapsed = `${isDouble(minutesElapsed)}:${isDouble(secondsElapsed)}`;
+
+  return timeElapsed;
+};
+
+export const getGenreInPlural = (genre) => {
+  switch (genre) {
+    case `Comedy`:
+      return `Comedies`;
+    case `Drama`:
+      return `Dramas`;
+    case `Thriller`:
+      return `Thrillers`;
+    default:
+      return genre;
+  }
+};
+
+export const getFilterItemClass = (genre, activeGenre) => {
+  return activeGenre === genre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`;
+};
+
+export const getLoginFormFieldClassName = (isValid) => isValid ? `sign-in__field` : `sign-in__field sign-in__field--error`;

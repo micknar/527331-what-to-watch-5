@@ -84,12 +84,6 @@ const Main = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE}) => ({
-  filteredFilms: getFilteredFilms({APP_STATE}),
-  renderedFilmsCount: APP_STATE.renderedFilmsCount,
-  promoFilm: APP_STATE.promoFilm,
-});
-
 Main.propTypes = {
   promoFilm: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -113,6 +107,12 @@ Main.propTypes = {
   renderedFilmsCount: PropTypes.number.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  filteredFilms: getFilteredFilms({APP_STATE}),
+  renderedFilmsCount: APP_STATE.renderedFilmsCount,
+  promoFilm: APP_STATE.promoFilm,
+});
 
 export {Main};
 export default connect(mapStateToProps)(Main);

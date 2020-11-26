@@ -104,19 +104,19 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE}) => ({
-  isFilmsLoading: APP_STATE.isFilmsLoading,
-  isPromoLoading: APP_STATE.isPromoLoading,
-  isLoadingError: APP_STATE.isLoadingError,
-  isCheckingAuth: APP_STATE.isCheckingAuth,
-});
-
 App.propTypes = {
   isFilmsLoading: PropTypes.bool.isRequired,
   isPromoLoading: PropTypes.bool.isRequired,
   isLoadingError: PropTypes.bool.isRequired,
   isCheckingAuth: PropTypes.bool.isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  isFilmsLoading: APP_STATE.isFilmsLoading,
+  isPromoLoading: APP_STATE.isPromoLoading,
+  isLoadingError: APP_STATE.isLoadingError,
+  isCheckingAuth: APP_STATE.isCheckingAuth,
+});
 
 export {App};
 export default connect(mapStateToProps)(App);

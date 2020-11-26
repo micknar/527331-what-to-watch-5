@@ -2,16 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {isDouble} from "../../utils";
+import {getElapsedTime} from "../../utils";
 import {AppRoute} from "../../const";
-
-const getElapsedTime = (duration, progress) => {
-  const minutesElapsed = Math.floor((duration - progress) / 60);
-  const secondsElapsed = Math.floor((duration - progress) % 60);
-  const timeElapsed = `${isDouble(minutesElapsed)}:${isDouble(secondsElapsed)}`;
-
-  return timeElapsed;
-};
 
 const FullscreenPlayer = (props) => {
   const {films, promoFilm, currentFilmId, isPlaying, duration, progress, onPlayBtnClick, onFullscreenClick, renderPlayer} = props;
@@ -77,11 +69,6 @@ const FullscreenPlayer = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE}) => ({
-  films: APP_STATE.films,
-  promoFilm: APP_STATE.promoFilm,
-});
-
 FullscreenPlayer.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -101,6 +88,11 @@ FullscreenPlayer.propTypes = {
   onFullscreenClick: PropTypes.func.isRequired,
   renderPlayer: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  films: APP_STATE.films,
+  promoFilm: APP_STATE.promoFilm,
+});
 
 export {FullscreenPlayer};
 export default connect(mapStateToProps)(FullscreenPlayer);
