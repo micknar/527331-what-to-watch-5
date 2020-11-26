@@ -17,16 +17,6 @@ const withFullscreenPlayer = (Component) => {
       };
     }
 
-    handlePlayBtnClick() {
-      this.setState({
-        isPlaying: !this.state.isPlaying
-      });
-    }
-
-    handleFullscreenBtnClick() {
-      this.videoRef.current.requestFullscreen();
-    }
-
     componentDidMount() {
       this.videoRef.current.oncanplay = () => {
         this.setState({
@@ -52,6 +42,16 @@ const withFullscreenPlayer = (Component) => {
     componentWillUnmount() {
       this.videoRef.current.oncanplay = null;
       this.videoRef.current.ontimeupdate = null;
+    }
+
+    handlePlayBtnClick() {
+      this.setState({
+        isPlaying: !this.state.isPlaying
+      });
+    }
+
+    handleFullscreenBtnClick() {
+      this.videoRef.current.requestFullscreen();
     }
 
     render() {

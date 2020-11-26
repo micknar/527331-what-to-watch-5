@@ -34,6 +34,16 @@ const withVideo = (Component) => {
       video.oncanplaythrough = null;
     }
 
+    componentDidUpdate() {
+      const video = this.videoRef.current;
+
+      if (this.props.isPlaying) {
+        video.play();
+      } else {
+        video.load();
+      }
+    }
+
     render() {
       const {isLoading} = this.state;
 
@@ -45,16 +55,6 @@ const withVideo = (Component) => {
           <video ref={this.videoRef} />
         </Component>
       );
-    }
-
-    componentDidUpdate() {
-      const video = this.videoRef.current;
-
-      if (this.props.isPlaying) {
-        video.play();
-      } else {
-        video.load();
-      }
     }
   }
 
