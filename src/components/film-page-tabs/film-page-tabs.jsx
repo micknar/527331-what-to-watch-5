@@ -4,11 +4,11 @@ import {Redirect} from 'react-router-dom';
 import FilmPageOverview from '../film-page-overview/film-page-overview';
 import FilmPageDetails from '../film-page-details/film-page-details';
 import FilmPageReviews from '../film-page-reviews/film-page-reviews';
-import {FilmPageNav} from "../../const";
+import {FilmPageNav, AppRoute} from "../../const";
 
 const FilmPageTabs = (props) => {
   const {film, activeTab, handleActiveTab} = props;
-  const {id, description, rating, runTime, director, starring, genre, released, ratingMark} = film;
+  const {id, description, rating, runTime, director, starring, genre, released, ratingMark, backgroundColor} = film;
 
   const getFilmInfo = () => {
     switch (activeTab) {
@@ -36,11 +36,12 @@ const FilmPageTabs = (props) => {
         return (
           <FilmPageReviews
             filmId={id}
+            backgroundColor={backgroundColor}
           />
         );
     }
 
-    return <Redirect to="/" />;
+    return <Redirect to={AppRoute.ROOT} />;
   };
 
   return (
@@ -81,6 +82,7 @@ FilmPageTabs.propTypes = {
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     genre: PropTypes.string.isRequired,
     released: PropTypes.number.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
 
     runTime: PropTypes.shape({
       hours: PropTypes.number.isRequired,

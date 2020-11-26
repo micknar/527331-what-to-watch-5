@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
@@ -6,11 +6,16 @@ import UserBlock from "../user-block/user-block";
 import FilmsList from "../films-list/films-list";
 import PageFooter from "../page-footer/page-footer";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
+import {fetchFavoriteFilms} from "../../store/api-actions";
 
 const FilmsListWrapped = withActiveCard(FilmsList);
 
 const MyList = (props) => {
-  const {films, onFilmCardClick} = props;
+  const {favoriteFilms, onFilmCardClick, getFavoriteFilms} = props;
+
+  useEffect(() => {
+    getFavoriteFilms();
+  }, []);
 
   return (
     <div className="user-page">
@@ -23,7 +28,7 @@ const MyList = (props) => {
 
       <section className="catalog">
         <FilmsListWrapped
-          films={films}
+          films={favoriteFilms}
           onFilmCardClick={onFilmCardClick}
         />
       </section>
@@ -33,12 +38,18 @@ const MyList = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE}) => ({
-  films: APP_STATE.films,
+const mapStateToProps = ({USER}) => ({
+  favoriteFilms: USER.favoriteFilms,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getFavoriteFilms() {
+    dispatch(fetchFavoriteFilms());
+  }
 });
 
 MyList.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
+  favoriteFilms: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     previewImage: PropTypes.string.isRequired,
@@ -46,7 +57,8 @@ MyList.propTypes = {
     genre: PropTypes.string.isRequired,
   })).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
+  getFavoriteFilms: PropTypes.func.isRequired,
 };
 
 export {MyList};
-export default connect(mapStateToProps)(MyList);
+export default connect(mapStateToProps, mapDispatchToProps)(MyList);

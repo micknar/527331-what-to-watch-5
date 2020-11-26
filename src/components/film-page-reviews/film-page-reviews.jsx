@@ -2,9 +2,10 @@ import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {fetchComments} from "../../store/api-actions";
+import {shadeColor} from "../../utils";
 
 const FilmPageReviews = (props) => {
-  const {comments, filmId, loadComments} = props;
+  const {comments, filmId, loadComments, backgroundColor} = props;
 
   useEffect(() => {
     loadComments(filmId);
@@ -15,7 +16,11 @@ const FilmPageReviews = (props) => {
       <div className="movie-card__reviews-col">
         {comments.map((review, i) => {
           return (
-            <div className="review" key={`${i}-${review.user.id}`}>
+            <div
+              className="review"
+              key={`${i}-${review.user.id}`}
+              style={{borderBottomColor: shadeColor(backgroundColor, -20)}}
+            >
               <blockquote className="review__quote">
                 <p className="review__text">{review.comment}</p>
 
@@ -47,6 +52,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 FilmPageReviews.propTypes = {
+  backgroundColor: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(PropTypes.shape({
     user: PropTypes.shape({
       id: PropTypes.number.isRequired,

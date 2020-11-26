@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {isDouble} from "../../utils";
+import {AppRoute} from "../../const";
 
 const getElapsedTime = (duration, progress) => {
   const minutesElapsed = Math.floor((duration - progress) / 60);
@@ -31,7 +32,7 @@ const FullscreenPlayer = (props) => {
     <div className="player">
       {renderPlayer(currentFilm)}
 
-      <Link to="/" type="button" className="player__exit">Exit</Link>
+      <Link to={AppRoute.ROOT} type="button" className="player__exit">Exit</Link>
 
       <div className="player__controls">
         <div className="player__controls-row">
@@ -44,21 +45,21 @@ const FullscreenPlayer = (props) => {
 
         <div className="player__controls-row">
           <button onClick={onPlayBtnClick} type="button" className="player__play">
-            {isPlaying
-              ?
-              <React.Fragment>
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#pause"></use>
-                </svg>
-                <span>Pause</span>
-              </React.Fragment>
-              :
-              <React.Fragment>
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </React.Fragment>
+
+            {
+              isPlaying
+                ? <React.Fragment>
+                  <svg viewBox="0 0 19 19" width="19" height="19">
+                    <use xlinkHref="#pause"></use>
+                  </svg>
+                  <span>Pause</span>
+                </React.Fragment>
+                : <React.Fragment>
+                  <svg viewBox="0 0 19 19" width="19" height="19">
+                    <use xlinkHref="#play-s"></use>
+                  </svg>
+                  <span>Play</span>
+                </React.Fragment>
             }
           </button>
 
