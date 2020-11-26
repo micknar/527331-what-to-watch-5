@@ -1,18 +1,25 @@
-import {FilmsCount, RatingMarkType, FavoriteStatusCode} from "./const";
+import {
+  FilmsCount,
+  ratingMarkMap,
+  FavoriteStatusCode,
+  Radix,
+  WHITE_RGB_COLOR_CODE,
+  HOUR,
+} from "./const";
 
 export const getRatingMark = (rating) => {
   let mark = ``;
 
-  if (rating < 3) {
-    mark = RatingMarkType.BAD;
-  } else if (rating < 5) {
-    mark = RatingMarkType.NORMAL;
-  } else if (rating < 8) {
-    mark = RatingMarkType.GOOD;
-  } else if (rating < 10) {
-    mark = RatingMarkType.VERY_GOOD;
-  } else if (rating === 10) {
-    mark = RatingMarkType.AWESOME;
+  if (rating < ratingMarkMap.bad.value) {
+    mark = ratingMarkMap.bad.text;
+  } else if (rating < ratingMarkMap.normal.value) {
+    mark = ratingMarkMap.normal.text;
+  } else if (rating < ratingMarkMap.good.value) {
+    mark = ratingMarkMap.good.text;
+  } else if (rating < ratingMarkMap.veryGood.value) {
+    mark = ratingMarkMap.veryGood.text;
+  } else if (rating === ratingMarkMap.awesome.value) {
+    mark = ratingMarkMap.awesome.text;
   }
 
   return mark;
@@ -20,8 +27,8 @@ export const getRatingMark = (rating) => {
 
 export const getRuntime = (time) => {
   return {
-    hours: Math.floor(time / 60),
-    minutes: time % 60,
+    hours: Math.floor(time / HOUR),
+    minutes: time % HOUR,
   };
 };
 
@@ -41,8 +48,6 @@ export const getDate = (date) => {
   };
 };
 
-export const isDouble = (n) => n > 10 ? n : `0${n}`;
-
 export const getRenderedFilmsCount = (state) => {
   const count = state.renderedFilmsCount + FilmsCount.PER_STEP;
 
@@ -60,28 +65,36 @@ export const extend = (a, b) => {
 export const setFavoriteStatus = (isFavorite) => isFavorite ? FavoriteStatusCode.REMOVE : FavoriteStatusCode.ADD;
 
 export const shadeColor = (color, percent) => {
-  let R = parseInt(color.substring(1, 3), 16);
-  let G = parseInt(color.substring(3, 5), 16);
-  let B = parseInt(color.substring(5, 7), 16);
+  const parseRGBCode = (min, max) => parseInt(color.substring(min, max), Radix.HEXADECIMAL);
+  const shadeRGBcolor = (code) => parseInt((code * (100 + percent) / 100), Radix.DECIMAL);
+  const checkResult = (code) => (code < WHITE_RGB_COLOR_CODE) ? code : WHITE_RGB_COLOR_CODE;
+  const getHEXString = (code) => code.toString(Radix.HEXADECIMAL);
+  const getHEXCode = (code) => ((getHEXString(code).length === 1) ? `0` + getHEXString(code) : getHEXString(code));
 
-  R = parseInt((R * (100 + percent) / 100), 10);
-  G = parseInt((G * (100 + percent) / 100), 10);
-  B = parseInt((B * (100 + percent) / 100), 10);
+  let R = parseRGBCode(1, 3);
+  let G = parseRGBCode(3, 5);
+  let B = parseRGBCode(5, 7);
 
-  R = (R < 255) ? R : 255;
-  G = (G < 255) ? G : 255;
-  B = (B < 255) ? B : 255;
+  R = shadeRGBcolor(R);
+  G = shadeRGBcolor(G);
+  B = shadeRGBcolor(B);
 
-  const RR = ((R.toString(16).length === 1) ? `0` + R.toString(16) : R.toString(16));
-  const GG = ((G.toString(16).length === 1) ? `0` + G.toString(16) : G.toString(16));
-  const BB = ((B.toString(16).length === 1) ? `0` + B.toString(16) : B.toString(16));
+  R = checkResult(R);
+  G = checkResult(G);
+  B = checkResult(B);
+
+  const RR = getHEXCode(R);
+  const GG = getHEXCode(G);
+  const BB = getHEXCode(B);
 
   return `#` + RR + GG + BB;
 };
 
+export const isDouble = (n) => n > 10 ? n : `0${n}`;
+
 export const getElapsedTime = (duration, progress) => {
-  const minutesElapsed = Math.floor((duration - progress) / 60);
-  const secondsElapsed = Math.floor((duration - progress) % 60);
+  const minutesElapsed = Math.floor((duration - progress) / HOUR);
+  const secondsElapsed = Math.floor((duration - progress) % HOUR);
   const timeElapsed = `${isDouble(minutesElapsed)}:${isDouble(secondsElapsed)}`;
 
   return timeElapsed;
