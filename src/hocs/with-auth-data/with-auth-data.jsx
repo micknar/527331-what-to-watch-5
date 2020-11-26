@@ -5,8 +5,8 @@ const withAuthData = (Component) => {
     constructor(props) {
       super(props);
 
-      this.handleTextChange = this.handleTextChange.bind(this);
-      this.handleFormSubmit = this.handleFormSubmit.bind(this);
+      this._handleTextChange = this._handleTextChange.bind(this);
+      this._handleFormSubmit = this._handleFormSubmit.bind(this);
 
       this.state = {
         email: ``,
@@ -16,7 +16,7 @@ const withAuthData = (Component) => {
       };
     }
 
-    handleTextChange(evt) {
+    _handleTextChange(evt) {
       if (evt.target.type === `email`) {
         this.setState({
           email: evt.target.value,
@@ -31,7 +31,7 @@ const withAuthData = (Component) => {
       }
     }
 
-    handleFormSubmit(evt) {
+    _handleFormSubmit(evt) {
       evt.preventDefault();
     }
 
@@ -44,8 +44,8 @@ const withAuthData = (Component) => {
           password={password}
           isValidEmail={isValidEmail}
           isValidPassword={isValidPassword}
-          handleTextChange={this.handleTextChange}
-          handleFormSubmit={this.handleFormSubmit}
+          handleTextChange={this._handleTextChange}
+          handleFormSubmit={this._handleFormSubmit}
         />
       );
     }

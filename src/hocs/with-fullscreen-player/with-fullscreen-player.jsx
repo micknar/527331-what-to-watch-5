@@ -5,8 +5,8 @@ const withFullscreenPlayer = (Component) => {
     constructor(props) {
       super(props);
 
-      this.handlePlayBtnClick = this.handlePlayBtnClick.bind(this);
-      this.handleFullscreenBtnClick = this.handleFullscreenBtnClick.bind(this);
+      this._handlePlayBtnClick = this._handlePlayBtnClick.bind(this);
+      this._handleFullscreenBtnClick = this._handleFullscreenBtnClick.bind(this);
 
       this.videoRef = createRef();
 
@@ -44,13 +44,13 @@ const withFullscreenPlayer = (Component) => {
       this.videoRef.current.ontimeupdate = null;
     }
 
-    handlePlayBtnClick() {
+    _handlePlayBtnClick() {
       this.setState({
         isPlaying: !this.state.isPlaying
       });
     }
 
-    handleFullscreenBtnClick() {
+    _handleFullscreenBtnClick() {
       this.videoRef.current.requestFullscreen();
     }
 
@@ -63,8 +63,8 @@ const withFullscreenPlayer = (Component) => {
           isPlaying={isPlaying}
           duration={duration}
           progress={progress}
-          onPlayBtnClick={this.handlePlayBtnClick}
-          onFullscreenClick={this.handleFullscreenBtnClick}
+          onPlayBtnClick={this._handlePlayBtnClick}
+          onFullscreenClick={this._handleFullscreenBtnClick}
           renderPlayer={(film) => {
             return (
               <video
