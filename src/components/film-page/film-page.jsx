@@ -11,7 +11,7 @@ import AddToFavoriteBtn from '../add-to-favorite-btn/add-to-favorite-btn';
 import LoadingPage from "../loading-page/loading-page";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
-import {filmsCount, AppRoute, AuthorizationStatus} from "../../const";
+import {filmsCount, AppRoute} from "../../const";
 import {fetchFilmById} from "../../store/api-actions";
 import {setIsFilmLoading} from "../../store/action";
 
@@ -19,7 +19,7 @@ const FilmsListWrapped = withActiveCard(FilmsList);
 const FilmPageTabsWrapped = withActiveTab(FilmPageTabs);
 
 const FilmPage = (props) => {
-  const {films, onFilmCardClick, currentFilmId, authorizationStatus, currentFilm, getFilm, isFilmLoading} = props;
+  const {films, onFilmCardClick, currentFilmId, currentFilm, getFilm, isFilmLoading} = props;
 
   useEffect(() => {
     getFilm(currentFilmId);
@@ -70,14 +70,7 @@ const FilmPage = (props) => {
                   isFavorite={isFavorite}
                 />
 
-                {
-                  authorizationStatus === AuthorizationStatus.AUTH
-                    ?
-                    <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
-                    :
-                    ``
-                }
-
+                <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -110,9 +103,8 @@ const FilmPage = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE, USER}) => ({
+const mapStateToProps = ({APP_STATE}) => ({
   films: APP_STATE.films,
-  authorizationStatus: USER.authorizationStatus,
   currentFilm: APP_STATE.film,
   isFilmLoading: APP_STATE.isFilmLoading,
 });
@@ -142,7 +134,6 @@ FilmPage.propTypes = {
   }).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
   getFilm: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
   isFilmLoading: PropTypes.bool.isRequired,
 };
 

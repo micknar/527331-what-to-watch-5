@@ -78,14 +78,16 @@ const App = (props) => {
           )}
         />
 
-        <Route
+        <PrivateRoute
           exact
           path={AppRoute.REVIEW}
-          render={({match}) => (
-            <AddReview
-              currentFilmId={+match.params.id}
-            />
-          )}
+          render={({match}) => {
+            return (
+              <AddReview
+                currentFilmId={+match.params.id}
+              />
+            );
+          }}
         />
 
         <Route
