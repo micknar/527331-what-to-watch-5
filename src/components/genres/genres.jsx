@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {changeGenre, clearRenderedFilms} from "../../store/action";
 import {getFilteredFilms} from "../../store/reducers/app-state/selectors";
-import {getGenreInPlural, getFilterItemClass} from "../../utils";
+import {getGenreInPlural} from "../../utils";
 
 const Genres = (props) => {
   const {films, activeGenre, onGenreClick} = props;
@@ -15,7 +15,7 @@ const Genres = (props) => {
         return (
           <li
             key={genre + i}
-            className={getFilterItemClass(genre, activeGenre)}
+            className={activeGenre === genre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}
           >
             <a
               href="#"
