@@ -16,7 +16,7 @@ import {AppRoute} from "../../const";
 const FilmsListWrapped = withActiveCard(FilmsList);
 
 const Main = (props) => {
-  const {promoFilm, filteredFilms, renderedFilmsCount, onFilmCardClick} = props;
+  const {promoFilm, filteredFilms, renderedFilmsCount, onCardClick} = props;
   const {posterImage, name, genre, backgroundImage, backgroundColor, released, id, isFavorite} = promoFilm;
 
   return (
@@ -72,7 +72,7 @@ const Main = (props) => {
 
           <FilmsListWrapped
             films={filteredFilms.slice(0, renderedFilmsCount)}
-            onFilmCardClick={onFilmCardClick}
+            onCardClick={onCardClick}
           />
 
           {renderedFilmsCount < filteredFilms.length && <ShowMoreBtn />}
@@ -83,12 +83,6 @@ const Main = (props) => {
     </>
   );
 };
-
-const mapStateToProps = ({APP_STATE}) => ({
-  filteredFilms: getFilteredFilms({APP_STATE}),
-  renderedFilmsCount: APP_STATE.renderedFilmsCount,
-  promoFilm: APP_STATE.promoFilm,
-});
 
 Main.propTypes = {
   promoFilm: PropTypes.shape({
@@ -111,8 +105,14 @@ Main.propTypes = {
   })).isRequired,
 
   renderedFilmsCount: PropTypes.number.isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  filteredFilms: getFilteredFilms({APP_STATE}),
+  renderedFilmsCount: APP_STATE.renderedFilmsCount,
+  promoFilm: APP_STATE.promoFilm,
+});
 
 export {Main};
 export default connect(mapStateToProps)(Main);

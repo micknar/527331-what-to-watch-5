@@ -22,7 +22,7 @@ const SignInWrapped = withAuthData(SignIn);
 const App = (props) => {
   const {isFilmsLoading, isPromoLoading, isLoadingError, isCheckingAuth} = props;
 
-  if (isCheckingAuth && (isFilmsLoading || isPromoLoading)) {
+  if (isCheckingAuth || isFilmsLoading || isPromoLoading) {
     return (
       <LoadingPage />
     );
@@ -40,7 +40,7 @@ const App = (props) => {
           path={AppRoute.ROOT}
           render={({history}) => (
             <Main
-              onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
+              onCardClick={(id) => history.push(AppRoute.FILMS + id)}
             />
           )}
         />
@@ -50,7 +50,7 @@ const App = (props) => {
           path={AppRoute.LOGIN}
           render={({history}) => (
             <SignInWrapped
-              onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
+              onCardClick={(id) => history.push(AppRoute.FILMS + id)}
             />
           )}
         />
@@ -61,7 +61,7 @@ const App = (props) => {
           render={({history}) => {
             return (
               <MyList
-                onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
+                onCardClick={(id) => history.push(AppRoute.FILMS + id)}
               />
             );
           }}
@@ -73,7 +73,7 @@ const App = (props) => {
           render={({history, match}) => (
             <FilmPage
               currentFilmId={+match.params.id}
-              onFilmCardClick={(id) => history.push(AppRoute.FILMS + id)}
+              onCardClick={(id) => history.push(AppRoute.FILMS + id)}
             />
           )}
         />
@@ -104,19 +104,19 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE}) => ({
-  isFilmsLoading: APP_STATE.isFilmsLoading,
-  isPromoLoading: APP_STATE.isPromoLoading,
-  isLoadingError: APP_STATE.isLoadingError,
-  isCheckingAuth: APP_STATE.isCheckingAuth,
-});
-
 App.propTypes = {
   isFilmsLoading: PropTypes.bool.isRequired,
   isPromoLoading: PropTypes.bool.isRequired,
   isLoadingError: PropTypes.bool.isRequired,
   isCheckingAuth: PropTypes.bool.isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  isFilmsLoading: APP_STATE.isFilmsLoading,
+  isPromoLoading: APP_STATE.isPromoLoading,
+  isLoadingError: APP_STATE.isLoadingError,
+  isCheckingAuth: APP_STATE.isCheckingAuth,
+});
 
 export {App};
 export default connect(mapStateToProps)(App);

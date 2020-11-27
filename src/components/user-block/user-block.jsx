@@ -22,15 +22,15 @@ const UserBlock = (props) => {
   );
 };
 
-const mapStateToProps = ({USER}) => ({
-  authorizationStatus: USER.authorizationStatus,
-  avatar: USER.userAvatar,
-});
-
 UserBlock.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = ({USER}) => ({
+  authorizationStatus: USER.authorizationStatus,
+  avatar: USER.userAvatar,
+});
 
 export {UserBlock};
 export default connect(mapStateToProps)(UserBlock);

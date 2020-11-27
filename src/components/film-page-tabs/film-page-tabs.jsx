@@ -7,7 +7,7 @@ import FilmPageReviews from '../film-page-reviews/film-page-reviews';
 import {FilmPageNav, AppRoute} from "../../const";
 
 const FilmPageTabs = (props) => {
-  const {film, activeTab, handleActiveTab} = props;
+  const {film, activeTab, onActiveTabClick} = props;
   const {id, description, rating, runTime, director, starring, genre, released, ratingMark, backgroundColor} = film;
 
   const getFilmInfo = () => {
@@ -59,7 +59,7 @@ const FilmPageTabs = (props) => {
                   className="movie-nav__link"
                   onClick={(evt) => {
                     evt.preventDefault();
-                    handleActiveTab(value);
+                    onActiveTabClick(value);
                   }}>{value}</a>
               </li>
             );
@@ -90,7 +90,7 @@ FilmPageTabs.propTypes = {
     }).isRequired,
   }).isRequired,
   activeTab: PropTypes.string.isRequired,
-  handleActiveTab: PropTypes.func.isRequired,
+  onActiveTabClick: PropTypes.func.isRequired,
 };
 
 export default FilmPageTabs;

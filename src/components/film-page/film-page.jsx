@@ -11,7 +11,7 @@ import AddToFavoriteBtn from '../add-to-favorite-btn/add-to-favorite-btn';
 import LoadingPage from "../loading-page/loading-page";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
-import {filmsCount, AppRoute} from "../../const";
+import {FilmsCount, AppRoute} from "../../const";
 import {fetchFilmById} from "../../store/api-actions";
 import {setIsFilmLoading} from "../../store/action";
 
@@ -19,14 +19,14 @@ const FilmsListWrapped = withActiveCard(FilmsList);
 const FilmPageTabsWrapped = withActiveTab(FilmPageTabs);
 
 const FilmPage = (props) => {
-  const {films, onFilmCardClick, currentFilmId, currentFilm, getFilm, isFilmLoading} = props;
+  const {films, onCardClick, currentFilmId, currentFilm, getFilm, isFilmLoading} = props;
 
   useEffect(() => {
     getFilm(currentFilmId);
   }, [currentFilmId]);
 
   const {id, name, posterImage, backgroundImage, backgroundColor, genre, released, isFavorite} = currentFilm;
-  const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, filmsCount.SIMILAR);
+  const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, FilmsCount.SIMILAR);
 
   if (isFilmLoading) {
     return (
@@ -93,7 +93,7 @@ const FilmPage = (props) => {
 
           <FilmsListWrapped
             films={similarFilms}
-            onFilmCardClick={onFilmCardClick}
+            onCardClick={onCardClick}
           />
         </section>
 
@@ -102,19 +102,6 @@ const FilmPage = (props) => {
     </>
   );
 };
-
-const mapStateToProps = ({APP_STATE}) => ({
-  films: APP_STATE.films,
-  currentFilm: APP_STATE.film,
-  isFilmLoading: APP_STATE.isFilmLoading,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getFilm(id) {
-    dispatch(setIsFilmLoading(true));
-    dispatch(fetchFilmById(id));
-  }
-});
 
 FilmPage.propTypes = {
   currentFilmId: PropTypes.number.isRequired,
@@ -132,10 +119,23 @@ FilmPage.propTypes = {
     released: PropTypes.number,
     isFavorite: PropTypes.bool,
   }).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
   getFilm: PropTypes.func.isRequired,
   isFilmLoading: PropTypes.bool.isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  films: APP_STATE.films,
+  currentFilm: APP_STATE.film,
+  isFilmLoading: APP_STATE.isFilmLoading,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getFilm(id) {
+    dispatch(setIsFilmLoading(true));
+    dispatch(fetchFilmById(id));
+  }
+});
 
 export {FilmPage};
 export default connect(mapStateToProps, mapDispatchToProps)(FilmPage);

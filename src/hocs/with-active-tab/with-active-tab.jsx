@@ -6,14 +6,14 @@ const withActiveTab = (Component) => {
     constructor(props) {
       super(props);
 
-      this.handleActiveTab = this.handleActiveTab.bind(this);
+      this._onActiveTabClickHandler = this._onActiveTabClickHandler.bind(this);
 
       this.state = {
         filmTab: FilmPageNav.OVERVIEW,
       };
     }
 
-    handleActiveTab(value) {
+    _onActiveTabClickHandler(value) {
       this.setState({
         filmTab: value,
       });
@@ -25,7 +25,7 @@ const withActiveTab = (Component) => {
       return (
         <Component {...this.props}
           activeTab={activeTab}
-          handleActiveTab={this.handleActiveTab}
+          onActiveTabClick={this._onActiveTabClickHandler}
         />
       );
     }

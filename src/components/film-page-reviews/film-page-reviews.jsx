@@ -41,16 +41,6 @@ const FilmPageReviews = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE}) => ({
-  comments: APP_STATE.comments,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  loadComments(id) {
-    dispatch(fetchComments(id));
-  }
-});
-
 FilmPageReviews.propTypes = {
   backgroundColor: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(PropTypes.shape({
@@ -68,6 +58,16 @@ FilmPageReviews.propTypes = {
   filmId: PropTypes.number.isRequired,
   loadComments: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  comments: APP_STATE.comments,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadComments(id) {
+    dispatch(fetchComments(id));
+  }
+});
 
 export {FilmPageReviews};
 export default connect(mapStateToProps, mapDispatchToProps)(FilmPageReviews);

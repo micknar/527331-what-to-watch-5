@@ -2,19 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {isDouble} from "../../utils";
+import {getElapsedTime} from "../../utils";
 import {AppRoute} from "../../const";
 
-const getElapsedTime = (duration, progress) => {
-  const minutesElapsed = Math.floor((duration - progress) / 60);
-  const secondsElapsed = Math.floor((duration - progress) % 60);
-  const timeElapsed = `${isDouble(minutesElapsed)}:${isDouble(secondsElapsed)}`;
-
-  return timeElapsed;
-};
-
 const FullscreenPlayer = (props) => {
-  const {films, promoFilm, currentFilmId, isPlaying, duration, progress, onPlayBtnClick, onFullscreenClick, renderPlayer} = props;
+  const {films, promoFilm, currentFilmId, isPlaying, duration, progress, onPlayBtnClick, onFullscreenBtnClick, renderPlayer} = props;
 
   const getCurrentFilm = () => {
     if (currentFilmId === promoFilm.id) {
@@ -65,7 +57,7 @@ const FullscreenPlayer = (props) => {
 
           <div className="player__name">{name}</div>
 
-          <button onClick={onFullscreenClick} type="button" className="player__full-screen">
+          <button onClick={onFullscreenBtnClick} type="button" className="player__full-screen">
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use xlinkHref="#full-screen"></use>
             </svg>
@@ -76,11 +68,6 @@ const FullscreenPlayer = (props) => {
     </div>
   );
 };
-
-const mapStateToProps = ({APP_STATE}) => ({
-  films: APP_STATE.films,
-  promoFilm: APP_STATE.promoFilm,
-});
 
 FullscreenPlayer.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
@@ -98,9 +85,14 @@ FullscreenPlayer.propTypes = {
   duration: PropTypes.number.isRequired,
   progress: PropTypes.number.isRequired,
   onPlayBtnClick: PropTypes.func.isRequired,
-  onFullscreenClick: PropTypes.func.isRequired,
+  onFullscreenBtnClick: PropTypes.func.isRequired,
   renderPlayer: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  films: APP_STATE.films,
+  promoFilm: APP_STATE.promoFilm,
+});
 
 export {FullscreenPlayer};
 export default connect(mapStateToProps)(FullscreenPlayer);

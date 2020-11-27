@@ -1,6 +1,5 @@
 import React from "react";
 import ReactLoading from 'react-loading';
-// import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import PageFooter from "../page-footer/page-footer";
 
 const LoadingPage = () => {

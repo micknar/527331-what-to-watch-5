@@ -1,14 +1,34 @@
-export const filmsCount = {
-  SIMILAR: 4,
-  PER_STEP: 8,
+export const HOUR = 60;
+export const WHITE_RGB_COLOR_CODE = 255;
+
+export const RATING_MARKS = [1, 2, 3, 4, 5];
+
+export const ratingMarkMap = {
+  'bad': {
+    text: `Bad`,
+    value: 3,
+  },
+  'normal': {
+    text: `Normal`,
+    value: 5,
+  },
+  'good': {
+    text: `Good`,
+    value: 8,
+  },
+  'veryGood': {
+    text: `Very good`,
+    value: 10,
+  },
+  'awesome': {
+    text: `Awesome`,
+    value: 10,
+  },
 };
 
-export const RatingMarkType = {
-  BAD: `Bad`,
-  NORMAL: `Normal`,
-  GOOD: `Good`,
-  VERY_GOOD: `Very good`,
-  AWESOME: `Awesome`,
+export const FilmsCount = {
+  SIMILAR: 4,
+  PER_STEP: 8,
 };
 
 export const FilmPageNav = {
@@ -49,4 +69,9 @@ export const FavoriteStatusCode = {
 export const NameSpace = {
   APP_STATE: `APP_STATE`,
   USER: `USER`,
+};
+
+export const Radix = {
+  DECIMAL: 10,
+  HEXADECIMAL: 16,
 };

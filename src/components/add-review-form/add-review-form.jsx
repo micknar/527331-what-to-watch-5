@@ -5,8 +5,7 @@ import {connect} from "react-redux";
 import {submitReview} from "../../store/api-actions";
 import {setIsReviewSubmitting} from "../../store/action";
 import {shadeColor} from "../../utils";
-
-const MARKS = [1, 2, 3, 4, 5];
+import {RATING_MARKS} from "../../const";
 
 const AddReviewForm = (props) => {
   const {
@@ -15,17 +14,17 @@ const AddReviewForm = (props) => {
     comment,
     isValid,
     backgroundColor,
-    handleRatingChange,
-    handleTextChange,
-    handleFormSubmit,
+    onRatingChange,
+    onCommentChange,
+    onFormSubmit,
     isReviewSubmitting,
     isReviewSubmittingError,
-    onPostBtnClick
+    sendReview
   } = props;
 
   const handlePostBtnClick = (evt) => {
     evt.preventDefault();
-    onPostBtnClick(filmId, {rating, comment});
+    sendReview(filmId, {rating, comment});
   };
 
   const checkSubmittingStatus = () => {
@@ -48,11 +47,11 @@ const AddReviewForm = (props) => {
     <form
       action="#"
       className="add-review__form"
-      onSubmit={handleFormSubmit}
+      onSubmit={onFormSubmit}
     >
       <div className="rating">
         <div className="rating__stars">
-          {MARKS.map((mark) => {
+          {RATING_MARKS.map((mark) => {
             return (
               <React.Fragment key={mark}>
                 <input
@@ -62,7 +61,7 @@ const AddReviewForm = (props) => {
                   name="rating"
                   value={mark}
                   checked={rating === mark}
-                  onChange={handleRatingChange}
+                  onChange={onRatingChange}
                   disabled={isReviewSubmitting}
                 />
                 <label className="rating__label" htmlFor={`star-${mark}`}>Rating {mark}</label>
@@ -78,7 +77,7 @@ const AddReviewForm = (props) => {
           name="review-text"
           id="review-text"
           placeholder="Review text"
-          onChange={handleTextChange}
+          onChange={onCommentChange}
           minLength="50"
           maxLength="400"
           disabled={isReviewSubmitting}
@@ -98,31 +97,31 @@ const AddReviewForm = (props) => {
   );
 };
 
+AddReviewForm.propTypes = {
+  filmId: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
+  comment: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
+  onRatingChange: PropTypes.func.isRequired,
+  onCommentChange: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+  sendReview: PropTypes.func.isRequired,
+  isValid: PropTypes.bool.isRequired,
+  isReviewSubmitting: PropTypes.bool.isRequired,
+  isReviewSubmittingError: PropTypes.bool.isRequired,
+};
+
 const mapStateToProps = ({APP_STATE}) => ({
   isReviewSubmitting: APP_STATE.isReviewSubmitting,
   isReviewSubmittingError: APP_STATE.isReviewSubmittingError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onPostBtnClick(filmId, {rating, comment}) {
+  sendReview(filmId, {rating, comment}) {
     dispatch(setIsReviewSubmitting(true));
     dispatch(submitReview(filmId, {rating, comment}));
   }
 });
-
-AddReviewForm.propTypes = {
-  filmId: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  comment: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
-  handleRatingChange: PropTypes.func.isRequired,
-  handleTextChange: PropTypes.func.isRequired,
-  handleFormSubmit: PropTypes.func.isRequired,
-  onPostBtnClick: PropTypes.func.isRequired,
-  isValid: PropTypes.bool.isRequired,
-  isReviewSubmitting: PropTypes.bool.isRequired,
-  isReviewSubmittingError: PropTypes.bool.isRequired,
-};
 
 export {AddReviewForm};
 export default connect(mapStateToProps, mapDispatchToProps)(AddReviewForm);

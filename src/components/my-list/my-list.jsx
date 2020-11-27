@@ -11,7 +11,7 @@ import {fetchFavoriteFilms} from "../../store/api-actions";
 const FilmsListWrapped = withActiveCard(FilmsList);
 
 const MyList = (props) => {
-  const {favoriteFilms, onFilmCardClick, getFavoriteFilms} = props;
+  const {favoriteFilms, onCardClick, getFavoriteFilms} = props;
 
   useEffect(() => {
     getFavoriteFilms();
@@ -29,13 +29,25 @@ const MyList = (props) => {
       <section className="catalog">
         <FilmsListWrapped
           films={favoriteFilms}
-          onFilmCardClick={onFilmCardClick}
+          onCardClick={onCardClick}
         />
       </section>
 
       <PageFooter />
     </div>
   );
+};
+
+MyList.propTypes = {
+  favoriteFilms: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+  })).isRequired,
+  onCardClick: PropTypes.func.isRequired,
+  getFavoriteFilms: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({USER}) => ({
@@ -47,18 +59,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchFavoriteFilms());
   }
 });
-
-MyList.propTypes = {
-  favoriteFilms: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    previewImage: PropTypes.string.isRequired,
-    previewVideoLink: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-  })).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
-  getFavoriteFilms: PropTypes.func.isRequired,
-};
 
 export {MyList};
 export default connect(mapStateToProps, mapDispatchToProps)(MyList);

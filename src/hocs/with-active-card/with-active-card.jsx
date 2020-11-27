@@ -5,8 +5,8 @@ const withActiveCard = (Component) => {
     constructor(props) {
       super(props);
 
-      this.handleActiveCard = this.handleActiveCard.bind(this);
-      this.handleMouseLeave = this.handleMouseLeave.bind(this);
+      this._onCardMouseOverHandler = this._onCardMouseOverHandler.bind(this);
+      this._onCardMouseOutHandler = this._onCardMouseOutHandler.bind(this);
 
       this.hoverTimeout = null;
 
@@ -15,14 +15,14 @@ const withActiveCard = (Component) => {
       };
     }
 
-    handleActiveCard(id) {
+    _onCardMouseOverHandler(id) {
       this.hoverTimeout = setTimeout(() =>
         this.setState({
           activeCard: id
         }), 1000);
     }
 
-    handleMouseLeave() {
+    _onCardMouseOutHandler() {
       clearTimeout(this._hoverTimeout);
       this.hoverTimeout = null;
 
@@ -37,8 +37,8 @@ const withActiveCard = (Component) => {
       return (
         <Component {...this.props}
           activeCard={activeCard}
-          handleActiveCard={this.handleActiveCard}
-          handleMouseLeave={this.handleMouseLeave}
+          onCardMouseOver={this._onCardMouseOverHandler}
+          onCardMouseOut={this._onCardMouseOutHandler}
         />
       );
     }

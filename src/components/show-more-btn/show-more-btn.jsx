@@ -17,15 +17,15 @@ const ShowMoreBtn = (props) => {
   );
 };
 
+ShowMoreBtn.propTypes = {
+  onShowMoreBtnClick: PropTypes.func.isRequired,
+};
+
 const mapDispatchToProps = (dispatch) => ({
   onShowMoreBtnClick() {
     dispatch(showMoreFilms());
   }
 });
-
-ShowMoreBtn.propTypes = {
-  onShowMoreBtnClick: PropTypes.func.isRequired,
-};
 
 export {ShowMoreBtn};
 export default connect(null, mapDispatchToProps)(ShowMoreBtn);

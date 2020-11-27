@@ -44,10 +44,6 @@ const AddReview = (props) => {
   );
 };
 
-const mapStateToProps = ({APP_STATE}) => ({
-  films: APP_STATE.films,
-});
-
 AddReview.propTypes = {
   currentFilmId: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
@@ -58,6 +54,10 @@ AddReview.propTypes = {
     backgroundColor: PropTypes.string.isRequired,
   })).isRequired,
 };
+
+const mapStateToProps = ({APP_STATE}) => ({
+  films: APP_STATE.films,
+});
 
 export {AddReview};
 export default connect(mapStateToProps)(AddReview);
