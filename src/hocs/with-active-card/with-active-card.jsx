@@ -9,37 +9,36 @@ const withActiveCard = (Component) => {
       this._onCardMouseOverHandler = this._onCardMouseOverHandler.bind(this);
       this._onCardMouseOutHandler = this._onCardMouseOutHandler.bind(this);
 
-      this._hoverTimeout = null;
-
       this.state = {
         activeCard: -1,
+        hoverTimeout: null,
       };
     }
 
     componentWillUnmount() {
-      if (this._hoverTimeout) {
-        clearTimeout(this._hoverTimeout);
-      }
+      this.setState({
+        hoverTimeout: null,
+      });
+
+      clearTimeout(this.state.hoverTimeout);
     }
 
     _onCardMouseOverHandler(id) {
-      if (this._hoverTimeout) {
-        clearTimeout(this.timerID);
-      }
-
-      this._hoverTimeout = setTimeout(() =>
-        this.setState({
-          activeCard: id
-        }), CARD_HOVER_TIMEOUT);
+      this.setState({
+        hoverTimeout: setTimeout(() =>
+          this.setState({
+            activeCard: id,
+          }), CARD_HOVER_TIMEOUT),
+      });
     }
 
     _onCardMouseOutHandler() {
       this.setState({
         activeCard: -1,
+        hoverTimeout: null,
       });
 
-      clearTimeout(this._hoverTimeout);
-      this._hoverTimeout = null;
+      clearTimeout(this.state.hoverTimeout);
     }
 
     render() {
