@@ -9,6 +9,7 @@ import PageFooter from "../page-footer/page-footer";
 import FilmPageTabs from '../film-page-tabs/film-page-tabs';
 import AddToFavoriteBtn from '../add-to-favorite-btn/add-to-favorite-btn';
 import LoadingPage from "../loading-page/loading-page";
+import NotFoundPage from "../not-found-page/not-found-page";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
 import {FilmsCount, AppRoute} from "../../const";
@@ -24,6 +25,12 @@ const FilmPage = (props) => {
   useEffect(() => {
     getFilm(currentFilmId);
   }, [currentFilmId]);
+
+  if (currentFilmId > films.length) {
+    return (
+      <NotFoundPage />
+    );
+  }
 
   const {id, name, posterImage, backgroundImage, backgroundColor, genre, released, isFavorite} = currentFilm;
   const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, FilmsCount.SIMILAR);

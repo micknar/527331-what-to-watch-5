@@ -46,7 +46,7 @@ const withFullscreenPlayer = (Component) => {
 
     _onPlayBtnClickHandler() {
       this.setState({
-        isPlaying: !this.state.isPlaying
+        isPlaying: !this.state.isPlaying,
       });
     }
 

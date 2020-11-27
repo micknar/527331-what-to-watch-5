@@ -12,6 +12,7 @@ import FullscreenPlayer from "../fullscreen-player/fullscreen-player";
 import PrivateRoute from "../private-route/private-route";
 import LoadingPage from "../loading-page/loading-page";
 import ErrorPage from "../error-page/error-page";
+import NotFoundPage from "../not-found-page/not-found-page";
 import withFullscreenPlayer from "../../hocs/with-fullscreen-player/with-fullscreen-player";
 import withAuthData from "../../hocs/with-auth-data/with-auth-data";
 import {AppRoute} from "../../const";
@@ -99,6 +100,10 @@ const App = (props) => {
             />
           )}
         />
+
+        <Route>
+          <NotFoundPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
