@@ -12,6 +12,7 @@ const withFullscreenPlayer = (Component) => {
 
       this.state = {
         isPlaying: true,
+        isLoading: true,
         duration: 0,
         progress: 0,
       };
@@ -20,12 +21,14 @@ const withFullscreenPlayer = (Component) => {
     componentDidMount() {
       this._videoRef.current.oncanplay = () => {
         this.setState({
+          isLoading: false,
           duration: Math.floor(this._videoRef.current.duration),
         });
       };
 
       this._videoRef.current.ontimeupdate = () => {
         this.setState({
+          isLoading: false,
           progress: Math.floor(this._videoRef.current.currentTime),
         });
       };
@@ -55,12 +58,13 @@ const withFullscreenPlayer = (Component) => {
     }
 
     render() {
-      const {isPlaying, duration, progress} = this.state;
+      const {isPlaying, isLoading, duration, progress} = this.state;
 
       return (
         <Component
           {...this.props}
           isPlaying={isPlaying}
+          isLoading={isLoading}
           duration={duration}
           progress={progress}
           onPlayBtnClick={this._onPlayBtnClickHandler}
