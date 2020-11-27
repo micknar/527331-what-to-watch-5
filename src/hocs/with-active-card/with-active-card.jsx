@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {CARD_HOVER_TIMEOUT} from "../../const";
 
 const withActiveCard = (Component) => {
   class WithActiveCard extends PureComponent {
@@ -8,27 +9,37 @@ const withActiveCard = (Component) => {
       this._onCardMouseOverHandler = this._onCardMouseOverHandler.bind(this);
       this._onCardMouseOutHandler = this._onCardMouseOutHandler.bind(this);
 
-      this.hoverTimeout = null;
+      this._hoverTimeout = null;
 
       this.state = {
         activeCard: -1,
       };
     }
 
+    componentWillUnmount() {
+      if (this._hoverTimeout) {
+        clearTimeout(this._hoverTimeout);
+      }
+    }
+
     _onCardMouseOverHandler(id) {
-      this.hoverTimeout = setTimeout(() =>
+      if (this._hoverTimeout) {
+        clearTimeout(this.timerID);
+      }
+
+      this._hoverTimeout = setTimeout(() =>
         this.setState({
           activeCard: id
-        }), 1000);
+        }), CARD_HOVER_TIMEOUT);
     }
 
     _onCardMouseOutHandler() {
-      clearTimeout(this._hoverTimeout);
-      this.hoverTimeout = null;
-
       this.setState({
         activeCard: -1,
       });
+
+      clearTimeout(this._hoverTimeout);
+      this._hoverTimeout = null;
     }
 
     render() {
