@@ -26,7 +26,7 @@ const FilmPage = (props) => {
     getFilm(currentFilmId);
   }, [currentFilmId]);
 
-  if (currentFilmId > films.length) {
+  if (currentFilmId > films.length || !currentFilmId) {
     return (
       <NotFoundPage />
     );

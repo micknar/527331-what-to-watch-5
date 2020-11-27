@@ -18,8 +18,8 @@ const NotFoundPage = () => {
 
       <div className="sign-in user-page__content">
         <div className="sign-in__message">
-          <p style={{marginBottom: "60px", fontSize: "46px"}}>Page not found.</p>
-          <Link to={AppRoute.ROOT} className="sign-in__btn" style={{textDecoration: "none"}}>Go to Home</Link>
+          <p style={{marginBottom: `60px`, fontSize: `46px`}}>Page not found.</p>
+          <Link to={AppRoute.ROOT} className="sign-in__btn" style={{textDecoration: `none`}}>Go to Home</Link>
         </div>
       </div>
 
