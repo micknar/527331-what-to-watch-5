@@ -9,8 +9,11 @@ it(`Should VideoPreview render correctly`, () => {
         <VideoPreview
           previewImage={films[0].previewImage}
           previewVideoLink={films[0].previewVideoLink}
-        />
-    )
+        />, {
+          createNodeMock() {
+            return {};
+          }
+        })
     .toJSON();
 
   expect(tree).toMatchSnapshot();

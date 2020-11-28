@@ -46,7 +46,7 @@ exports[`Should FilmPageTabs render correctly 1`] = `
     </ul>
   </nav>
   <FilmPageReviews
-    backgroundColor="#73B39A"
+    backgroundColor="#4aa2e5"
     filmId={1}
   />
 </div>
