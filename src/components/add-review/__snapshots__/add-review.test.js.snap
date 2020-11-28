@@ -44,7 +44,7 @@ exports[`Should AddReview render correctly 1`] = `
             "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/bronson.jpg",
             "previewVideoLink": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
             "rating": 8.9,
-            "ratingMark": "Booring",
+            "ratingMark": "Very good",
             "released": 1996,
             "runTime": Object {
               "hours": 2,

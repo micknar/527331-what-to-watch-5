@@ -16,7 +16,7 @@ Array [
       <span
         className="movie-rating__level"
       >
-        Booring
+        Very good
       </span>
       <span
         className="movie-rating__count"
