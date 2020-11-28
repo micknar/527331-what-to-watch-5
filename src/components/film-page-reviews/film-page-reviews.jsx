@@ -14,25 +14,25 @@ const FilmPageReviews = (props) => {
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
-        {comments.map((review, i) => {
+        {comments.map((comment, i) => {
           return (
             <div
               className="review"
-              key={`${i}-${review.user.id}`}
+              key={`${i}-${comment.user.id}`}
               style={{borderBottomColor: shadeColor(backgroundColor, -20)}}
             >
               <blockquote className="review__quote">
-                <p className="review__text">{review.comment}</p>
+                <p className="review__text">{comment.comment}</p>
 
                 <footer className="review__details">
-                  <cite className="review__author">{review.user.name}</cite>
-                  <time className="review__date" dateTime={review.date.dateTime}>
-                    {review.date.humanizeDate}
+                  <cite className="review__author">{comment.user.name}</cite>
+                  <time className="review__date" dateTime={comment.date.dateTime}>
+                    {comment.date.humanizeDate}
                   </time>
                 </footer>
               </blockquote>
 
-              <div className="review__rating">{review.rating}</div>
+              <div className="review__rating">{comment.rating}</div>
             </div>
           );
         })}

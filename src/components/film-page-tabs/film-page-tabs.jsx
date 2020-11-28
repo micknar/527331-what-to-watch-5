@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Redirect} from 'react-router-dom';
-import FilmPageOverview from '../film-page-overview/film-page-overview';
-import FilmPageDetails from '../film-page-details/film-page-details';
-import FilmPageReviews from '../film-page-reviews/film-page-reviews';
+import {Redirect} from "react-router-dom";
+import FilmPageOverview from "../film-page-overview/film-page-overview";
+import FilmPageDetails from "../film-page-details/film-page-details";
+import FilmPageReviews from "../film-page-reviews/film-page-reviews";
 import {FilmPageNav, AppRoute} from "../../const";
 
 const FilmPageTabs = (props) => {

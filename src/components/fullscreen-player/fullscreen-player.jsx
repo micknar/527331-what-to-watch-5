@@ -1,13 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {getElapsedTime} from "../../utils";
 import {AppRoute} from "../../const";
 
 const FullscreenPlayer = (props) => {
-  const {films, promoFilm, currentFilmId, isPlaying, isLoading, duration, progress, onPlayBtnClick, onFullscreenBtnClick, renderPlayer} = props;
+  const {
+    films,
+    promoFilm,
+    currentFilmId,
+    isPlaying,
+    isLoading,
+    duration,
+    progress,
+    onPlayBtnClick,
+    onFullscreenBtnClick,
+    renderPlayer
+  } = props;
 
   const getCurrentFilm = () => {
     if (currentFilmId === promoFilm.id) {

@@ -1,5 +1,5 @@
 import React from "react";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import PageFooter from "../page-footer/page-footer";
 
 const LoadingPage = () => {

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should FilmCard render correctly When mouse is not over the card 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  data-id={1}
+  onClick={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <div
+    className="small-movie-card__image"
+  >
+    <img
+      alt="Bronson"
+      height="175"
+      src="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/bronson.jpg"
+      width="280"
+    />
+  </div>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="/films/1"
+      onClick={[Function]}
+    >
+      Bronson
+    </a>
+  </h3>
+</article>
+`;
+
+exports[`Should FilmCard render correctly When mouse is over the card 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  data-id={1}
+  onClick={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <div
+    className="small-movie-card__image"
+  >
+    <VideoPreview
+      previewImage="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/bronson.jpg"
+      previewVideoLink="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+    />
+  </div>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="/films/1"
+      onClick={[Function]}
+    >
+      Bronson
+    </a>
+  </h3>
+</article>
+`;

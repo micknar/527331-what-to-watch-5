@@ -8,7 +8,7 @@ import ShowMoreBtn from "../show-more-btn/show-more-btn";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
-import AddToFavoriteBtn from '../add-to-favorite-btn/add-to-favorite-btn';
+import AddToFavoriteBtn from "../add-to-favorite-btn/add-to-favorite-btn";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import {getFilteredFilms} from "../../store/reducers/app-state/selectors";
 import {AppRoute} from "../../const";

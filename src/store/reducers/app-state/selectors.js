@@ -1,4 +1,4 @@
-import {createSelector} from 'reselect';
+import {createSelector} from "reselect";
 
 const getFilms = ({APP_STATE}) => APP_STATE.films;
 const getActiveGenre = ({APP_STATE}) => APP_STATE.activeGenre;

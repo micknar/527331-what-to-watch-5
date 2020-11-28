@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import {connect} from "react-redux";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import PageFooter from "../page-footer/page-footer";

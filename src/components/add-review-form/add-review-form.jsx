@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import {connect} from "react-redux";
 import {submitReview} from "../../store/api-actions";
 import {setIsReviewSubmitting} from "../../store/action";
