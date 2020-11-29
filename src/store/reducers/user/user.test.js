@@ -102,14 +102,6 @@ describe(`Async operation work correctly`, () => {
     return favoriteFilmUploader(dispatch, noop, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
-        // expect(dispatch).toHaveBeenNthCalledWith(1, {
-        //   type: ActionType.LOAD_FILM_BY_ID,
-        //   payload: films[0],
-        // });
-        // expect(dispatch).toHaveBeenNthCalledWith(2, {
-        //   type: ActionType.LOAD_PROMO,
-        //   payload: films[0],
-        // });
       });
   });
 
