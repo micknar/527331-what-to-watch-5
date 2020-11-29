@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 
 const withAuthData = (Component) => {
   class WithAuthData extends PureComponent {
@@ -50,6 +51,10 @@ const withAuthData = (Component) => {
       );
     }
   }
+
+  WithAuthData.propTypes = {
+    onCardClick: PropTypes.func.isRequired,
+  };
 
   return WithAuthData;
 };

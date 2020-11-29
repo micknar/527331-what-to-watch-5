@@ -1,4 +1,6 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
+import filmProp from "../../const/film.prop";
 import {CARD_HOVER_TIMEOUT} from "../../const/const";
 
 const withActiveCard = (Component) => {
@@ -53,6 +55,11 @@ const withActiveCard = (Component) => {
       );
     }
   }
+
+  WithActiveCard.propTypes = {
+    films: PropTypes.arrayOf(filmProp).isRequired,
+    onCardClick: PropTypes.func.isRequired,
+  };
 
   return WithActiveCard;
 };

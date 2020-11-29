@@ -1,4 +1,5 @@
 import React, {PureComponent, createRef} from "react";
+import PropTypes from "prop-types";
 
 const withFullscreenPlayer = (Component) => {
   class WithFullscreenPlayer extends PureComponent {
@@ -83,6 +84,10 @@ const withFullscreenPlayer = (Component) => {
       );
     }
   }
+
+  WithFullscreenPlayer.propTypes = {
+    currentFilmId: PropTypes.number.isRequired,
+  };
 
   return WithFullscreenPlayer;
 };

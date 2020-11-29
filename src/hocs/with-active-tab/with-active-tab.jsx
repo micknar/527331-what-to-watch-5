@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import filmProp from "../../const/film.prop";
 import {FilmPageNav} from "../../const/const";
 
 const withActiveTab = (Component) => {
@@ -30,6 +31,10 @@ const withActiveTab = (Component) => {
       );
     }
   }
+
+  WithActiveTab.propTypes = {
+    film: filmProp.isRequired,
+  };
 
   return WithActiveTab;
 };

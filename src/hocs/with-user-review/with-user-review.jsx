@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 
 const withUserReview = (Component) => {
   class WithUserReview extends PureComponent {
@@ -47,6 +48,11 @@ const withUserReview = (Component) => {
       );
     }
   }
+
+  WithUserReview.propTypes = {
+    filmId: PropTypes.number.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+  };
 
   return WithUserReview;
 };
