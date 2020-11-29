@@ -3,7 +3,7 @@ import {createAPI} from "../../../services/api";
 import {appState} from "./app-state";
 import {ActionType} from "../../action";
 import {fetchFilmsList, fetchPromoFilm, fetchFilmById, fetchComments, submitReview, checkAuth} from "../../api-actions";
-import {APIRoute, AppRoute, AuthorizationStatus, HttpCode, FilmsCount} from "../../../const";
+import {APIRoute, AppRoute, AuthorizationStatus, HttpCode, FilmsCount} from "../../../const/const";
 import {noop, films, comments, userInfo, filmsFromServer, commentFromServer} from "../../../test-mocks";
 
 const api = createAPI(noop);

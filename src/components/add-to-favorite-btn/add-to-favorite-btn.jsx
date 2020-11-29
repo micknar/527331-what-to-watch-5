@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {AppRoute, AuthorizationStatus} from "../../const";
+import {AppRoute, AuthorizationStatus} from "../../const/const";
 import {updateFavoriteStatus} from "../../store/api-actions";
 import {setIsFilmLoading} from "../../store/action";
 

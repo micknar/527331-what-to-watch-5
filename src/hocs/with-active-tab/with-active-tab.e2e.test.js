@@ -3,7 +3,7 @@ import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import withActiveTab from "./with-active-tab";
 import {films} from "../../test-mocks";
-import {FilmPageNav} from "../../const";
+import {FilmPageNav} from "../../const/const";
 
 configure({adapter: new Adapter()});
 

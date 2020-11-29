@@ -9,7 +9,7 @@ import App from "./components/app/app";
 import rootReducer from "./store/reducers/root-reducer";
 import {requireAuthorization, setIsFilmsLoading} from "./store/action";
 import {fetchFilmsList, fetchPromoFilm, checkAuth} from "./store/api-actions";
-import {AuthorizationStatus} from "./const";
+import {AuthorizationStatus} from "./const/const";
 import {redirect} from "./store/middlewares/redirect";
 
 const api = createAPI(

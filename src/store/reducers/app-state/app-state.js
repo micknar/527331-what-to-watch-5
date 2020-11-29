@@ -1,6 +1,6 @@
 import {ActionType} from "../../action";
 import {extend, getRenderedFilmsCount} from "../../../utils";
-import {FilmsCount} from "../../../const";
+import {FilmsCount} from "../../../const/const";
 
 const initialState = {
   films: [],

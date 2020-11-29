@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {submitReview} from "../../store/api-actions";
 import {setIsReviewSubmitting} from "../../store/action";
 import {shadeColor} from "../../utils";
-import {RATING_MARKS} from "../../const";
+import {RATING_MARKS} from "../../const/const";
 
 const AddReviewForm = (props) => {
   const {

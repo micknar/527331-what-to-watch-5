@@ -44,7 +44,7 @@ export const films = [
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 10,
     ratingMark: `Awesome`,
-    scoresCount: `240`,
+    scoresCount: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: {
@@ -67,7 +67,7 @@ export const films = [
     description: `Lorem ipsum dolor sit amo eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 2.2,
     ratingMark: `Bad`,
-    scoresCount: `240`,
+    scoresCount: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: {
@@ -90,7 +90,7 @@ export const films = [
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ext enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 4.5,
     ratingMark: `Normal`,
-    scoresCount: `240`,
+    scoresCount: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: {
@@ -113,7 +113,7 @@ export const films = [
     description: `Lorem i ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 4.1,
     ratingMark: `Normal`,
-    scoresCount: `240`,
+    scoresCount: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: {
@@ -136,7 +136,7 @@ export const films = [
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.uip ex ea commodo consequat.`,
     rating: 7.8,
     ratingMark: `Good`,
-    scoresCount: `240`,
+    scoresCount: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: {
@@ -159,7 +159,7 @@ export const films = [
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 6.4,
     ratingMark: `Good`,
-    scoresCount: `240`,
+    scoresCount: 240,
     director: `Guy Ritchie`,
     starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: {
@@ -182,7 +182,7 @@ export const films = [
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 9.8,
     ratingMark: `Very good`,
-    scoresCount: `240`,
+    scoresCount: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: {
@@ -205,7 +205,7 @@ export const films = [
     description: `Lorem ipsum dolor sit amet, consectetur.`,
     rating: 3,
     ratingMark: `Normal`,
-    scoresCount: `240`,
+    scoresCount: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
     runTime: {
@@ -288,7 +288,7 @@ export const filmsFromServer = [
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 10,
     // eslint-disable-next-line camelcase
-    scores_count: `240`,
+    scores_count: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
@@ -316,7 +316,7 @@ export const filmsFromServer = [
     description: `Lorem ipsum dolor sit amo eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 2.2,
     // eslint-disable-next-line camelcase
-    scores_count: `240`,
+    scores_count: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
@@ -344,7 +344,7 @@ export const filmsFromServer = [
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ext enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 4.5,
     // eslint-disable-next-line camelcase
-    scores_count: `240`,
+    scores_count: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
@@ -372,7 +372,7 @@ export const filmsFromServer = [
     description: `Lorem i ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 4.1,
     // eslint-disable-next-line camelcase
-    scores_count: `240`,
+    scores_count: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
@@ -400,7 +400,7 @@ export const filmsFromServer = [
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.uip ex ea commodo consequat.`,
     rating: 7.8,
     // eslint-disable-next-line camelcase
-    scores_count: `240`,
+    scores_count: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
@@ -428,7 +428,7 @@ export const filmsFromServer = [
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 6.4,
     // eslint-disable-next-line camelcase
-    scores_count: `240`,
+    scores_count: 240,
     director: `Guy Ritchie`,
     starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
@@ -456,7 +456,7 @@ export const filmsFromServer = [
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
     rating: 9.8,
     // eslint-disable-next-line camelcase
-    scores_count: `240`,
+    scores_count: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
@@ -484,7 +484,7 @@ export const filmsFromServer = [
     description: `Lorem ipsum dolor sit amet, consectetur.`,
     rating: 3,
     // eslint-disable-next-line camelcase
-    scores_count: `240`,
+    scores_count: 240,
     director: `Quentin Tarantino`,
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
     // eslint-disable-next-line camelcase

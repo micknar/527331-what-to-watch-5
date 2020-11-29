@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import filmProp from "../../const/film-prop";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import FilmsList from "../films-list/films-list";
@@ -11,7 +12,7 @@ import PageFooter from "../page-footer/page-footer";
 import AddToFavoriteBtn from "../add-to-favorite-btn/add-to-favorite-btn";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import {getFilteredFilms} from "../../store/reducers/app-state/selectors";
-import {AppRoute} from "../../const";
+import {AppRoute} from "../../const/const";
 
 const FilmsListWrapped = withActiveCard(FilmsList);
 
@@ -85,25 +86,8 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  promoFilm: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  }).isRequired,
-
-  filteredFilms: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    previewImage: PropTypes.string.isRequired,
-    previewVideoLink: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-  })).isRequired,
-
+  promoFilm: filmProp.isRequired,
+  filteredFilms: PropTypes.arrayOf(filmProp).isRequired,
   renderedFilmsCount: PropTypes.number.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };

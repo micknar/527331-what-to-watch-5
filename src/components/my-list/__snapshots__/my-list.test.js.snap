@@ -67,7 +67,7 @@ exports[`Should MyList render correctly 1`] = `
               "hours": 1,
               "minutes": 42,
             },
-            "scoresCount": "240",
+            "scoresCount": 240,
             "starring": Array [
               "Bill Murray",
               "Edward Norton",
@@ -96,7 +96,7 @@ exports[`Should MyList render correctly 1`] = `
               "hours": 1,
               "minutes": 22,
             },
-            "scoresCount": "240",
+            "scoresCount": 240,
             "starring": Array [
               "Bill Murray",
               "Edward Norton",
@@ -127,7 +127,7 @@ exports[`Should MyList render correctly 1`] = `
               "hours": 1,
               "minutes": 24,
             },
-            "scoresCount": "240",
+            "scoresCount": 240,
             "starring": Array [
               "Bill Murray",
               "Willem Dafoe",
@@ -154,7 +154,7 @@ exports[`Should MyList render correctly 1`] = `
               "hours": 1,
               "minutes": 57,
             },
-            "scoresCount": "240",
+            "scoresCount": 240,
             "starring": Array [
               "Bill Murray",
               "Edward Norton",
@@ -182,7 +182,7 @@ exports[`Should MyList render correctly 1`] = `
               "hours": 1,
               "minutes": 35,
             },
-            "scoresCount": "240",
+            "scoresCount": 240,
             "starring": Array [
               "Bill Murray",
               "Edward Norton",
@@ -215,7 +215,7 @@ exports[`Should MyList render correctly 1`] = `
               "hours": 1,
               "minutes": 25,
             },
-            "scoresCount": "240",
+            "scoresCount": 240,
             "starring": Array [
               "Bill Murray",
               "Edward Norton",
@@ -245,7 +245,7 @@ exports[`Should MyList render correctly 1`] = `
               "hours": 2,
               "minutes": 20,
             },
-            "scoresCount": "240",
+            "scoresCount": 240,
             "starring": Array [
               "Bill Murray",
               "Edward Norton",
@@ -277,7 +277,7 @@ exports[`Should MyList render correctly 1`] = `
               "hours": 1,
               "minutes": 20,
             },
-            "scoresCount": "240",
+            "scoresCount": 240,
             "starring": Array [
               "Bill Murray",
               "Edward Norton",

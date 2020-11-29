@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import filmProp from "../../const/film-prop";
 import ReactLoading from "react-loading";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {getElapsedTime} from "../../utils";
-import {AppRoute} from "../../const";
+import {AppRoute} from "../../const/const";
 
 const FullscreenPlayer = (props) => {
   const {
@@ -95,16 +96,8 @@ const FullscreenPlayer = (props) => {
 };
 
 FullscreenPlayer.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    videoLink: PropTypes.string.isRequired,
-  })).isRequired,
-  promoFilm: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    videoLink: PropTypes.string.isRequired,
-  }).isRequired,
+  films: PropTypes.arrayOf(filmProp).isRequired,
+  promoFilm: filmProp.isRequired,
   currentFilmId: PropTypes.number.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import filmProp from "../../const/film-prop";
 import {connect} from "react-redux";
 import {changeGenre, clearRenderedFilms} from "../../store/action";
 import {getFilteredFilms} from "../../store/reducers/app-state/selectors";
@@ -33,13 +34,7 @@ const Genres = (props) => {
 };
 
 Genres.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    previewImage: PropTypes.string.isRequired,
-    previewVideoLink: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-  })).isRequired,
+  films: PropTypes.arrayOf(filmProp).isRequired,
   activeGenre: PropTypes.string.isRequired,
   onGenreClick: PropTypes.func.isRequired,
 };

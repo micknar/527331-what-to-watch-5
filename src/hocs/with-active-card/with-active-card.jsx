@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {CARD_HOVER_TIMEOUT} from "../../const";
+import {CARD_HOVER_TIMEOUT} from "../../const/const";
 
 const withActiveCard = (Component) => {
   class WithActiveCard extends PureComponent {

@@ -4,6 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 import {configure, mount} from "enzyme";
 import withFullscreenPlayer from "./with-fullscreen-player";
 import {films} from "../../test-mocks";
+import childrenProp from "../../const/children-prop";
 
 configure({adapter: new Adapter()});
 
@@ -20,10 +21,7 @@ const MockComponent = (props) => {
 
 MockComponent.propTypes = {
   renderPlayer: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: childrenProp.isRequired,
 };
 
 const MockComponentWrapped = withFullscreenPlayer(MockComponent);

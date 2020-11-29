@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
+import filmProp from "../../const/film-prop";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import FilmsList from "../films-list/films-list";
@@ -12,7 +13,7 @@ import LoadingPage from "../loading-page/loading-page";
 import NotFoundPage from "../not-found-page/not-found-page";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
-import {FilmsCount, AppRoute} from "../../const";
+import {FilmsCount, AppRoute} from "../../const/const";
 import {fetchFilmById} from "../../store/api-actions";
 import {setIsFilmLoading} from "../../store/action";
 
@@ -112,20 +113,8 @@ const FilmPage = (props) => {
 
 FilmPage.propTypes = {
   currentFilmId: PropTypes.number.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
-  })).isRequired,
-  currentFilm: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    posterImage: PropTypes.string,
-    backgroundImage: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    genre: PropTypes.string,
-    released: PropTypes.number,
-    isFavorite: PropTypes.bool,
-  }).isRequired,
+  films: PropTypes.arrayOf(filmProp).isRequired,
+  currentFilm: filmProp.isRequired,
   onCardClick: PropTypes.func.isRequired,
   getFilm: PropTypes.func.isRequired,
   isFilmLoading: PropTypes.bool.isRequired,

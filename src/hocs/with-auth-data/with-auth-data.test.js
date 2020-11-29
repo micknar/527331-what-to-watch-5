@@ -1,8 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import PropTypes from "prop-types";
 import withAuthData from "./with-auth-data";
 import {noop} from "../../test-mocks";
+import childrenProp from "../../const/children-prop";
 
 const MockComponent = (props) => {
   const {children} = props;
@@ -15,10 +15,7 @@ const MockComponent = (props) => {
 };
 
 MockComponent.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: childrenProp.isRequired,
 };
 
 const MockComponentWrapped = withAuthData(MockComponent);

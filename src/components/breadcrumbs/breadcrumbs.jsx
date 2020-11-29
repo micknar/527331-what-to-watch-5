@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
+import filmProp from "../../const/film-prop";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../const";
+import {AppRoute} from "../../const/const";
 
 const Breadcrumbs = (props) => {
   const {film} = props;
@@ -22,10 +22,7 @@ const Breadcrumbs = (props) => {
 };
 
 Breadcrumbs.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
+  film: filmProp.isRequired,
 };
 
 export default Breadcrumbs;

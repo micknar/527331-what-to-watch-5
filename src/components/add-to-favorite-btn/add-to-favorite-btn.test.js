@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import {BrowserRouter} from "react-router-dom";
 import {AddToFavoriteBtn} from "./add-to-favorite-btn";
 import {noop} from "../../test-mocks";
-import {AuthorizationStatus} from "../../const";
+import {AuthorizationStatus} from "../../const/const";
 
 describe(`Should AddToFavoriteBtn render correctly`, () => {
   it(`When authorized user adds to favorites`, () => {

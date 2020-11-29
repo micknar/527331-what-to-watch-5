@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import PropTypes from "prop-types";
 import withFullscreenPlayer from "./with-fullscreen-player";
 import {films} from "../../test-mocks";
+import childrenProp from "../../const/children-prop";
 
 const MockComponent = (props) => {
   const {children, renderPlayer} = props;
@@ -17,10 +18,7 @@ const MockComponent = (props) => {
 
 MockComponent.propTypes = {
   renderPlayer: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: childrenProp.isRequired,
 };
 
 const MockComponentWrapped = withFullscreenPlayer(MockComponent);

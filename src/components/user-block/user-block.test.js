@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {BrowserRouter} from "react-router-dom";
 import {UserBlock} from "./user-block";
-import {AuthorizationStatus} from "../../const";
+import {AuthorizationStatus} from "../../const/const";
 
 const avatar = `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/9.jpg`;
 

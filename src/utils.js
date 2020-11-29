@@ -5,7 +5,7 @@ import {
   Radix,
   WHITE_RGB_COLOR_CODE,
   HOUR,
-} from "./const";
+} from "./const/const";
 
 export const getRatingMark = (rating) => {
   let mark = ``;
