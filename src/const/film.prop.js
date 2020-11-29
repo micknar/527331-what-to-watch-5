@@ -14,7 +14,7 @@ export default PropTypes.shape({
   scoresCount: PropTypes.number,
   ratingMark: PropTypes.string,
   director: PropTypes.string,
-  starring: PropTypes.arrayOf(PropTypes.string),
+  starring: PropTypes.string,
   runTime: PropTypes.shape({
     hours: PropTypes.number,
     minutes: PropTypes.number,

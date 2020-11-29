@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import FilmPageOverview from "./film-page-overview";
 import {films} from "../../test-mocks";
 
-const {description, rating, ratingMark, director, starring} = films[0];
+const {description, rating, ratingMark, director, starring, scoresCount} = films[0];
 
 it(`Should FilmPageOverview render correctly`, () => {
   const tree = renderer
@@ -14,6 +14,7 @@ it(`Should FilmPageOverview render correctly`, () => {
           director={director}
           starring={starring}
           ratingMark={ratingMark}
+          scoresCount={scoresCount}
         />
     )
     .toJSON();

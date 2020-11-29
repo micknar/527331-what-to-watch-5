@@ -133,10 +133,7 @@ Array [
                 "minutes": 40,
               },
               "scoresCount": 240,
-              "starring": Array [
-                "Bill Murray",
-                "Saoirse Ronan",
-              ],
+              "starring": "Bill Murray, Saoirse Ronan",
               "videoLink": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
             },
             Object {
@@ -159,13 +156,7 @@ Array [
                 "minutes": 42,
               },
               "scoresCount": 240,
-              "starring": Array [
-                "Bill Murray",
-                "Edward Norton",
-                "Jude Law",
-                "Willem Dafoe",
-                "Saoirse Ronan",
-              ],
+              "starring": "Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan",
               "videoLink": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
             },
             Object {
@@ -188,15 +179,7 @@ Array [
                 "minutes": 22,
               },
               "scoresCount": 240,
-              "starring": Array [
-                "Bill Murray",
-                "Edward Norton",
-                "Edward Norton",
-                "Edward Norton",
-                "Jude Law",
-                "Willem Dafoe",
-                "Saoirse Ronan",
-              ],
+              "starring": "Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan",
               "videoLink": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
             },
             Object {
@@ -219,11 +202,7 @@ Array [
                 "minutes": 24,
               },
               "scoresCount": 240,
-              "starring": Array [
-                "Bill Murray",
-                "Willem Dafoe",
-                "Saoirse Ronan",
-              ],
+              "starring": "Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan",
               "videoLink": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
             },
             Object {
@@ -246,12 +225,7 @@ Array [
                 "minutes": 57,
               },
               "scoresCount": 240,
-              "starring": Array [
-                "Bill Murray",
-                "Edward Norton",
-                "Willem Dafoe",
-                "Saoirse Ronan",
-              ],
+              "starring": "Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan",
               "videoLink": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
             },
             Object {
@@ -274,17 +248,7 @@ Array [
                 "minutes": 35,
               },
               "scoresCount": 240,
-              "starring": Array [
-                "Bill Murray",
-                "Edward Norton",
-                "Edward Norton",
-                "Edward Norton",
-                "Edward Norton",
-                "Edward Norton",
-                "Jude Law",
-                "Willem Dafoe",
-                "Saoirse Ronan",
-              ],
+              "starring": "Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan",
               "videoLink": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
             },
             Object {
@@ -307,14 +271,7 @@ Array [
                 "minutes": 25,
               },
               "scoresCount": 240,
-              "starring": Array [
-                "Bill Murray",
-                "Edward Norton",
-                "Edward Norton",
-                "Jude Law",
-                "Willem Dafoe",
-                "Saoirse Ronan",
-              ],
+              "starring": "Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan",
               "videoLink": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
             },
             Object {
@@ -337,16 +294,7 @@ Array [
                 "minutes": 20,
               },
               "scoresCount": 240,
-              "starring": Array [
-                "Bill Murray",
-                "Edward Norton",
-                "Jude Law",
-                "Edward Norton",
-                "Edward Norton",
-                "Edward Norton",
-                "Willem Dafoe",
-                "Saoirse Ronan",
-              ],
+              "starring": "Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan",
               "videoLink": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm",
             },
           ]

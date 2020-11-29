@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const FilmPageOverview = (props) => {
-  const {description, rating, director, starring, ratingMark} = props;
+  const {description, rating, director, starring, ratingMark, scoresCount} = props;
 
   return (
     <>
@@ -10,7 +10,7 @@ const FilmPageOverview = (props) => {
         <div className="movie-rating__score">{rating}</div>
         <p className="movie-rating__meta">
           <span className="movie-rating__level">{ratingMark}</span>
-          <span className="movie-rating__count">240 ratings</span>
+          <span className="movie-rating__count">{scoresCount} ratings</span>
         </p>
       </div>
 
@@ -26,8 +26,9 @@ const FilmPageOverview = (props) => {
 FilmPageOverview.propTypes = {
   description: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
+  scoresCount: PropTypes.number.isRequired,
   director: PropTypes.string.isRequired,
-  starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+  starring: PropTypes.string.isRequired,
   ratingMark: PropTypes.string.isRequired,
 };
 

@@ -21,7 +21,8 @@ Array [
       <span
         className="movie-rating__count"
       >
-        240 ratings
+        240
+         ratings
       </span>
     </p>
   </div>,
@@ -44,8 +45,7 @@ Array [
     >
       <strong>
         Starring: 
-        Bill Murray
-        Saoirse Ronan
+        Bill Murray, Saoirse Ronan
          and other
       </strong>
     </p>

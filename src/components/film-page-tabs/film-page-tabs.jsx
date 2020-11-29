@@ -9,7 +9,7 @@ import {FilmPageNav, AppRoute} from "../../const/const";
 
 const FilmPageTabs = (props) => {
   const {film, activeTab, onActiveTabClick} = props;
-  const {id, description, rating, runTime, director, starring, genre, released, ratingMark, backgroundColor} = film;
+  const {id, description, rating, runTime, director, starring, genre, released, ratingMark, scoresCount, backgroundColor} = film;
 
   const getFilmInfo = () => {
     switch (activeTab) {
@@ -21,6 +21,7 @@ const FilmPageTabs = (props) => {
             director={director}
             starring={starring}
             ratingMark={ratingMark}
+            scoresCount={scoresCount}
           />
         );
       case FilmPageNav.DETAILS:

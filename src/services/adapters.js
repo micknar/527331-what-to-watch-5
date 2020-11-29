@@ -17,7 +17,7 @@ export const adaptFilmToClient = (film) => {
         scoresCount: film.scores_count,
         ratingMark: getRatingMark(film.rating),
         director: film.director,
-        starring: film.starring,
+        starring: film.starring.join(`, `),
         runTime: getRuntime(film.run_time),
         genre: film.genre,
         released: film.released,

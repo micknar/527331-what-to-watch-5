@@ -24,7 +24,7 @@ export const films = [
     ratingMark: `Very good`,
     scoresCount: 240,
     director: `Nicolas Winding Refn`,
-    starring: [`Bill Murray`, `Saoirse Ronan`],
+    starring: `Bill Murray, Saoirse Ronan`,
     runTime: {
       hours: 2,
       minutes: 40,
@@ -46,7 +46,7 @@ export const films = [
     ratingMark: `Awesome`,
     scoresCount: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan`,
     runTime: {
       hours: 1,
       minutes: 42,
@@ -69,7 +69,7 @@ export const films = [
     ratingMark: `Bad`,
     scoresCount: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan`,
     runTime: {
       hours: 1,
       minutes: 22,
@@ -92,7 +92,7 @@ export const films = [
     ratingMark: `Normal`,
     scoresCount: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan`,
     runTime: {
       hours: 1,
       minutes: 24,
@@ -115,7 +115,7 @@ export const films = [
     ratingMark: `Normal`,
     scoresCount: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan`,
     runTime: {
       hours: 1,
       minutes: 57,
@@ -138,7 +138,7 @@ export const films = [
     ratingMark: `Good`,
     scoresCount: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan`,
     runTime: {
       hours: 1,
       minutes: 35,
@@ -161,7 +161,7 @@ export const films = [
     ratingMark: `Good`,
     scoresCount: 240,
     director: `Guy Ritchie`,
-    starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan`,
     runTime: {
       hours: 1,
       minutes: 25,
@@ -184,7 +184,7 @@ export const films = [
     ratingMark: `Very good`,
     scoresCount: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan`,
     runTime: {
       hours: 2,
       minutes: 20,
@@ -207,7 +207,7 @@ export const films = [
     ratingMark: `Normal`,
     scoresCount: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
+    starring: `Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan`,
     runTime: {
       hours: 1,
       minutes: 20,
@@ -318,7 +318,7 @@ export const filmsFromServer = [
     // eslint-disable-next-line camelcase
     scores_count: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
     run_time: 82,
     genre: `Action`,
@@ -346,7 +346,7 @@ export const filmsFromServer = [
     // eslint-disable-next-line camelcase
     scores_count: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
     run_time: 84,
     genre: `Adventure`,
@@ -374,7 +374,7 @@ export const filmsFromServer = [
     // eslint-disable-next-line camelcase
     scores_count: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
     run_time: 117,
     genre: `Comedy`,
@@ -402,7 +402,7 @@ export const filmsFromServer = [
     // eslint-disable-next-line camelcase
     scores_count: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
     run_time: 95,
     genre: `Fantasy`,
@@ -430,7 +430,7 @@ export const filmsFromServer = [
     // eslint-disable-next-line camelcase
     scores_count: 240,
     director: `Guy Ritchie`,
-    starring: [`Bill Murray`, `Edward Norton`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
     run_time: 85,
     genre: `Drama`,
@@ -458,7 +458,7 @@ export const filmsFromServer = [
     // eslint-disable-next-line camelcase
     scores_count: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Edward Norton`, `Edward Norton`, `Edward Norton`, `Willem Dafoe`, `Saoirse Ronan`],
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
     run_time: 140,
     genre: `Fantasy`,
@@ -486,7 +486,7 @@ export const filmsFromServer = [
     // eslint-disable-next-line camelcase
     scores_count: 240,
     director: `Quentin Tarantino`,
-    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`],
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     // eslint-disable-next-line camelcase
     run_time: 80,
     genre: `Adventure`,
