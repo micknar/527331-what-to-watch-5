@@ -4,7 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 import {configure, mount} from "enzyme";
 import withFullscreenPlayer from "./with-fullscreen-player";
 import {films} from "../../test-mocks";
-import childrenProp from "../../const/children-prop";
+import childrenProp from "../../const/children.prop";
 
 configure({adapter: new Adapter()});
 

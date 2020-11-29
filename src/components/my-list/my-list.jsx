@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
-import filmProp from "../../const/film-prop";
+import filmProp from "../../const/film.prop";
 import {connect} from "react-redux";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";

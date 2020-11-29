@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import filmProp from "../../const/film-prop";
+import filmProp from "../../const/film.prop";
 import {Redirect} from "react-router-dom";
 import FilmPageOverview from "../film-page-overview/film-page-overview";
 import FilmPageDetails from "../film-page-details/film-page-details";

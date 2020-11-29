@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import filmProp from "../../const/film-prop";
+import filmProp from "../../const/film.prop";
 import ReactLoading from "react-loading";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";

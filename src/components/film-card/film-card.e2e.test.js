@@ -6,16 +6,18 @@ import {noop, films} from "../../test-mocks";
 
 configure({adapter: new Adapter()});
 
+const {id, name, previewImage, previewVideoLink} = films[0];
+
 describe(`FilmCard callbacks should be called`, () => {
   it(`Click by Card calls callback`, () => {
     const onCardClickHandler = jest.fn();
 
     const wrapper = shallow(
         <FilmCard
-          id={films[0].id}
-          name={films[0].name}
-          previewImage={films[0].previewImage}
-          previewVideoLink={films[0].previewVideoLink}
+          id={id}
+          name={name}
+          previewImage={previewImage}
+          previewVideoLink={previewVideoLink}
           onCardClick={onCardClickHandler}
           onCardMouseOver={noop}
           onCardMouseOut={noop}
@@ -33,10 +35,10 @@ describe(`FilmCard callbacks should be called`, () => {
 
     const wrapper = shallow(
         <FilmCard
-          id={films[0].id}
-          name={films[0].name}
-          previewImage={films[0].previewImage}
-          previewVideoLink={films[0].previewVideoLink}
+          id={id}
+          name={name}
+          previewImage={previewImage}
+          previewVideoLink={previewVideoLink}
           onCardClick={noop}
           onCardMouseOver={onCardMouseOverHandler}
           onCardMouseOut={noop}
@@ -54,10 +56,10 @@ describe(`FilmCard callbacks should be called`, () => {
 
     const wrapper = shallow(
         <FilmCard
-          id={films[0].id}
-          name={films[0].name}
-          previewImage={films[0].previewImage}
-          previewVideoLink={films[0].previewVideoLink}
+          id={id}
+          name={name}
+          previewImage={previewImage}
+          previewVideoLink={previewVideoLink}
           onCardClick={noop}
           onCardMouseOver={noop}
           onCardMouseOut={onCardMouseOutHandler}

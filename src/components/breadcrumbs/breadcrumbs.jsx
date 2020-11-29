@@ -1,5 +1,5 @@
 import React from "react";
-import filmProp from "../../const/film-prop";
+import filmProp from "../../const/film.prop";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const/const";
 

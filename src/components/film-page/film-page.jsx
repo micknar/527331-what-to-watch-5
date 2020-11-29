@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
-import filmProp from "../../const/film-prop";
+import filmProp from "../../const/film.prop";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import FilmsList from "../films-list/films-list";

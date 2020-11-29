@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import filmProp from "../../const/film-prop";
+import filmProp from "../../const/film.prop";
 import {connect} from "react-redux";
 import {changeGenre, clearRenderedFilms} from "../../store/action";
 import {getFilteredFilms} from "../../store/reducers/app-state/selectors";

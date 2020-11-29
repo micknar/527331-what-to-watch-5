@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import withActiveCard from "./with-active-card";
 import {films, noop} from "../../test-mocks";
-import childrenProp from "../../const/children-prop";
+import childrenProp from "../../const/children.prop";
 
 const MockComponent = (props) => {
   const {children} = props;
