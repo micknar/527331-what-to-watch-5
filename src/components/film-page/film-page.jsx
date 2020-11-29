@@ -1,17 +1,19 @@
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
+import filmProp from "../../const/film-prop";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import FilmsList from "../films-list/films-list";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
 import PageFooter from "../page-footer/page-footer";
-import FilmPageTabs from '../film-page-tabs/film-page-tabs';
-import AddToFavoriteBtn from '../add-to-favorite-btn/add-to-favorite-btn';
+import FilmPageTabs from "../film-page-tabs/film-page-tabs";
+import AddToFavoriteBtn from "../add-to-favorite-btn/add-to-favorite-btn";
 import LoadingPage from "../loading-page/loading-page";
+import NotFoundPage from "../not-found-page/not-found-page";
 import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
-import {FilmsCount, AppRoute} from "../../const";
+import {FilmsCount, AppRoute} from "../../const/const";
 import {fetchFilmById} from "../../store/api-actions";
 import {setIsFilmLoading} from "../../store/action";
 
@@ -24,6 +26,12 @@ const FilmPage = (props) => {
   useEffect(() => {
     getFilm(currentFilmId);
   }, [currentFilmId]);
+
+  if (currentFilmId > films.length || !currentFilmId) {
+    return (
+      <NotFoundPage />
+    );
+  }
 
   const {id, name, posterImage, backgroundImage, backgroundColor, genre, released, isFavorite} = currentFilm;
   const similarFilms = films.filter((film) => film.genre === genre && film.id !== id).slice(0, FilmsCount.SIMILAR);
@@ -105,20 +113,8 @@ const FilmPage = (props) => {
 
 FilmPage.propTypes = {
   currentFilmId: PropTypes.number.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
-  })).isRequired,
-  currentFilm: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    posterImage: PropTypes.string,
-    backgroundImage: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    genre: PropTypes.string,
-    released: PropTypes.number,
-    isFavorite: PropTypes.bool,
-  }).isRequired,
+  films: PropTypes.arrayOf(filmProp).isRequired,
+  currentFilm: filmProp.isRequired,
   onCardClick: PropTypes.func.isRequired,
   getFilm: PropTypes.func.isRequired,
   isFilmLoading: PropTypes.bool.isRequired,

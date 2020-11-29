@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import filmProp from "../../const/film-prop";
 import {connect} from "react-redux";
 import {changeGenre, clearRenderedFilms} from "../../store/action";
 import {getFilteredFilms} from "../../store/reducers/app-state/selectors";
-import {getGenreInPlural, getFilterItemClass} from "../../utils";
+import {getGenreInPlural} from "../../utils";
 
 const Genres = (props) => {
   const {films, activeGenre, onGenreClick} = props;
@@ -15,7 +16,7 @@ const Genres = (props) => {
         return (
           <li
             key={genre + i}
-            className={getFilterItemClass(genre, activeGenre)}
+            className={activeGenre === genre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}
           >
             <a
               href="#"
@@ -33,13 +34,7 @@ const Genres = (props) => {
 };
 
 Genres.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    previewImage: PropTypes.string.isRequired,
-    previewVideoLink: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-  })).isRequired,
+  films: PropTypes.arrayOf(filmProp).isRequired,
   activeGenre: PropTypes.string.isRequired,
   onGenreClick: PropTypes.func.isRequired,
 };

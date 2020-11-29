@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should App render correctly When data loading 1`] = `<LoadingPage />`;
+
+exports[`Should App render correctly With checking authorization 1`] = `<LoadingPage />`;
+
+exports[`Should App render correctly With loading error 1`] = `<ErrorPage />`;
+
+exports[`Should App render correctly With loading success 1`] = `
+<Main
+  onCardClick={[Function]}
+/>
+`;

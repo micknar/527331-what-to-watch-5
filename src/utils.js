@@ -5,7 +5,7 @@ import {
   Radix,
   WHITE_RGB_COLOR_CODE,
   HOUR,
-} from "./const";
+} from "./const/const";
 
 export const getRatingMark = (rating) => {
   let mark = ``;
@@ -112,9 +112,3 @@ export const getGenreInPlural = (genre) => {
       return genre;
   }
 };
-
-export const getFilterItemClass = (genre, activeGenre) => {
-  return activeGenre === genre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`;
-};
-
-export const getLoginFormFieldClassName = (isValid) => isValid ? `sign-in__field` : `sign-in__field sign-in__field--error`;

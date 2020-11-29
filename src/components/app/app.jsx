@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
-import browserHistory from "../../browser-history";
+import browserHistory from "../../const/browser-history";
 import {connect} from "react-redux";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
@@ -12,9 +12,10 @@ import FullscreenPlayer from "../fullscreen-player/fullscreen-player";
 import PrivateRoute from "../private-route/private-route";
 import LoadingPage from "../loading-page/loading-page";
 import ErrorPage from "../error-page/error-page";
+import NotFoundPage from "../not-found-page/not-found-page";
 import withFullscreenPlayer from "../../hocs/with-fullscreen-player/with-fullscreen-player";
 import withAuthData from "../../hocs/with-auth-data/with-auth-data";
-import {AppRoute} from "../../const";
+import {AppRoute} from "../../const/const";
 
 const FullscreenPlayerWrapped = withFullscreenPlayer(FullscreenPlayer);
 const SignInWrapped = withAuthData(SignIn);
@@ -99,6 +100,10 @@ const App = (props) => {
             />
           )}
         />
+
+        <Route>
+          <NotFoundPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
+import filmProp from "../../const/film-prop";
 import {connect} from "react-redux";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import UserBlock from "../user-block/user-block";
@@ -39,13 +40,7 @@ const MyList = (props) => {
 };
 
 MyList.propTypes = {
-  favoriteFilms: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    previewImage: PropTypes.string.isRequired,
-    previewVideoLink: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-  })).isRequired,
+  favoriteFilms: PropTypes.arrayOf(filmProp).isRequired,
   onCardClick: PropTypes.func.isRequired,
   getFavoriteFilms: PropTypes.func.isRequired,
 };

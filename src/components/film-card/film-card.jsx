@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import VideoPreview from "../video-preview/video-preview";
-import {AppRoute} from "../../const";
+import {AppRoute} from "../../const/const";
 
 const FilmCard = (props) => {
   const {id, name, previewImage, previewVideoLink, onCardClick, onCardMouseOver, onCardMouseOut, isActive} = props;

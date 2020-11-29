@@ -1,5 +1,6 @@
 export const HOUR = 60;
 export const WHITE_RGB_COLOR_CODE = 255;
+export const CARD_HOVER_TIMEOUT = 1000;
 
 export const RATING_MARKS = [1, 2, 3, 4, 5];
 
@@ -74,4 +75,11 @@ export const NameSpace = {
 export const Radix = {
   DECIMAL: 10,
   HEXADECIMAL: 16,
+};
+
+export const HttpCode = {
+  OK: 200,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  NOT_FOUND: 404,
 };

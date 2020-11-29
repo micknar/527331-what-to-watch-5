@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
 import {connect} from "react-redux";
 import PageHeaderLogo from "../page-header-logo/page-header-logo";
 import PageFooter from "../page-footer/page-footer";
 import {login} from "../../store/api-actions";
 import {setIsLoginDataSending} from "../../store/action";
-import {getLoginFormFieldClassName} from "../../utils";
+
+const getFieldClassName = (isValid) => isValid ? `sign-in__field` : `sign-in__field sign-in__field--error`;
 
 const SignIn = (props) => {
   const {
@@ -80,7 +81,7 @@ const SignIn = (props) => {
         >
           {getMessage()}
           <div className="sign-in__fields">
-            <div className={getLoginFormFieldClassName(isValidEmail)}>
+            <div className={getFieldClassName(isValidEmail)}>
               <input
                 onChange={onInputChange}
                 className="sign-in__input"
@@ -91,7 +92,7 @@ const SignIn = (props) => {
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
-            <div className={getLoginFormFieldClassName(isValidPassword)}>
+            <div className={getFieldClassName(isValidPassword)}>
               <input
                 onChange={onInputChange}
                 className="sign-in__input"

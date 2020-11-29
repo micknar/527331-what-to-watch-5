@@ -16,9 +16,9 @@ import {
   setIsLoginDataSending,
   setIsLoginError,
 } from "./action";
-import {AuthorizationStatus, APIRoute, AppRoute} from "../const";
+import {AuthorizationStatus, APIRoute, AppRoute} from "../const/const";
 import {setFavoriteStatus} from "../utils";
-import {adaptFilmToClient, adaptCommentToClient} from "../services/adapter";
+import {adaptFilmToClient, adaptCommentToClient} from "../services/adapters";
 
 export const fetchFilmsList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
@@ -65,6 +65,7 @@ export const updateFavoriteStatus = (id, isFavorite) => (dispatch, _getState, ap
       dispatch(fetchFilmById(id));
       dispatch(fetchPromoFilm());
     })
+    .catch(() => {})
 );
 
 export const fetchComments = (id) => (dispatch, _getState, api) => (

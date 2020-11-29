@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {FilmPageNav} from "../../const";
+import {FilmPageNav} from "../../const/const";
 
 const withActiveTab = (Component) => {
   class WithActiveTab extends PureComponent {

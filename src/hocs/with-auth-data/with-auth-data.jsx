@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent} from "react";
 
 const withAuthData = (Component) => {
   class WithAuthData extends PureComponent {
@@ -21,12 +21,12 @@ const withAuthData = (Component) => {
         this.setState({
           email: evt.target.value,
           isValidEmail: evt.target.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) ? true : false,
-          isValidPassword: this.state.password === `` ? false : true,
+          isValidPassword: this.state.password !== ``,
         });
       } else if (evt.target.type === `password`) {
         this.setState({
           password: evt.target.value,
-          isValidPassword: evt.target.value === `` ? false : true,
+          isValidPassword: evt.target.value !== ``,
         });
       }
     }
