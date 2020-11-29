@@ -92,6 +92,8 @@ describe(`Async operation work correctly`, () => {
   it(`Should make a correct API call to /favorite/:film_id/:status (post)`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
+    const dispatchInFirst = jest.fn();
+    const dispatchInSecond = jest.fn();
     const id = 1;
     const favoriteFilmUploader = updateFavoriteStatus(id, false);
 
@@ -99,9 +101,55 @@ describe(`Async operation work correctly`, () => {
       .onPost(`${APIRoute.FAVORITE_FILMS}/${id}/${FavoriteStatusCode.ADD}`)
       .reply(HttpCode.OK, filmsFromServer);
 
+    apiMock
+      .onGet(APIRoute.FILMS + id)
+      .reply(HttpCode.OK, filmsFromServer[0]);
+
+    apiMock
+      .onGet(APIRoute.PROMO_FILM)
+      .reply(HttpCode.OK, filmsFromServer[0]);
+
     return favoriteFilmUploader(dispatch, noop, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
+        dispatch.mock.calls[0][0](dispatchInFirst, noop, api)
+        // eslint-disable-next-line max-nested-callbacks
+        .then(() => {
+          expect(dispatchInFirst).toHaveBeenCalledTimes(2);
+          expect(dispatchInFirst).toHaveBeenNthCalledWith(1, {
+            type: ActionType.LOAD_FILM_BY_ID,
+            payload: films[0],
+          });
+          expect(dispatchInFirst).toHaveBeenNthCalledWith(2, {
+            type: ActionType.SET_IS_FILM_LOADING,
+            payload: false,
+          });
+        });
+        dispatch.mock.calls[1][0](dispatchInSecond, noop, api)
+        // eslint-disable-next-line max-nested-callbacks
+          .then(() => {
+            expect(dispatchInSecond).toHaveBeenCalledTimes(2);
+            expect(dispatchInSecond).toHaveBeenNthCalledWith(1, {
+              type: ActionType.LOAD_PROMO,
+              payload: films[0],
+            });
+            expect(dispatchInSecond).toHaveBeenNthCalledWith(2, {
+              type: ActionType.SET_IS_PROMO_LOADING,
+              payload: false,
+            });
+          })
+          // eslint-disable-next-line max-nested-callbacks
+          .catch(() => {
+            expect(dispatchInSecond).toHaveBeenCalledTimes(2);
+            expect(dispatchInSecond).toHaveBeenNthCalledWith(1, {
+              type: ActionType.SET_IS_PROMO_LOADING,
+              payload: false,
+            });
+            expect(dispatchInSecond).toHaveBeenNthCalledWith(2, {
+              type: ActionType.SET_IS_LOADING_ERROR,
+              payload: true,
+            });
+          });
       });
   });
 
