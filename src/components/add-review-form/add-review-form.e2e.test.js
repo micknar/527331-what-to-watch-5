@@ -56,26 +56,26 @@ describe(`AddReviewForm callbacks should be called`, () => {
     expect(onCommentChangeHandler).toHaveBeenCalledTimes(1);
   });
 
-  // it(`Click by Post button calls callback`, () => {
-  //   const onFormSubmitHandler = jest.fn();
+  it(`Click by disabled Post button doesn't call callback`, () => {
+    const onFormSubmitHandler = jest.fn();
 
-  //   const wrapper = shallow(
-  //       <AddReviewForm
-  //         filmId={1}
-  //         rating={3}
-  //         comment={`Lorem ipsum dolor sit amet, consectetur adisddsgpi`}
-  //         isValid={true}
-  //         backgroundColor={`#556271`}
-  //         onRatingChange={noop}
-  //         onCommentChange={noop}
-  //         onFormSubmit={onFormSubmitHandler}
-  //         isReviewSubmitting={false}
-  //         isReviewSubmittingError={false}
-  //         sendReview={noop}
-  //       />
-  //   );
+    const wrapper = shallow(
+        <AddReviewForm
+          filmId={1}
+          rating={3}
+          comment={`Lorem ipsum dolor sit amet, consectetur adisddsgpi`}
+          isValid={true}
+          backgroundColor={`#556271`}
+          onRatingChange={noop}
+          onCommentChange={noop}
+          onFormSubmit={onFormSubmitHandler}
+          isReviewSubmitting={false}
+          isReviewSubmittingError={false}
+          sendReview={noop}
+        />
+    );
 
-  //   wrapper.find(`.add-review__btn`).simulate(`click`, {preventDefault() {}});
-  //   expect(onFormSubmitHandler).toHaveBeenCalledTimes(1);
-  // });
+    wrapper.find(`.add-review__btn`).simulate(`click`, {preventDefault() {}});
+    expect(onFormSubmitHandler).toHaveBeenCalledTimes(0);
+  });
 });

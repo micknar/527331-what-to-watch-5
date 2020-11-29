@@ -29,25 +29,25 @@ describe(`SignIn callbacks should be called`, () => {
     expect(onInputChangeHandler).toHaveBeenCalledTimes(1);
   });
 
-  // it(`Click by Submit button calls callback`, () => {
-  //   const onFormSubmitHandler = jest.fn();
+  it(`Click by disabled Submit button doesn't call callback`, () => {
+    const onFormSubmitHandler = jest.fn();
 
-  //   const wrapper = shallow(
-  //       <SignIn
-  //         email={`mrrobot@gmail.com`}
-  //         password={`helloworld`}
-  //         sendData={noop}
-  //         onInputChange={noop}
-  //         onFormSubmit={onFormSubmitHandler}
-  //         isValidEmail={true}
-  //         isValidPassword={true}
-  //         isLoginDataSending={false}
-  //         isLoginError={false}
-  //       />
-  //   );
+    const wrapper = shallow(
+        <SignIn
+          email={`mrrobot@gmail.com`}
+          password={`helloworld`}
+          sendData={noop}
+          onInputChange={noop}
+          onFormSubmit={onFormSubmitHandler}
+          isValidEmail={true}
+          isValidPassword={true}
+          isLoginDataSending={false}
+          isLoginError={false}
+        />
+    );
 
-  //   const node = wrapper.find(`.sign-in__btn`);
-  //   node.simulate(`click`, {preventDefault() {}});
-  //   expect(onFormSubmitHandler).toHaveBeenCalledTimes(1);
-  // });
+    const node = wrapper.find(`.sign-in__btn`);
+    node.simulate(`click`, {preventDefault() {}});
+    expect(onFormSubmitHandler).toHaveBeenCalledTimes(0);
+  });
 });
