@@ -27,6 +27,21 @@ export const ratingMarkMap = {
   },
 };
 
+export const genreMap = {
+  'comedy': {
+    single: `Comedy`,
+    plural: `Comedies`,
+  },
+  'drama': {
+    single: `Drama`,
+    plural: `Dramas`,
+  },
+  'thriller': {
+    single: `Thriller`,
+    plural: `Thrillers`,
+  },
+};
+
 export const FilmsCount = {
   SIMILAR: 4,
   PER_STEP: 8,

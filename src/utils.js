@@ -1,6 +1,7 @@
 import {
   FilmsCount,
   ratingMarkMap,
+  genreMap,
   FavoriteStatusCode,
   Radix,
   WHITE_RGB_COLOR_CODE,
@@ -102,12 +103,12 @@ export const getElapsedTime = (duration, progress) => {
 
 export const getGenreInPlural = (genre) => {
   switch (genre) {
-    case `Comedy`:
-      return `Comedies`;
-    case `Drama`:
-      return `Dramas`;
-    case `Thriller`:
-      return `Thrillers`;
+    case genreMap.comedy.single:
+      return genreMap.comedy.plural;
+    case genreMap.drama.single:
+      return genreMap.drama.plural;
+    case genreMap.thriller.single:
+      return genreMap.thriller.plural;
     default:
       return genre;
   }
